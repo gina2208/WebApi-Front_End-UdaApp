@@ -6,104 +6,39 @@
     <link href="~/css/paginaprincipal.css" rel="stylesheet" />
 </head>
 
-<button id="menub" onclick="mostrarMenu()">Menú</button>
-<button id="Salir" onclick="window.location.href='@Url.Action("Index", "Home")'">Salir</button>
-<img src ="~/css/imagenes/logo.png" alt="LogoAplicacion" height="150" width="150" class="logo">
+<body>
+    <button id="menub" onclick="mostrarMenu()">Menú</button>
+    <button id="Salir" onclick="window.location.href='@Url.Action("Index", "Home")'">Salir</button>
+    <img src="~/css/imagenes/logo.png" alt="LogoAplicacion" height="150" width="150" class="logo">
 
-<div class="cBarra">
-    <div class="barraP">
-        <input type="text" id="searchInput" placeholder="  Buscar..." class="barraInput2">
-        <button onclick="buscar()" class="buscar2"><i class="material-icons">search</i></button>
-    </div>
-</div>
-
-<div class="menu" id="menu">
-   
-    <button><img src="~/css/imagenes/perfil.png"  class="perfil" height="80" width="80" onclick="window.location.href='@Url.Action("Perfil", "Home")'"> </button>
-
-    <button><img src="~/css/imagenes/publicacion.png" class="publicacion" height="80" width="80" onclick="mostrarVentanaEmergentePublicacion()"> </button>
-</div>
-<div class="publicaciones-container">
-    <div class="publicacioncontainer">
-        <div class="usuarioPerfil">
-            <img src="~/css/imagenes/perfil.png" class="usu" alt="Perfil de usuario">
-            <p class="usuarioP">UsuarioEjemplo</p>
-        </div>
-        <div class="mensajeP">Este es el contenido de la publicación de ejemplo.</div>
-        <button class="repor" onclick="mostrarVentanaEmergenteReporte()">Reportar</button>
-        <div class="interaccion">
-            <button class="like"><img src="~/css/imagenes/like.png" alt="Like"> Like</button>
-            <button class="comen"><img src="~/css/imagenes/comentario.png" onclick="mostrarVentanaEmergenteComentariosVisual" alt="Comentar"> Comentar</button>
+    <div class="cBarra">
+        <div class="barraP">
+            <input type="text" id="searchInput" placeholder="  Buscar..." class="barraInput2">
+            <button onclick="buscar()" class="buscar2"><i class="material-icons">search</i></button>
         </div>
     </div>
-</div>
 
-
-
-<div id="modal1" class="modal1" style="display: none;">
-    <div class="modal-contentpu">
-        <span class="close" onclick="cerrarVentanaEmergentePublicacion()">&times;</span>
-        <form id="formularioPublicacion" action="@Url.Action("HacerPublicacion", "Home")" method="post">
-            <input type="hidden" id="idUsuario" name="idUsuario" value="ID_USUARIO_EJEMPLO">
-            <input type="text" id="titulo" name="titulo" placeholder="Añade texto" required>
-            <div class="botones">
-                <button type="button" onclick="cerrarVentanaEmergentePublicacion()">Cancelar</button>
-                <button type="submit" onclick="agregarIdUsuario()">Hacer publicación</button>
-            </div>
-        </form>
+    <div class="menu" id="menu">
+        <button><img src="~/css/imagenes/perfil.png" class="perfil" height="80" width="80" onclick="window.location.href='@Url.Action("Perfil", "Home")'"></button>
+        <button><img src="~/css/imagenes/publicacion.png" class="publicacion" height="80" width="80" onclick="mostrarVentanaEmergentePublicacion()"></button>
     </div>
-</div>
 
+    <!-- Contenedor para mostrar publicaciones -->
+    <div class="publicaciones-container" id="publicacionesContainer"></div>
 
-<!-- Ventana Emergente de Reporte -->
-<div id="modal2" class="modal2" style="display: none;">
-    <div class="modal-contentre">
-        <span class="close" onclick="cerrarVentanaEmergenteReporte()">&times;</span>
-        <div class="reportes">
-            <p>¿Por qué deseas reportar esta publicación?</p>
-            <form id="formularioReporte" action="@Url.Action("Reportar", "Home")" method="post">
-                <input type="hidden" name="idPublicacion" id="idPublicacion" value="" />
-                <select id="opcionesSelect" name="motivo">
-                    <option value="Contenido Ofensivo">Contenido Ofensivo</option>
-                    <option value="Spam">Spam</option>
-                    <option value="Acoso">Acoso</option>
-                    <option value="Estafa">Estafa</option>
-                    <option value="Otro">Otro</option>
-                </select>
-                <button type="submit">Reportar</button>
+    <!-- Ventana emergente para hacer publicación -->
+    <div id="modal1" class="modal1" style="display: none;">
+        <div class="modal-contentpu">
+            <span class="close" onclick="cerrarVentanaEmergentePublicacion()">&times;</span>
+            <form id="formularioPublicacion">
+                <input type="text" id="titulo" name="titulo" placeholder="Añade texto" required>
+                <div class="botones">
+                    <button type="button" onclick="cerrarVentanaEmergentePublicacion()">Cancelar</button>
+                    <button type="button" onclick="enviarPublicacion()">Hacer publicación</button>
+                </div>
             </form>
         </div>
     </div>
-</div>
 
-<div id="modal3" class="modal3" style="display: none;">
-    <div class="modal-contentcomen">
-        <span class="close" onclick="cerrarVentanaEmergenteComentarios()">&times;</span>
-        <form id="formularioComentario">
-            <input type="text" id="comentario" name="comentario" placeholder="Añade un comentario">
-            <div class="botones3">
-                <button onclick="cerrarVentanaEmergenteComentarios()" class="Cancelar">Cancelar</button>
-                <button type="submit">Comentar</button>
-            </div>
-        </form>
-    </div>
-</div>
-
-<div id="modal4" class="modal4" style="display: none;">
-    <div class="modal-contentcomenvi">
-        <span class="close" onclick="cerrarVentanaEmergenteComentariosVisual()">&times;</span>
-        <div class="contenComen">
-            <div class="infoUsuario">
-                <img src="~/Content/Imagenes/Perfil.png" height="40" width="40" class="usuPc">
-                <div class="usuarioPC">
-                    <p>usuario traido deBD</p>
-                </div>
-            </div>
-            <div class="comentario">comentario de bd</div>
-        </div>
-        <button class="comenNu" onclick="mostrarVentanaEmergenteComentarios()">Comentar</button>
-    </div>
-</div>
-
-
-<script src="~/js/paginaprincipal.js"></script>
+    <script src="/js/paginaprincipal.js"></script>
+</body>

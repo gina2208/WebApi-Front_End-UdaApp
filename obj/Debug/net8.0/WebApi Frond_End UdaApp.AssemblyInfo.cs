@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebApi Frond_End UdaApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f1e79857a86bf08566b099151543389be4d664c3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+147d861b8dc74bd8082fd58923d03dd0f33eb21a")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebApi Frond_End UdaApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebApi Frond_End UdaApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

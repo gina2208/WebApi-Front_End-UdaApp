@@ -1,53 +1,126 @@
-﻿function mostrarMenu() {
-    var menu = document.getElementById("menu");
-    if (menu.style.display === "none") {
-        menu.style.display = "block";
-    } else {
-        menu.style.display = "none";
+﻿// Función para mostrar la ventana emergente de publicación
+function mostrarVentanaEmergentePublicacion() {
+    const modal = document.getElementById("modal1");
+    modal.style.display = "block";
+}
+
+// Función para cerrar la ventana emergente de publicación
+function cerrarVentanaEmergentePublicacion() {
+    const modal = document.getElementById("modal1");
+    modal.style.display = "none";
+}
+
+// Función para mostrar la ventana emergente de reporte
+function mostrarVentanaEmergenteReporte() {
+    const modal = document.getElementById("modal2");
+    modal.style.display = "block";
+}
+
+// Función para cerrar la ventana emergente de reporte
+function cerrarVentanaEmergenteReporte() {
+    const modal = document.getElementById("modal2");
+    modal.style.display = "none";
+}
+
+// Función para realizar una solicitud de publicación a la API
+async function enviarPublicacion() {
+    const token = localStorage.getItem('token');
+    const idUsuario = localStorage.getItem('idUsuario'); // Obtén el idUsuario desde localStorage
+
+    if (!token || !idUsuario) {
+        console.error("Token o ID de usuario no disponible.");
+        return;
+    }
+
+    const titulo = document.getElementById('titulo').value;
+    const url = 'https://localhost:44380/api/Publicacion';
+
+    const options = {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            idUsuario,
+            titulo
+        })
+    };
+
+    try {
+        const response = await fetch(url, options);
+
+        if (!response.ok) {
+            throw new Error(`Error: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        console.log("Publicación realizada:", data);
+        cargarPublicaciones(); // Llama a cargar publicaciones después de la publicación
+        cerrarVentanaEmergentePublicacion(); // Cierra la ventana emergente después de publicar
+
+    } catch (error) {
+        console.error('Error en la solicitud:', error);
     }
 }
 
-function mostrarVentanaEmergentePublicacion() {
-    var modal = document.getElementById("modal1");
-    modal.style.display = "block";
-}
-function mostrarVentanaEmergenteReporte() {
-    var modal = document.getElementById("modal2");
-    modal.style.display = "block";
-}
-function mostrarVentanaEmergenteComentarios() {
-    var modal = document.getElementById("modal3");
-    modal.style.display = "block";
-}
-function mostrarVentanaEmergenteComentariosVisual() {
-    var modal = document.getElementById("modal4");
-    modal.style.display = "block";
-}
-function cerrarVentanaEmergentePublicacion() {
-    var modal = document.getElementById("modal1");
-    modal.style.display = "none";
+// Función para cargar las publicaciones desde la API
+async function cargarPublicaciones() {
+    const token = localStorage.getItem('token');
+    const url = 'https://localhost:44380/api/Publicacion';
+
+    const options = {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        }
+    };
+
+    try {
+        const response = await fetch(url, options);
+
+        if (!response.ok) {
+            throw new Error(`Error: ${response.statusText}`);
+        }
+
+        const publicaciones = await response.json();
+        const contenedorPublicaciones = document.getElementById('publicacionesContainer');
+
+        // Limpiar el contenedor antes de agregar nuevas publicaciones
+        contenedorPublicaciones.innerHTML = '';
+
+        // Recorrer y mostrar cada publicación en el HTML
+        publicaciones.forEach((publicacion) => {
+            const publicacionHTML = `
+                <div class="publicacioncontainer">
+                    <div class="usuarioPerfil">
+                        <img src="~/css/imagenes/perfil.png" class="usu" alt="Perfil de usuario">
+                        <p class="usuarioP">${publicacion.nombreUsuario}</p>
+                    </div>
+                    <div class="mensajeP">${publicacion.contenido}</div>
+                    <button class="repor" onclick="mostrarVentanaEmergenteReporte()">Reportar</button>
+                    <div class="interaccion">
+                        <button class="like">
+                            <img src="~/css/imagenes/like.png" alt="Like"> 
+                            Like <span>${publicacion.numeroLikes}</span>
+                        </button>
+                        <button class="comen" onclick="mostrarVentanaEmergenteComentariosVisual()">
+                            <img src="~/css/imagenes/comentario.png" alt="Comentar"> 
+                            Comentar <span>${publicacion.numeroComentarios}</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            // Insertar cada publicación en el contenedor
+            contenedorPublicaciones.insertAdjacentHTML('beforeend', publicacionHTML);
+        });
+
+    } catch (error) {
+        console.error('Error al cargar las publicaciones:', error);
+    }
 }
 
-function cerrarVentanaEmergenteReporte() {
-    var modal = document.getElementById("modal2");
-    modal.style.display = "none";
-}
-function cerrarVentanaEmergenteComentarios() {
-    var modal = document.getElementById("modal3");
-    modal.style.display = "none";
-}
-function cerrarVentanaEmergenteComentariosVisual() {
-    var modal = document.getElementById("modal4");
-    modal.style.display = "none";
-}
-function agregarIdUsuario() {
-    var idUsuario = document.getElementById("idUsuario").value; // Obtener el valor del ID de usuario
-    document.getElementById("idUsuario").value = idUsuario; // Asignar el valor al campo oculto antes de enviar el formulario
-}
-function reportarPublicacion(idPublicacion) {
-    var modal = document.getElementById("modal2");
-    modal.style.display = "block";
-
-    // Establecer el valor del campo de ID de publicación
-    document.getElementById("idPublicacion").value = idPublicacion;
-}
+// Llama a cargarPublicaciones() al cargar la página
+document.addEventListener('DOMContentLoaded', cargarPublicaciones);
