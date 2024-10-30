@@ -40,5 +40,29 @@
         </div>
     </div>
 
+    <!-- Ventana Emergente de Reporte -->
+    <div id="modal2" class="modal2" style="display: none;">
+        <div class="modal-contentre">
+            <span class="close" onclick="cerrarVentanaEmergenteReporte()">&times;</span>
+            <div class="reportes">
+                <p>¿Por qué deseas reportar esta publicación?</p>
+                <form id="formularioReporte" onclick="reportarPublicacion()" method="post">
+                    <input type="hidden" name="idPublicacion" id="idPublicacion" value="" />
+                    <select id="opcionesSelect" name="motivo">
+                        <option value="Contenido Ofensivo">Contenido Ofensivo</option>
+                        <option value="Spam">Spam</option>
+                        <option value="Acoso">Acoso</option>
+                        <option value="Estafa">Estafa</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                    <button type="submit">Reportar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
     <script src="/js/paginaprincipal.js"></script>
 </body>

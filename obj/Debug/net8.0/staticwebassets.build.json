@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "E1ffH0rTgbaCr8ag8n/HiU04EaLPmE8kiQjXsEBuT9w=",
+  "Hash": "0tbaEfKwtxXQ8dfzvmJTW4RJQWicPCn/FdzHJI08dCA=",
   "Source": "WebApi Frond_End UdaApp",
   "BasePath": "_content/WebApi Frond_End UdaApp",
   "Mode": "Default",
@@ -164,7 +164,7 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
+      "CopyToOutputDirectory": "Always",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\imagenes\\like.png"
     },
@@ -278,7 +278,7 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
+      "CopyToOutputDirectory": "Always",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\imagenes\\Perfil.png"
     },

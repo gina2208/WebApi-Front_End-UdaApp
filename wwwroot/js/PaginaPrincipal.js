@@ -4,6 +4,13 @@ function mostrarVentanaEmergentePublicacion() {
     modal.style.display = "block";
 }
 
+//Funcion para mostrar menu
+function mostrarMenu() {
+    const modal = document.getElementById("menu");
+    modal.style.display = "block";
+}
+
+
 // Función para cerrar la ventana emergente de publicación
 function cerrarVentanaEmergentePublicacion() {
     const modal = document.getElementById("modal1");
@@ -25,7 +32,7 @@ function cerrarVentanaEmergenteReporte() {
 // Función para realizar una solicitud de publicación a la API
 async function enviarPublicacion() {
     const token = localStorage.getItem('token');
-    const idUsuario = localStorage.getItem('idUsuario'); // Obtén el idUsuario desde localStorage
+    const idUsuario = localStorage.getItem('id'); // Obtén el idUsuario desde localStorage
 
     if (!token || !idUsuario) {
         console.error("Token o ID de usuario no disponible.");
@@ -33,7 +40,7 @@ async function enviarPublicacion() {
     }
 
     const titulo = document.getElementById('titulo').value;
-    const url = 'https://localhost:44380/api/Publicacion';
+    const url = 'https://localhost:44380/api/Publicaciones/hacer-publicacion';
 
     const options = {
         method: 'POST',
@@ -64,10 +71,11 @@ async function enviarPublicacion() {
     }
 }
 
+
 // Función para cargar las publicaciones desde la API
 async function cargarPublicaciones() {
     const token = localStorage.getItem('token');
-    const url = 'https://localhost:44380/api/Publicacion';
+    const url = 'https://localhost:44380/api/Publicaciones/pagina-principal';
 
     const options = {
         method: 'GET',
@@ -95,19 +103,17 @@ async function cargarPublicaciones() {
             const publicacionHTML = `
                 <div class="publicacioncontainer">
                     <div class="usuarioPerfil">
-                        <img src="~/css/imagenes/perfil.png" class="usu" alt="Perfil de usuario">
+                        <img src="/css/imagenes/Perfil.png" class="usu" alt="Perfil de usuario">
                         <p class="usuarioP">${publicacion.nombreUsuario}</p>
                     </div>
-                    <div class="mensajeP">${publicacion.contenido}</div>
+                   
+                    <p class="fechaPublicacion">Publicado el: ${new Date(publicacion.fechaPublicacion).toLocaleDateString()}</p>
+                    <div class="mensajeP">${publicacion.titulo}</div>
                     <button class="repor" onclick="mostrarVentanaEmergenteReporte()">Reportar</button>
                     <div class="interaccion">
-                        <button class="like">
-                            <img src="~/css/imagenes/like.png" alt="Like"> 
-                            Like <span>${publicacion.numeroLikes}</span>
-                        </button>
-                        <button class="comen" onclick="mostrarVentanaEmergenteComentariosVisual()">
-                            <img src="~/css/imagenes/comentario.png" alt="Comentar"> 
-                            Comentar <span>${publicacion.numeroComentarios}</span>
+                        <button class="like" onclick="darLike(${publicacion.idPublicacion})">
+                            <img src="/css/imagenes/like.png" alt="Like"> 
+                            Like <span class="like-count" data-id="${publicacion.idPublicacion}">${publicacion.numeroLikes}</span>
                         </button>
                     </div>
                 </div>
@@ -119,6 +125,94 @@ async function cargarPublicaciones() {
 
     } catch (error) {
         console.error('Error al cargar las publicaciones:', error);
+    }
+}
+
+// Función para dar like a una publicación
+async function darLike(idPublicacion) {
+    const token = localStorage.getItem('token');
+    const idUsuario = localStorage.getItem('id'); // Obtiene el idUsuario desde localStorage
+    const url = 'https://localhost:44380/api/Publicaciones/toggle-like';
+
+    if (!token || !idUsuario) {
+        console.error("Token o ID de usuario no disponible.");
+        return;
+    }
+
+    const options = {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            idUsuario: parseInt(idUsuario),
+            idPublicacion: idPublicacion,
+            likeStatus: true
+        })
+    };
+
+    try {
+        const response = await fetch(url, options);
+
+        if (!response.ok) {
+            throw new Error(`Error al dar like: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        console.log("Like agregado:", data);
+
+        // Actualiza el número de likes en el DOM sin recargar toda la lista de publicaciones
+        const likeCountSpan = document.querySelector(`.like-count[data-id="${idPublicacion}"]`);
+        if (likeCountSpan) {
+            likeCountSpan.textContent = data.numeroLikes;
+        }
+
+    } catch (error) {
+        console.error('Error en la solicitud de like:', error);
+    }
+}
+
+// Función para reportar una publicación
+async function reportarPublicacion() {
+    const token = localStorage.getItem('token');
+    const idUsuario = localStorage.getItem('id');
+    const idPublicacion = document.getElementById('idPublicacion').value;
+    const motivo = document.getElementById('opcionesSelect').value;
+    const url = 'https://localhost:44380/api/Publicaciones/reportar';
+
+    if (!token || !idUsuario) {
+        console.error("Token o ID de usuario no disponible.");
+        return;
+    }
+
+    const options = {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            idPublicacion: parseInt(idPublicacion),
+            idUsuarioReportador: parseInt(idUsuario),
+            motivo: motivo
+        })
+    };
+
+    try {
+        const response = await fetch(url, options);
+
+        if (!response.ok) {
+            throw new Error(`Error al reportar: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        console.log("Reporte enviado:", data);
+        cargarPublicaciones(); // Opcionalmente recargar publicaciones para reflejar cambios
+        cerrarVentanaEmergenteReporte();
+
+    } catch (error) {
+        console.error('Error en la solicitud de reporte:', error);
     }
 }
 
