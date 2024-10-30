@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\js\apiRegistro.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\css\imagenes\" />
   </ItemGroup>
 
