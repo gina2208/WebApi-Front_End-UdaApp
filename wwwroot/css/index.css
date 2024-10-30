@@ -1,0 +1,112 @@
+﻿body {
+    background-color: #CFFFED;
+}
+
+    body::before {
+        content: "";
+        position: absolute;
+        top: 0; /* Modificado */
+        right: 0; /* Modificado */
+        width: 700px;
+        height: 500px;
+        background-color: white;
+        border-radius: 0 0 0 100%;
+        z-index: 0;
+    }
+
+
+h1,
+p {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.logo {
+    position: fixed;
+    top: 30px;
+    left: 100px;
+    margin: 20px;
+}
+
+.datos_inicio {
+    position: fixed;
+    bottom: 150px;
+    left: 100px;
+    width: 40%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.inicio,
+.registrarse,
+.iniciarSesion {
+    position: fixed;
+    top: 0;
+    margin: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.inicio {
+    background-color: white;
+    right: 350px;
+    color: #008856;
+    border: 0;
+    border-bottom: 2px solid #008856;
+}
+
+.registrarse {
+    background-color: white;
+    border: none;
+    right: 200px;
+    color: black;
+}
+
+.iniciarSesion {
+    right: 50px;
+    background-color: #008856;
+    color: white;
+    border-radius: 20px;
+}
+
+.uni {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+
+.logo {
+    position: absolute;
+    top: 30px;
+    left: 100px;
+    margin: 20px;
+}
+
+.formulario {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 25%;
+    float: right;
+    margin-right: 10%;
+    margin-top: 1.8%;
+    font-size: 0.8em;
+}
+
+.input-contenedor {
+    display: flex;
+    flex-direction: column;
+}
+
+    .input-contenedor label {
+        margin-bottom: 5px;
+    }
+
+    .input-contenedor input {
+        border-radius: 10px;
+        background-color: #CFFFED;
+        border: none;
+        padding: 8px;
+        margin-bottom: 15px;
+    }

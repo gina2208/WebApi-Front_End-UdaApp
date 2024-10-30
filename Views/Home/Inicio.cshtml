@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewData["Title"] = "Inicio";
+}
+
+<head>
+ 
+    <link href="~/css/inicio.css" rel="stylesheet" />
+</head>
+
+<div class="logo">
+    <img src="~/css/imagenes/logo.jpg" alt="LogoAplicacion" height="150" width="150"/>
+</div>
+
+<div class="circulo1"></div>
+<div class="circulo2"></div>
+<div class="circulo3"></div>
+<div class="circulo4"></div>
+<div class="circulo5"></div>
+<div class="circulo6"></div>
+
+<div class="contenedor">
+    <div class="form-container">
+        @using (Html.BeginForm())
+        {
+            <div class="form-horizontal">
+                <div class="input-contenedor">
+                    <label for="Email">Email:</label>
+                    <input type="email" id="Email" name="Email" class="correo" />
+                    <span class="text-danger" id="EmailError"></span>
+
+                    <label for="Contrasena">Contraseña:</label>
+                    <input type="password" id="Contrasena" name="Contrasena" class="contrasena" />
+                    <span class="text-danger" id="ContrasenaError"></span>
+
+                    <input type="submit" value="Ingresar" class="ingresar" />
+                </div>
+            </div>
+        }
+    </div>
+    <button name="cancelar" class="cancelar" onclick="window.location.href='@Url.Action("Index", "Home")'">Cancelar</button>
+   <!-- <a onclick="mostrarVentanaEmergente()" href="#" id="recuperarContraseña">¿Olvidaste tu contraseña?</a>-->
+</div>
+
+<script src="~/js/inicio.js"></script>

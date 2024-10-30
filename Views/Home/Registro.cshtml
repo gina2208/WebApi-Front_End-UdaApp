@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "Registro";
+}
+<head>
+    <link href="~/css/registro.css" rel="stylesheet" />
+</head>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="contenedor">
+        <div class="form-horizontal">
+            <div class="input-group">
+                <label for="Cedula">Cédula</label>
+                <input type="text" id="Cedula" name="Cedula" class="form-control" />
+                <span class="text-danger" id="CedulaError"></span>
+            </div>
+
+            <div class="input-group">
+                <label for="Nombre">Nombre</label>
+                <input type="text" id="Nombre" name="Nombre" class="form-control" />
+                <span class="text-danger" id="NombreError"></span>
+            </div>
+
+            <div class="input-group">
+                <label for="Apellido">Apellido</label>
+                <input type="text" id="Apellido" name="Apellido" class="form-control" />
+                <span class="text-danger" id="ApellidoError"></span>
+            </div>
+
+            <div class="input-group">
+                <label for="Telefono">Teléfono</label>
+                <input type="text" id="Telefono" name="Telefono" class="form-control" />
+                <span class="text-danger" id="TelefonoError"></span>
+            </div>
+
+            <div class="input-group">
+                <label for="Direccion">Dirección</label>
+                <input type="text" id="Direccion" name="Direccion" class="form-control" />
+                <span class="text-danger" id="DireccionError"></span>
+            </div>
+
+            <div class="input-group">
+                <label for="Email">Email</label>
+                <input type="email" id="Email" name="Email" class="form-control" />
+                <span class="text-danger" id="EmailError"></span>
+            </div>
+
+            <div class="input-group">
+                <label for="Contrasena">Contraseña</label>
+                <input type="password" id="Contrasena" name="Contrasena" class="form-control" />
+                <span class="text-danger" id="ContrasenaError"></span>
+            </div>
+
+            <div class="botton-contenedor">
+                <input type="submit" value="Registrarse" class="registrarse" />
+                <button type="button" class="cancelar" onclick="window.location.href='@Url.Action("Index", "Home")'">Cancelar</button>
+            </div>
+        </div>
+    </div>
+}
+<div id="loading" class="loading">
+    Cargando...
+    <div class="spinner"></div>
+</div>
+
+<div class="circulo"></div>
+<img src="~/css/imagenes/logo.jpg" alt="LogoAplicacion" height="150" width="150" class="logo">
+<img src="~/css/imagenes/MOCKUP_UDAPP-removebg-preview (2).png" height="550" width="600" class="estudi">
+
+
+<script src="~/js/registro.js"></script>

@@ -1,0 +1,364 @@
+﻿/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #F5F5F5;
+    overflow-x: hidden;
+}
+
+/* Footer */
+.pie {
+    width: 100%;
+    height: 60px;
+    background-color: #00E3B8;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Menu Styles */
+.menu {
+    width: 60px;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 100px;
+    display: none;
+}
+
+    .menu button {
+        width: 100%;
+        height: 50px;
+        background-color: transparent;
+        border: none;
+        margin-bottom: 50px;
+        cursor: pointer;
+    }
+
+/* Logo */
+.logo {
+    position: fixed;
+    bottom: 80px;
+    right: 60px;
+    margin: 20px;
+}
+
+/* Floating Buttons */
+#menub, #Salir {
+    border-radius: 25px;
+    background-color: #03AB87;
+    border: none;
+    padding: 15px;
+    margin-top: 10px;
+    width: 160px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    position: fixed;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#menub {
+    left: 60px;
+    top: 80px;
+}
+
+#Salir {
+    right: 60px;
+    top: 80px;
+}
+
+/* Search Bar */
+.cBarra {
+    width: 600px;
+    margin-top: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.barraP {
+    display: flex;
+    align-items: center;
+    background-color: #03AB87;
+    border-radius: 25px;
+    width: 100%;
+    max-width: 600px;
+    overflow: hidden;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+input.barraInput2 {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    outline: none;
+}
+
+.barraInput2::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: bold;
+}
+
+.buscar2 {
+    background-color: #03AB87;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+}
+
+/* Publicaciones Container */
+.publicaciones-container {
+    margin-top: 80px;
+    margin-bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 0 20px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+/* Publicacion Individual */
+.publicacioncontainer {
+    width: 100%;
+    max-width: 700px;
+    border-radius: 20px;
+    background-color: white;
+    border: 2px solid #40BFBC;
+    padding: 25px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.usuarioPerfil {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.usuarioP {
+    color: #03AB87;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.usu {
+    border-radius: 20px;
+    height: 40px;
+    width: 40px;
+}
+
+.mensajeP {
+    color: black;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Ajustar interacción sección */
+.interaccion {
+    display: flex;
+    justify-content: flex-start; /* Alinear a la izquierda para eliminar el espacio */
+    margin-top: auto;
+}
+
+.like, .comen {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    width: 40px; /* Ajustar el ancho */
+    height: 40px; /* Ajustar la altura */
+    display: flex; /* Flex para centrar el contenido */
+    align-items: center; /* Centrar verticalmente */
+    justify-content: center; /* Centrar horizontalmente */
+    padding: 0; /* Eliminar relleno */
+    margin: 0 20px; /* Margen para reducir la separación */
+    margin-top: 20px;
+}
+
+    /* Asegurarse de que los iconos sean del tamaño correcto */
+    .like img, .comen img {
+        width: 30px; /* Tamaño del icono */
+        height: 30px; /* Tamaño del icono */
+        object-fit: contain; /* Asegurar que el icono mantenga proporciones */
+    }
+
+/* Report Button */
+.repor {
+    border-radius: 20px;
+    background-color: #03AB87;
+    color: white;
+    font-weight: bold;
+    padding: 8px 12px;
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    cursor: pointer;
+}
+
+/* Modal Styles for Report */
+.modal2 {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Posición fija */
+    z-index: 100; /* Asegura que esté por encima de otros elementos */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Alto completo */
+    overflow: auto; /* Permite el desplazamiento si es necesario */
+    background-color: rgba(0, 0, 0, 0.4); /* Fondo oscuro con opacidad */
+}
+
+.modal-contentre {
+    background-color: #ffffff; /* Color de fondo blanco */
+    padding: 20px;
+    border-radius: 15px;
+    width: 300px; /* Ajustar el ancho según sea necesario */
+    margin: 15% auto; /* Centramos vertical y horizontalmente */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    display: flex; /* Cambiado a flex */
+    flex-direction: column; /* Coloca los elementos en columna */
+    position: relative; /* Posición relativa para el cierre */
+}
+
+    /* Content of the Modal */
+    .modal-contentre p {
+        margin: 10px 0;
+        font-size: 14px;
+    }
+
+    .modal-contentre select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #03AB87;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        background-color: #f0f0f0; /* Fondo gris claro */
+        font-size: 14px;
+    }
+
+    /* Submit Button in Modal */
+    .modal-contentre button {
+        background-color: #03AB87;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 10px;
+        font-weight: bold;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.3s ease;
+    }
+
+        .modal-contentre button:hover {
+            background-color: #028771; /* Color en hover */
+        }
+
+    /* Close Button for Report Modal */
+    .modal-contentre .close {
+        position: absolute;
+        top: 10px; /* Ajustado para centrar verticalmente */
+        right: 10px; /* Ajustado para una mejor apariencia */
+        font-size: 18px; /* Tamaño de la X */
+        color: #287777;
+        cursor: pointer;
+    }
+
+/* Additional Modal Styles for Comments and Publishing */
+.modal-contentcomen, .modal-contentpu, .modal-contentcomenvi {
+    display: flex; /* Cambiado a flex */
+    flex-direction: column; /* Coloca los elementos en columna */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #287777;
+    padding: 20px;
+    border-radius: 20px;
+    width: 600px;
+    max-width: 90%;
+    color: white;
+}
+
+    /* Specific styling for the close button in all modals */
+    .modal-contentcomen .close,
+    .modal-contentpu .close,
+    .modal-contentcomenvi .close {
+        position: absolute;
+        top: 10px; /* Ajustado para centrar verticalmente */
+        right: 10px; /* Ajustado para una mejor apariencia */
+        font-size: 18px; /* Tamaño de la X */
+        color: white; /* Color de la X */
+        cursor: pointer;
+    }
+
+    /* Input Fields in Modals */
+    .modal-contentcomen input,
+    .modal-contentpu input,
+    .modal-contentcomenvi input {
+        width: calc(100% - 20px); /* Calculado para ajustar con el padding */
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #40BFBC;
+        margin-bottom: 10px; /* Espaciado entre inputs */
+    }
+
+    /* Submit Buttons in Modals */
+    .modal-contentcomen button,
+    .modal-contentpu button {
+        background-color: #03AB87;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 10px;
+        font-weight: bold;
+        cursor: pointer;
+        width: auto; /* Cambiado a ancho automático */
+        transition: background-color 0.3s ease;
+    }
+
+/* Align buttons next to each other */
+.modal-contentpu {
+    display: flex;
+    flex-direction: column; /* Coloca los elementos en columna */
+}
+
+    .modal-contentpu .button-container {
+        display: flex; /* Flex para alinear los botones */
+        justify-content: space-between; /* Espaciado entre los botones */
+        margin-top: 20px; /* Espaciado arriba de los botones */
+    }
+
+    /* Textarea for Comments */
+    .modal-contentcomen textarea,
+    .modal-contentpu textarea {
+        width: calc(100% - 20px); /* Calculado para ajustar con el padding */
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #40BFBC;
+        margin-bottom: 10px; /* Espaciado entre inputs */
+        resize: vertical; /* Permitir solo cambio de tamaño vertical */
+    }
+
+/* Responsive Modal Adjustments */
+@media (max-width: 768px) {
+    .modal-contentre,
+    .modal-contentcomen,
+    .modal-contentpu {
+        width: 90%; /* Asegura que el modal no se desborde en pantallas pequeñas */
+        margin: 10% auto; /* Mejor distribución en móviles */
+    }
+}

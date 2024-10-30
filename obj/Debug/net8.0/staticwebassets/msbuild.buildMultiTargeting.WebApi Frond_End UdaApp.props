@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\WebApi Frond_End UdaApp.props" />
+</Project>

@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<head>
+    <link href="~/css/index.css" rel="stylesheet" />
+</head>
+
+<div class="datos_inicio">
+    <H1>TU CAMPUS,EN CUALQUIER LUGAR.</H1>
+    <P>
+        UdApp es una innovadora plataforma educativa para universitarios que te permite aprender de forma online y a
+        tu ritmo.<br>
+        Podrás acceder a una amplia variedad de recursos educativos, como ver tus horarios, hacer publicaciones,
+        Chatear y grupos de estudio. Además, podrás interactuar con otros estudiantes, profesores y partes de la
+        universidad.
+    </P>
+</div>
+
+<button type="submit" name="inicio" class="inicio"> Inicio </button>
+
+<button name="registrarse" class="registrarse" onclick="window.location.href='@Url.Action("Registro", "Home")'">Registrarse</button>
+<button name="iniciarSesion" class="iniciarSesion" onclick="window.location.href='@Url.Action("Inicio", "Home")'"> Iniciar Sesión </button>
+<img src="~/css/imagenes/logo.png" alt="LogoAplicacion" height="150" width="150" class="logo">
+<img src="~/css/imagenes/universitario.png" alt="" height="600" width="850" class="uni">
+

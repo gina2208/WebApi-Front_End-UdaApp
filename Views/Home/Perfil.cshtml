@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Perfil";
+}
+
+<head>
+    <link href="~/css/Perfil.css" rel="stylesheet" />
+</head>
+
+<body>
+    <img src="~/css/imagenes/logo.png" alt="LogoAplicacion" height="150" width="150" class="logo">
+    <img src="~/css/imagenes/PerfilUsu.png" alt="PerfilUsu" height="180" width="180" class="usuario">
+
+    <button class="paginapb" onclick="window.location.href='@Url.Action("PaginaPrincipal", "Home")'">Pagina Principal</button>
+
+    <div class="contenPer">
+        <div class="cedula">123456789</div> 
+        <div class="correo">usuario@ejemplo.com</div> 
+        <div class="nombre">Juan Pérez</div> 
+        <button class="editar" onclick="mostrarVentanaEmergenteEditar()">Editar</button>
+        <button class="eliminaru" onclick="mostrarVentanaEmergenteEliminar()">Eliminar Usuario</button>
+    </div>
+
+    <footer>
+        <p>2024 - UdAPP - Política de Privacidad</p>
+    </footer>
+
+    <div id="modal1" class="modal1" style="display: none;">
+        <div class="modal-contentEdi">
+            <span class="close" onclick="cerrarVentanaEmergenteEditar()">&times;</span>
+            <div class="editar-usuario">
+                <p>Editar Datos del Usuario</p>
+                <form id="formularioEditarUsuario" action="@Url.Action("EditarUsuario", "Home")" method="post">
+                    <input type="hidden" name="Id" id="idUsuario" value="1" /> 
+                    <input type="text" id="nombreUsuario" name="Nombre" placeholder="NOMBRE" value="Juan" required> 
+                    <input type="text" id="cedulaUsuario" name="Cedula" placeholder="CEDULA" value="123456789" required>
+                    <input type="email" id="correoUsuario" name="Email" placeholder="CORREO" value="usuario@ejemplo.com" required> 
+                    <div class="botones">
+                        <button type="button" onclick="cerrarVentanaEmergenteEditarUsuario()" class="cancelar">Cancelar</button>
+                        <button type="submit">Actualizar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal2" style="display: none;">
+        <div class="modal-contentElim">
+            <span class="close" onclick="cerrarVentanaEmergenteEliminar()">&times;</span>
+            <h3>¡ALERTA!</h3>
+            <p id="report-description">¿ESTA SEGURO DE ELIMINAR EL USUARIO?</p>
+            <div class="botones">
+                <button onclick="cerrarVentanaEmergenteEliminar()" class="Cancelar">Cancelar</button>
+                <form id="formularioEliminarUsuario" action="@Url.Action("EliminarUsuario", "Home")" method="post">
+                    <input type="hidden" name="Id" value="1" /> 
+                    <button type="submit">Eliminar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/js/perfil.js"></script>
+</body>
