@@ -39,7 +39,8 @@ async function iniciarSesion(event) {
         // Verificar si la respuesta indica éxito
         if (responseData.exito) {
             // Guardar el rol y token en el localStorage
-            localStorage.setItem('id', responseData.usuario.id); // Guardar rol como int
+            localStorage.setItem('id', responseData.usuario.id); // Guardar idUsuario como int
+            localStorage.setItem('rol', responseData.usuario.idRol); // Guardar rol como int
             localStorage.setItem('token', responseData.token); // Guardar token como Bearer token
 
             // Redirigir al usuario a la página principal

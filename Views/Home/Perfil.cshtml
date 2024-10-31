@@ -13,9 +13,19 @@
     <button class="paginapb" onclick="window.location.href='@Url.Action("PaginaPrincipal", "Home")'">Pagina Principal</button>
 
     <div class="contenPer">
-        <div class="cedula">123456789</div>
-        <div class="correo">usuario@ejemplo.com</div>
-        <div class="nombre">Juan Pérez</div>
+        <h2>Perfil del Usuario</h2>
+        <div class="informacion">
+            <div class="dato">Cédula: <span>123456789</span></div>
+            <div class="dato">Nombre: <span>Juan</span></div>
+            <div class="dato">Apellido: <span>Pérez</span></div>
+            <div class="dato">Teléfono: <span>3123456789</span></div>
+            <div class="dato">Dirección: <span>Calle 123</span></div>
+            <div class="dato">Correo: <span>usuario@ejemplo.com</span></div>
+            <div class="dato">Contraseña: <span>••••••••</span></div>
+            <div class="dato">ID Usuario: <span>1</span></div>
+            <div class="dato">ID Rol: <span>1</span></div>
+            <div class="dato">Estado de Suspensión: <span>Activo</span></div>
+        </div>
         <button class="editar" onclick="mostrarVentanaEmergenteEditar()">Editar</button>
         <button class="eliminaru" onclick="mostrarVentanaEmergenteEliminar()">Eliminar Usuario</button>
     </div>
@@ -31,10 +41,18 @@
             <div class="editar-usuario">
                 <p>Editar Datos del Usuario</p>
                 <form id="formularioEditarUsuario" action="@Url.Action("EditarUsuario", "Home")" method="post">
-                    <input type="hidden" name="Id" id="idUsuario" value="1" />
+                    <input type="hidden" name="Id" id="idUsuario" value="1" readonly />
+                    <input type="text" id="cedulaUsuario" name="Cedula" placeholder="CEDULA" value="123456789" readonly>
+                    <input type="hidden" name="idRol" value="1" readonly />
+                    <input type="hidden" name="estadoSuspension" value="false" readonly />
+                    
                     <input type="text" id="nombreUsuario" name="Nombre" placeholder="NOMBRE" value="Juan" required>
-                    <input type="text" id="cedulaUsuario" name="Cedula" placeholder="CEDULA" value="123456789" required>
+                    <input type="text" id="apellidoUsuario" name="Apellido" placeholder="APELLIDO" value="Pérez" required>
+                    <input type="text" id="telefonoUsuario" name="Telefono" placeholder="TELÉFONO" value="3123456789" required>
+                    <input type="text" id="direccionUsuario" name="Direccion" placeholder="DIRECCIÓN" value="Calle 123" required>
                     <input type="email" id="correoUsuario" name="Email" placeholder="CORREO" value="usuario@ejemplo.com" required>
+                    <input type="password" id="contrasenaUsuario" name="Contrasena" placeholder="CONTRASEÑA" required>
+
                     <div class="botones">
                         <button type="button" onclick="cerrarVentanaEmergenteEditarUsuario()" class="cancelar">Cancelar</button>
                         <button type="submit">Actualizar</button>

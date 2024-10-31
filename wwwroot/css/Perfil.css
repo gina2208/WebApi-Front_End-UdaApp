@@ -1,8 +1,10 @@
-﻿body {
+﻿/* Fondo y fuentes generales */
+body {
     background-color: #03AB87;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+/* Footer */
 footer {
     color: white;
     padding: 20px;
@@ -12,6 +14,7 @@ footer {
     text-align: center;
 }
 
+/* Logo de la aplicación */
 .logo {
     position: fixed;
     bottom: 40px;
@@ -19,6 +22,7 @@ footer {
     margin: 20px;
 }
 
+/* Imagen de perfil */
 .usuario {
     position: fixed;
     bottom: 60%;
@@ -26,6 +30,7 @@ footer {
     margin: 0;
 }
 
+/* Botones de navegación y acciones */
 .paginapb, .editar, .eliminaru {
     border-radius: 20px;
     color: white;
@@ -43,7 +48,8 @@ footer {
     right: 80px;
 }
 
-.cedula, .correo, .nombre {
+/* Contenedor de información del perfil */
+.dato {
     border-radius: 10px;
     background-color: white;
     border: none;
@@ -51,6 +57,8 @@ footer {
     margin: 10px;
     width: 100%;
     text-align: center;
+    font-weight: bold;
+    color: #052C53;
 }
 
 .contenPer {
@@ -67,6 +75,7 @@ footer {
     align-items: center;
 }
 
+/* Estilo de los modales */
 .modal1,
 .modal2 {
     display: none;
@@ -83,18 +92,19 @@ footer {
 .modal-contentEdi,
 .modal-contentElim {
     background-color: #CFFFED;
-    margin: 15% auto; /* Ajusta el margen superior para centrar verticalmente */
+    margin: 15% auto;
     padding: 30px;
     border: none;
-    width: 30%; /* Ancho del modal */
-    max-width: 600px; /* Ancho máximo del modal */
+    width: 30%;
+    max-width: 600px;
     border-radius: 20px;
     opacity: 0.97;
     text-align: center;
 }
 
+    /* Estilo para los inputs del formulario de edición */
     .modal-contentEdi input {
-        width: 80%; /* Ajusta el ancho de los inputs al 100% del modal */
+        width: 80%;
         height: 30px;
         border-radius: 10px;
         border: none;
@@ -104,6 +114,7 @@ footer {
         font-weight: bold;
     }
 
+/* Botones dentro de los modales */
 .botones {
     text-align: center;
     display: flex;
@@ -116,28 +127,12 @@ footer {
         border: none;
         padding: 8px;
         color: white;
-        margin: 0 30px; /* Reducido el margen horizontal */
+        margin: 0 30px;
         font-weight: bold;
         font-size: 16px;
     }
 
-.botonesEl {
-    text-align: center;
-    display: flex;
-    justify-content: flex-end;
-}
-
-    .botonesEl button {
-        border-radius: 10px;
-        background-color: #03AB87;
-        border: none;
-        padding: 8px;
-        color: white;
-        margin: 0 30px; /* Reducido el margen horizontal */
-        font-weight: bold;
-        font-size: 16px;
-    }
-
+/* Estilo del botón de cerrar */
 .close {
     color: #aaa;
     float: right;
