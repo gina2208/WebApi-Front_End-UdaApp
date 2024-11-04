@@ -37,6 +37,15 @@ namespace WebApi_Frond_End_UdaApp.Controllers
 
             return View();
         }
+        public IActionResult Gerente()
+        {
+            return View();
+        }
+
+        public IActionResult Moderador()
+        {
+            return View();
+        }
 
         public IActionResult Privacy()
         {
