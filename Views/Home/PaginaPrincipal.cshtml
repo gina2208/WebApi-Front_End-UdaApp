@@ -1,152 +1,68 @@
 ﻿@{
-    ViewBag.Title = "Perfil";
+    ViewBag.Title = "PaginaPrincipal";
 }
-
 <head>
-    <link href="~/css/Perfil.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="~/css/paginaprincipal.css" rel="stylesheet" />
 </head>
 
-<body onload="cargarPerfilUsuario()">
+<body>
+    <button id="menub" onclick="mostrarMenu()">Menú</button>
+    <button id="Salir" onclick="window.location.href='@Url.Action("Index", "Home")'">Salir</button>
     <img src="~/css/imagenes/logo.png" alt="LogoAplicacion" height="150" width="150" class="logo">
-    <img src="~/css/imagenes/PerfilUsu.png" alt="PerfilUsu" height="180" width="180" class="usuario">
 
-    <button class="paginapb" onclick="window.location.href='@Url.Action("PaginaPrincipal", "Home")'">Pagina Principal</button>
-
-    <div class="contenPer">
-        <h2>Perfil del Usuario</h2>
-        <div class="informacion">
-            <div class="dato">Cédula: <span class="cedula">123456789</span></div>
-            <div class="dato">Nombre: <span class="nombre">Juan</span></div>
-            <div class="dato">Apellido: <span class="apellido">Pérez</span></div>
-            <div class="dato">Teléfono: <span class="telefono">3123456789</span></div>
-            <div class="dato">Dirección: <span class="direccion">Calle 123</span></div>
-            <div class="dato">Correo: <span class="correo">usuario@ejemplo.com</span></div>
-            <div class="dato">Contraseña: <span>••••••••</span></div>
-            <div class="dato">ID Usuario: <span id="idUsuarioSpan">1</span></div>
-            <div class="dato">ID Rol: <span id="idRolSpan">1</span></div>
-            <div class="dato">Estado de Suspensión: <span id="estadoSuspensionSpan">Activo</span></div>
+    <div class="cBarra">
+        <div class="barraP">
+            <input type="text" id="searchInput" placeholder="  Buscar..." class="barraInput2">
+            <button onclick="buscar()" class="buscar2"><i class="material-icons">search</i></button>
         </div>
-        <button class="editar" onclick="mostrarVentanaEmergenteEditar()">Editar</button>
-        <button class="eliminaru" onclick="mostrarVentanaEmergenteEliminar()">Eliminar Usuario</button>
     </div>
 
-    <footer>
-        <p>2024 - UdAPP - Política de Privacidad</p>
-    </footer>
+    <div class="menu" id="menu">
+        <button><img src="~/css/imagenes/perfil.png" class="perfil" height="80" width="80" onclick="window.location.href='@Url.Action("Perfil", "Home")'"></button>
+        <button><img src="~/css/imagenes/publicacion.png" class="publicacion" height="80" width="80" onclick="mostrarVentanaEmergentePublicacion()"></button>
+    </div>
 
-    <!-- Modal de edición de usuario -->
+    <!-- Contenedor para mostrar publicaciones -->
+    <div class="publicaciones-container" id="publicacionesContainer"></div>
+
+    <!-- Ventana emergente para hacer publicación -->
     <div id="modal1" class="modal1" style="display: none;">
-        <div class="modal-contentEdi">
-            <span class="close" onclick="cerrarVentanaEmergenteEditar()">&times;</span>
-            <div class="editar-usuario">
-                <p>Editar Datos del Usuario</p>
-                <form id="formularioEditarUsuario" onsubmit="actualizarPerfilUsuario(event)">
-                    <input type="hidden" id="idUsuario" value="" readonly />
-                    <input type="text" id="cedulaUsuario" placeholder="CEDULA" readonly>
-                    <input type="hidden" id="idRol" value="" readonly />
-                    <input type="hidden" id="estadoSuspension" value="false" readonly />
-
-                    <input type="text" id="nombreUsuario" placeholder="NOMBRE" required>
-                    <input type="text" id="apellidoUsuario" placeholder="APELLIDO" required>
-                    <input type="text" id="telefonoUsuario" placeholder="TELÉFONO" required>
-                    <input type="text" id="direccionUsuario" placeholder="DIRECCIÓN" required>
-                    <input type="email" id="correoUsuario" placeholder="CORREO" required>
-                    <input type="password" id="contrasenaUsuario" placeholder="CONTRASEÑA" required>
-
-                    <div class="botones">
-                        <button type="button" onclick="cerrarVentanaEmergenteEditar()" class="cancelar">Cancelar</button>
-                        <button type="submit">Actualizar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal de eliminación de usuario -->
-    <div id="modal2" class="modal2" style="display: none;">
-        <div class="modal-contentElim">
-            <span class="close" onclick="cerrarVentanaEmergenteEliminar()">&times;</span>
-            <h3>¡ALERTA!</h3>
-            <p id="report-description">¿ESTA SEGURO DE ELIMINAR EL USUARIO?</p>
-            <div class="botones">
-                <button onclick="cerrarVentanaEmergenteEliminar()" class="Cancelar">Cancelar</button>
-                <form id="formularioEliminarUsuario" action="@Url.Action("EliminarUsuario", "Home")" method="post">
-                    <input type="hidden" name="Id" value="1" />
-                    <button type="submit">Eliminar</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <script src="~/js/perfil.js"></script>
-</body>
-
-
-
-<div id="modal1" class="modal1" style="display: none;">
-    <div class="modal-contentpu">
-        <span class="close" onclick="cerrarVentanaEmergentePublicacion()">&times;</span>
-        <form id="formularioPublicacion" action="@Url.Action("HacerPublicacion", "Home")" method="post">
-            <input type="hidden" id="idUsuario" name="idUsuario" value="ID_USUARIO_EJEMPLO">
-            <input type="text" id="titulo" name="titulo" placeholder="Añade texto" required>
-            <div class="botones">
-                <button type="button" onclick="cerrarVentanaEmergentePublicacion()">Cancelar</button>
-                <button type="submit" onclick="agregarIdUsuario()">Hacer publicación</button>
-            </div>
-        </form>
-    </div>
-</div>
-
-
-<!-- Ventana Emergente de Reporte -->
-<div id="modal2" class="modal2" style="display: none;">
-    <div class="modal-contentre">
-        <span class="close" onclick="cerrarVentanaEmergenteReporte()">&times;</span>
-        <div class="reportes">
-            <p>¿Por qué deseas reportar esta publicación?</p>
-            <form id="formularioReporte" action="@Url.Action("Reportar", "Home")" method="post">
-                <input type="hidden" name="idPublicacion" id="idPublicacion" value="" />
-                <select id="opcionesSelect" name="motivo">
-                    <option value="Contenido Ofensivo">Contenido Ofensivo</option>
-                    <option value="Spam">Spam</option>
-                    <option value="Acoso">Acoso</option>
-                    <option value="Estafa">Estafa</option>
-                    <option value="Otro">Otro</option>
-                </select>
-                <button type="submit">Reportar</button>
+        <div class="modal-contentpu">
+            <span class="close" onclick="cerrarVentanaEmergentePublicacion()">&times;</span>
+            <form id="formularioPublicacion">
+                <input type="text" id="titulo" name="titulo" placeholder="Añade texto" required>
+                <div class="botones">
+                    <button type="button" onclick="cerrarVentanaEmergentePublicacion()">Cancelar</button>
+                    <button type="button" onclick="enviarPublicacion()">Hacer publicación</button>
+                </div>
             </form>
         </div>
     </div>
-</div>
 
-<div id="modal3" class="modal3" style="display: none;">
-    <div class="modal-contentcomen">
-        <span class="close" onclick="cerrarVentanaEmergenteComentarios()">&times;</span>
-        <form id="formularioComentario">
-            <input type="text" id="comentario" name="comentario" placeholder="Añade un comentario">
-            <div class="botones3">
-                <button onclick="cerrarVentanaEmergenteComentarios()" class="Cancelar">Cancelar</button>
-                <button type="submit">Comentar</button>
+    <!-- Ventana Emergente de Reporte -->
+    <div id="modal2" class="modal2" style="display: none;">
+        <div class="modal-contentre">
+            <span class="close" onclick="cerrarVentanaEmergenteReporte()">&times;</span>
+            <div class="reportes">
+                <p>¿Por qué deseas reportar esta publicación?</p>
+                <form id="formularioReporte" onclick="reportarPublicacion()" method="post">
+                    <input type="hidden" name="idPublicacion" id="idPublicacion" value="" />
+                    <select id="opcionesSelect" name="motivo">
+                        <option value="Contenido Ofensivo">Contenido Ofensivo</option>
+                        <option value="Spam">Spam</option>
+                        <option value="Acoso">Acoso</option>
+                        <option value="Estafa">Estafa</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                    <button type="submit">Reportar</button>
+                </form>
             </div>
-        </form>
-    </div>
-</div>
-
-<div id="modal4" class="modal4" style="display: none;">
-    <div class="modal-contentcomenvi">
-        <span class="close" onclick="cerrarVentanaEmergenteComentariosVisual()">&times;</span>
-        <div class="contenComen">
-            <div class="infoUsuario">
-                <img src="~/Content/Imagenes/Perfil.png" height="40" width="40" class="usuPc">  
-                <div class="usuarioPC">
-                    <p>usuario traido deBD</p>
-                </div>
-            </div>
-            <div class="comentario">comentario de bd</div>
         </div>
-        <button class="comenNu" onclick="mostrarVentanaEmergenteComentarios()">Comentar</button>
     </div>
-</div>
 
 
-<script src="~/js/paginaprincipal.js"></script>
+
+
+    <script src="/js/paginaprincipal.js"></script>
+</body>

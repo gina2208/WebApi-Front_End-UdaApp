@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "x+R+91GmuqFAAg86RwK2hd6DFWHEV5myK5w+SOWztHms5BXfKdI3ET4CkJUvO5OYVdVUauAeyK20su2jtV8n8A==",
+  "dgSpecHash": "IzlwkiDWP5HGS3W+BeouSi9OzLO+/d72zyT50sR9asGo6vSZwZLpkaLjXFcEwSZ6c8l1Su3FKHLqdRS3VB9VdQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Frond_End-UdaApp\\WebApi Frond_End UdaApp.csproj",
+  "projectFilePath": "C:\\Users\\usuario\\Downloads\\WebApi-Frond_End-UdaApp-Dev.Gina\\WebApi-Frond_End-UdaApp-Dev.Gina\\WebApi Frond_End UdaApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\usuario\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\usuario\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
