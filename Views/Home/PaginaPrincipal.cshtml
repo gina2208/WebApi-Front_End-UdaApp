@@ -21,7 +21,7 @@
     <div class="menu" id="menu">
         <button><img src="~/css/imagenes/perfil.png" class="perfil" height="80" width="80" onclick="window.location.href='@Url.Action("Perfil", "Home")'"></button>
         <button><img src="~/css/imagenes/publicacion.png" class="publicacion" height="80" width="80" onclick="mostrarVentanaEmergentePublicacion()"></button>
-        <button><img src="~/css/imagenes/moderar.png" class="moderar" height="80" width="80" onclick="window.location.href='@Url.Action("Moderador","Home")'"></button>
+        <button><img src="~/css/imagenes/moderar.png" class="moderar" height="80" width="80" onclick="window.location.href='@Url.Action("Moderador2","Home")'"></button>
     </div>
 
     <!-- Contenedor para mostrar publicaciones -->
@@ -62,13 +62,12 @@
         </div>
     </div>
 
-    <!-- Ventana emergente para añadir un comentario -->
+    <!-- Ventana emergente para añadir o editar un comentario -->
     <div id="modal3" class="modal3" style="display: none;">
         <div class="modal-contenthacerco">
             <span class="close" onclick="cerrarVentanaComentario()">&times;</span>
-            <h3>Añadir un comentario</h3>
+            <h3>Añadir o Editar Comentario</h3>
             <form id="formularioComentario">
-                <input type="hidden" name="idPublicacion" id="idPublicacionComentario" value="" />
                 <textarea id="contenidoComentario" placeholder="Escribe tu comentario aquí..." required></textarea>
                 <button type="button" onclick="enviarComentario()">Comentar</button>
             </form>
@@ -83,6 +82,7 @@
             <div id="listaComentarios"></div>
         </div>
     </div>
+
     
     <!-- Modal para Editar -->
     <div id="modal5" class="modal">

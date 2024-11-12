@@ -18,50 +18,7 @@ function cerrarVentanaEmergenteReporte() {
     document.getElementById("modal2").style.display = "none";
 }
 
-// Mostrar y cerrar modal de agregar comentario
-function mostrarVentanaComentario(idPublicacion) {
-    document.getElementById('idPublicacionComentario').value = idPublicacion;
-    document.getElementById('modal3').style.display = 'block';
-}
 
-function cerrarVentanaComentario() {
-    document.getElementById('modal3').style.display = 'none';
-}
-
-// Mostrar y cerrar modal de ver comentarios
-async function mostrarVentanaVerComentarios(idPublicacion) {
-    const listaComentarios = document.getElementById('listaComentarios');
-    listaComentarios.innerHTML = '';
-    document.getElementById('modal4').style.display = 'block';
-
-    try {
-        const response = await fetch(`https://localhost:44380/api/Publicaciones/${idPublicacion}/comentarios`, {
-            method: 'GET',
-            headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
-        });
-
-        if (response.ok) {
-            const comentarios = await response.json();
-            comentarios.forEach(comentario => {
-                const comentarioElemento = document.createElement('div');
-                comentarioElemento.className = 'comentario';
-                comentarioElemento.innerHTML = `
-                    <p><strong>${comentario.usuario}</strong>: ${comentario.contenido}</p>
-                    <p><em>${new Date(comentario.fecha).toLocaleString()}</em></p>
-                `;
-                listaComentarios.appendChild(comentarioElemento);
-            });
-        } else {
-            console.error("Error al obtener comentarios");
-        }
-    } catch (error) {
-        console.error("Error:", error);
-    }
-}
-
-function cerrarVentanaVerComentarios() {
-    document.getElementById('modal4').style.display = 'none';
-}
 // Mostrar y cerrar modal de edición
 function mostrarVentanaEditar(idPublicacion, titulo) {
     document.getElementById('idPublicacionEditar').value = idPublicacion;
@@ -384,6 +341,141 @@ async function confirmarEliminacion() {
         }
     } catch (error) {
         console.error("Error en la solicitud de eliminación:", error);
+    }
+}
+// Variables para almacenar IDs de publicaciones y comentarios seleccionados
+let idPublicacionSeleccionada = null;
+let idComentarioSeleccionado = null;
+
+// Función para mostrar el modal para añadir un comentario
+function mostrarVentanaComentario(idPublicacion) {
+    idPublicacionSeleccionada = idPublicacion;
+    document.getElementById("modal3").style.display = "block";
+}
+
+// Función para cerrar el modal de añadir comentario
+function cerrarVentanaComentario() {
+    document.getElementById("modal3").style.display = "none";
+}
+
+// Función para mostrar el modal de ver comentarios
+function mostrarVentanaVerComentarios(idPublicacion) {
+    idPublicacionSeleccionada = idPublicacion;
+    cargarComentarios(idPublicacion);
+    document.getElementById("modal4").style.display = "block";
+}
+
+// Función para cerrar el modal de ver comentarios
+function cerrarVentanaVerComentarios() {
+    document.getElementById("modal4").style.display = "none";
+}
+
+// Función para cargar los comentarios de una publicación
+async function cargarComentarios(idPublicacion) {
+    try {
+        const response = await fetch(`https://localhost:44380/api/Comentario/publicacion/${idPublicacion}`);
+        const comentarios = await response.json();
+        const listaComentarios = document.getElementById("listaComentarios");
+        listaComentarios.innerHTML = "";
+
+        if (comentarios.length > 0) {
+            comentarios.forEach(comentario => {
+                listaComentarios.innerHTML += `
+                    <div class="comentario">
+                        <p>${comentario.comentario}</p>
+                        <button onclick="mostrarVentanaEditarComentario(${comentario.idComentario})">Editar</button>
+                        <button onclick="eliminarComentario(${comentario.idComentario})">Eliminar</button>
+                    </div>`;
+            });
+        } else {
+            listaComentarios.innerHTML = "<p>No hay comentarios disponibles aún. ¡Sé el primero en comentar!</p>";
+        }
+    } catch (error) {
+        console.error("Error al cargar comentarios:", error);
+    }
+}
+
+// Función para enviar un comentario nuevo
+async function enviarComentario() {
+    const contenidoComentario = document.getElementById("contenidoComentario").value;
+
+    const nuevoComentario = {
+        comentario: contenidoComentario,
+        idPublicacion: idPublicacionSeleccionada
+    };
+
+    try {
+        const response = await fetch('https://localhost:44380/api/Comentario/crear-comentario', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(nuevoComentario)
+        });
+
+        if (response.ok) {
+            cerrarVentanaComentario();
+            mostrarVentanaVerComentarios(idPublicacionSeleccionada); // Actualizar lista de comentarios
+        } else {
+            console.error("Error al crear el comentario");
+        }
+    } catch (error) {
+        console.error("Error en la solicitud:", error);
+    }
+}
+
+// Función para mostrar el modal de edición de comentario
+function mostrarVentanaEditarComentario(idComentario) {
+    idComentarioSeleccionado = idComentario;
+    const comentario = document.getElementById("contenidoComentario");
+    comentario.value = ""; // Aquí puedes poner el contenido actual del comentario si es necesario
+    mostrarVentanaComentario(idPublicacionSeleccionada);
+}
+
+// Función para editar un comentario existente
+async function editarComentario() {
+    const contenidoComentario = document.getElementById("contenidoComentario").value;
+
+    const comentarioEditado = {
+        idComentario: idComentarioSeleccionado,
+        idPublicacion: idPublicacionSeleccionada,
+        contenido: contenidoComentario
+    };
+
+    try {
+        const response = await fetch('https://localhost:44380/api/Comentario/actualizar-comentario', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(comentarioEditado)
+        });
+
+        if (response.ok) {
+            cerrarVentanaComentario();
+            mostrarVentanaVerComentarios(idPublicacionSeleccionada); // Actualizar lista de comentarios
+        } else {
+            console.error("Error al editar el comentario");
+        }
+    } catch (error) {
+        console.error("Error en la solicitud:", error);
+    }
+}
+
+// Función para eliminar un comentario
+async function eliminarComentario(idComentario) {
+    try {
+        const response = await fetch(`https://localhost:44380/api/Comentario/eliminar-comentario/${idComentario}`, {
+            method: 'DELETE'
+        });
+
+        if (response.ok) {
+            mostrarVentanaVerComentarios(idPublicacionSeleccionada); // Actualizar lista de comentarios
+        } else {
+            console.error("Error al eliminar el comentario");
+        }
+    } catch (error) {
+        console.error("Error en la solicitud:", error);
     }
 }
 

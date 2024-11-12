@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewData["Title"] = "Error403";
+}
+
+<head>
+    <link href="~/css/error401.css" rel="stylesheet" />
+</head>
+
+<!-- Formas de fondo animadas -->
+<div class="background-shape shape1"></div>
+<div class="background-shape shape2"></div>
+<div class="background-shape shape3"></div>
+
+<div class="container">
+    <img src="/css/imagenes/logo.png" alt="Logo udapp" class="logo">
+    <div class="error-code">403</div>
+    <p class="message">No Autorizado</p>
+    <p class="description">No tienes permiso para acceder a esta página. Si crees que es un error, contacta con el administrador.</p>
+    <button onclick="window.location.href='@Url.Action("Index", "Home")'" class="btn">Página Principal</button>
+   
+</div>

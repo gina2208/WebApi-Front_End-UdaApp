@@ -5,6 +5,18 @@
       "PackagePath": "staticwebassets\\WebApi Frond_End UdaApp.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\ginna\\Documents\\GitHub\\WebApi Frond_End UdaApp\\WebApi Frond_End UdaApp\\wwwroot\\css\\Admin.css",
+      "PackagePath": "staticwebassets\\css\\Admin.css"
+    },
+    {
+      "Id": "C:\\Users\\ginna\\Documents\\GitHub\\WebApi Frond_End UdaApp\\WebApi Frond_End UdaApp\\wwwroot\\css\\AdminSid.css",
+      "PackagePath": "staticwebassets\\css\\AdminSid.css"
+    },
+    {
+      "Id": "C:\\Users\\ginna\\Documents\\GitHub\\WebApi Frond_End UdaApp\\WebApi Frond_End UdaApp\\wwwroot\\css\\Error401.css",
+      "PackagePath": "staticwebassets\\css\\Error401.css"
+    },
+    {
       "Id": "C:\\Users\\ginna\\Documents\\GitHub\\WebApi Frond_End UdaApp\\WebApi Frond_End UdaApp\\wwwroot\\css\\Perfil.css",
       "PackagePath": "staticwebassets\\css\\Perfil.css"
     },
@@ -89,16 +101,12 @@
       "PackagePath": "staticwebassets\\css\\inicio.css"
     },
     {
-      "Id": "C:\\Users\\ginna\\Documents\\GitHub\\WebApi Frond_End UdaApp\\WebApi Frond_End UdaApp\\wwwroot\\css\\moderador.css",
-      "PackagePath": "staticwebassets\\css\\moderador.css"
+      "Id": "C:\\Users\\ginna\\Documents\\GitHub\\WebApi Frond_End UdaApp\\WebApi Frond_End UdaApp\\wwwroot\\css\\moderador2.css",
+      "PackagePath": "staticwebassets\\css\\moderador2.css"
     },
     {
       "Id": "C:\\Users\\ginna\\Documents\\GitHub\\WebApi Frond_End UdaApp\\WebApi Frond_End UdaApp\\wwwroot\\css\\paginaprincipal.css",
       "PackagePath": "staticwebassets\\css\\paginaprincipal.css"
-    },
-    {
-      "Id": "C:\\Users\\ginna\\Documents\\GitHub\\WebApi Frond_End UdaApp\\WebApi Frond_End UdaApp\\wwwroot\\css\\paginaprincipal2.css",
-      "PackagePath": "staticwebassets\\css\\paginaprincipal2.css"
     },
     {
       "Id": "C:\\Users\\ginna\\Documents\\GitHub\\WebApi Frond_End UdaApp\\WebApi Frond_End UdaApp\\wwwroot\\css\\registro.css",
@@ -113,6 +121,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\ginna\\Documents\\GitHub\\WebApi Frond_End UdaApp\\WebApi Frond_End UdaApp\\wwwroot\\js\\Admin.js",
+      "PackagePath": "staticwebassets\\js\\Admin.js"
+    },
+    {
       "Id": "C:\\Users\\ginna\\Documents\\GitHub\\WebApi Frond_End UdaApp\\WebApi Frond_End UdaApp\\wwwroot\\js\\Inicio.js",
       "PackagePath": "staticwebassets\\js\\Inicio.js"
     },
@@ -125,8 +137,8 @@
       "PackagePath": "staticwebassets\\js\\Registro.js"
     },
     {
-      "Id": "C:\\Users\\ginna\\Documents\\GitHub\\WebApi Frond_End UdaApp\\WebApi Frond_End UdaApp\\wwwroot\\js\\moderador.js",
-      "PackagePath": "staticwebassets\\js\\moderador.js"
+      "Id": "C:\\Users\\ginna\\Documents\\GitHub\\WebApi Frond_End UdaApp\\WebApi Frond_End UdaApp\\wwwroot\\js\\moderador2.js",
+      "PackagePath": "staticwebassets\\js\\moderador2.js"
     },
     {
       "Id": "C:\\Users\\ginna\\Documents\\GitHub\\WebApi Frond_End UdaApp\\WebApi Frond_End UdaApp\\wwwroot\\js\\perfil.js",

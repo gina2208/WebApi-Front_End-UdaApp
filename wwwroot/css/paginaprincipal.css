@@ -471,3 +471,50 @@ input.barraInput2 {
         text-decoration: none;
         cursor: pointer;
     }
+/* Estilos para los modales */
+.modal3, .modal4 {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 500px;
+    padding: 20px;
+}
+
+.modal-contenthacerco, .modal-contentmostrarco {
+    padding: 20px;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.comentario {
+    padding: 10px;
+    margin: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+    .comentario button {
+        margin: 5px;
+        padding: 5px 10px;
+        background-color: #03AB87;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        .comentario button:hover {
+            background-color: #028D64;
+        }
