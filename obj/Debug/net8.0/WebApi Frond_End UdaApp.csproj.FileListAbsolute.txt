@@ -922,3 +922,5 @@ C:\Users\usuario\Downloads\WebApi-Frond_End-UdaApp-Dev.Gina\WebApi-Frond_End-Uda
 C:\Users\usuario\Downloads\WebApi-Frond_End-UdaApp-Dev.Gina\WebApi-Frond_End-UdaApp-Dev.Gina\obj\Debug\net8.0\WebApi Frond_End UdaApp.pdb
 C:\Users\usuario\Downloads\WebApi-Frond_End-UdaApp-Dev.Gina\WebApi-Frond_End-UdaApp-Dev.Gina\obj\Debug\net8.0\WebApi Frond_End UdaApp.genruntimeconfig.cache
 C:\Users\usuario\Downloads\WebApi-Frond_End-UdaApp-Dev.Gina\WebApi-Frond_End-UdaApp-Dev.Gina\obj\Debug\net8.0\ref\WebApi Frond_End UdaApp.dll
+C:\Users\usuario\Documents\GitHub\WebApi-Frond_End-UdaApp\bin\Debug\net8.0\wwwroot\css\imagenes\like.png
+C:\Users\usuario\Documents\GitHub\WebApi-Frond_End-UdaApp\bin\Debug\net8.0\wwwroot\css\imagenes\Perfil.png

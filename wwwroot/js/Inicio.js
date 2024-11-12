@@ -35,13 +35,13 @@ async function iniciarSesion(event) {
         if (responseData.exito) {
             setCookie('id', responseData.usuario.id);
             setCookie('token', responseData.token);
-
+            console.info(getCookie("AuthToken"));
             window.location.href = '/Home/PaginaPrincipal';
         } else {
             document.getElementById("EmailError").innerText = responseData.mensaje;
         }
     } catch (error) {
-        console.error("Error en la solicitud:", error);
+        debug.error("Error en la solicitud:", error);
         document.getElementById("EmailError").innerText = "Error al iniciar sesión. Intenta de nuevo.";
     } finally {
         showLoadingState(false);
@@ -67,7 +67,7 @@ function clearErrorMessages() {
 }
 
 // Funciones para manipular cookies
-function setCookie(name, value) {
+function setCookie(name, value, days = 1) {
     const expires = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString();
     document.cookie = `${name}=${value}; expires=${expires}; path=/`;
 }
@@ -83,7 +83,7 @@ function eraseCookie(name) {
 }
 
 async function authorize(url, options = {}) {
-    const token = getCookie('AuthToken');
+    const token = getCookie('token');
 
     if (!token) {
         throw new Error("Token de autenticación no disponible. Inicia sesión nuevamente.");

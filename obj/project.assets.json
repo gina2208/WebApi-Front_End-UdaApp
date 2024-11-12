@@ -5571,11 +5571,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\usuario\\Downloads\\WebApi-Frond_End-UdaApp-Dev.Gina\\WebApi-Frond_End-UdaApp-Dev.Gina\\WebApi Frond_End UdaApp.csproj",
+      "projectUniqueName": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Frond_End-UdaApp\\WebApi Frond_End UdaApp.csproj",
       "projectName": "WebApi Frond_End UdaApp",
-      "projectPath": "C:\\Users\\usuario\\Downloads\\WebApi-Frond_End-UdaApp-Dev.Gina\\WebApi-Frond_End-UdaApp-Dev.Gina\\WebApi Frond_End UdaApp.csproj",
+      "projectPath": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Frond_End-UdaApp\\WebApi Frond_End UdaApp.csproj",
       "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\usuario\\Downloads\\WebApi-Frond_End-UdaApp-Dev.Gina\\WebApi-Frond_End-UdaApp-Dev.Gina\\obj\\",
+      "outputPath": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Frond_End-UdaApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",

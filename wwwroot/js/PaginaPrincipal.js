@@ -37,7 +37,7 @@ function getCookie(name) {
 
 // Función para realizar una solicitud de publicación a la API
 async function enviarPublicacion() {
-    const token = getCookie('token');
+    const token = getCookie('Authtoken');
     const idUsuario = getCookie('idUsuario'); // Obtén el idUsuario desde la cookie
 
     if (!token || !idUsuario) {
