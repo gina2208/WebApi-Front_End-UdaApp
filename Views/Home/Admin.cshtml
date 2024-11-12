@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Admin";
+}
+
+<head>
+    <link href="~/css/admin.css" rel="stylesheet" />
+</head>
+
+<header>
+    <img src="/css/imagenes/logo.png" alt="Logo udapp" class="logo">
+    <h1>Administración de Usuarios</h1>
+    <button id="logoutButton" onclick="logout()">Salir</button>
+</header>
+
+<main>
+    <section class="user-list">
+        <h2>Usuarios Activos</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Rol Actual</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="userTable">
+                <!-- Contenido dinámico cargado con JavaScript -->
+            </tbody>
+        </table>
+    </section>
+</main>
+
+<!-- Modal para asignar roles -->
+<div id="roleModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="cerrarRoleModal()">&times;</span>
+        <h3>Asignar Rol</h3>
+        <form id="roleForm">
+            <label for="rolSelect">Selecciona el Rol:</label>
+            <select id="rolSelect">
+                <option value="estudiante">Estudiante</option>
+                <option value="profesor">Profesor</option>
+                <option value="administrativos">Administrativos</option>
+                <option value="admin">Administrador del sistema</option>
+                <option value="moderator">Moderador</option>
+                <option value="Gerente">Gerente</option>
+            </select>
+            <button type="button" onclick="asignarRol()">Asignar</button>
+        </form>
+    </div>
+</div>
+
+<!-- Modal para suspender usuario -->
+<div id="suspendModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="cerrarSuspendModal()">&times;</span>
+        <h3>Suspender Usuario</h3>
+        <p>¿Estás seguro de que deseas suspender a este usuario?</p>
+        <button type="button" onclick="confirmarSuspension()">Confirmar Suspensión</button>
+    </div>
+</div>
+
+<script src="~/js/admin.js"></script>

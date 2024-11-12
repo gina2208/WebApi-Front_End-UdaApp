@@ -1,0 +1,174 @@
+﻿/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Header */
+/* Estilos para el header */
+header {
+    background-color: #03ab87;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: Arial, sans-serif;
+}
+
+    header h1 {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        flex-grow: 1;
+        margin: 0;
+    }
+
+    header .logo {
+        height: 100px;
+    }
+
+#logoutButton {
+    border-radius: 10px;
+    background-color: #03AB87;
+    border:   1px;
+    padding: 8px;
+    width: 130px;
+    color: white;
+    margin: 20px;
+    position: fixed;
+    position: absolute;
+    font-weight: bold;
+    font-size: 16px;
+    right: 10px;
+    top: 50px;
+}
+
+    #logoutButton:hover {
+        background-color: white;
+        color: #03ab87;
+        border-color: #03ab87;
+    }
+
+/* Main Section */
+main {
+    padding: 20px;
+}
+
+.user-list h2 {
+    color: #03ab87; /* Nuevo verde */
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #03ab87; /* Nuevo verde */
+    color: white;
+}
+
+button {
+    background-color: #03ab87; /* Nuevo verde */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-right: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    button:hover {
+        background-color: #029a74; /* Color verde más oscuro al pasar el ratón */
+    }
+
+    button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }
+
+/* Modales */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    position: relative;
+}
+
+    /* Centrado de título */
+    .modal-content h3 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: bold;
+        color: #03ab87; /* Nuevo verde */
+        text-align: center;
+        margin-top: 0; /* Asegura que el título esté en la parte superior del modal */
+    }
+
+/* Estilo de los botones en los modales */
+select, button {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+/* Close button: ajustar la proximidad */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    padding: 0; /* Elimina padding extra */
+    margin: 0; /* Elimina margen */
+}
+
+/* Botón de suspender */
+button.suspend {
+    background-color: #d9534f; /* Color rojo para suspender */
+    color: white;
+}
+
+    button.suspend:hover {
+        background-color: #c9302c; /* Color rojo más oscuro */
+    }
+
+/* Estilos para la tabla */
+td button {
+    width: 120px;
+}

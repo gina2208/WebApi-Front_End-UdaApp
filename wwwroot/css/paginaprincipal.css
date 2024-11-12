@@ -1,4 +1,4 @@
-﻿/* General Styles */
+﻿/* Estilos generales */
 body {
     margin: 0;
     padding: 0;
@@ -7,7 +7,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Footer */
+/* Estilos del pie de página */
 .pie {
     width: 100%;
     height: 60px;
@@ -20,7 +20,7 @@ body {
     justify-content: center;
 }
 
-/* Menu Styles */
+/* Estilos del menú */
 .menu {
     width: 60px;
     position: fixed;
@@ -39,7 +39,7 @@ body {
         cursor: pointer;
     }
 
-/* Logo */
+/* Estilos del logo */
 .logo {
     position: fixed;
     bottom: 80px;
@@ -47,7 +47,7 @@ body {
     margin: 20px;
 }
 
-/* Floating Buttons */
+/* Estilos de los botones flotantes */
 #menub, #Salir {
     border-radius: 25px;
     background-color: #03AB87;
@@ -72,7 +72,7 @@ body {
     top: 80px;
 }
 
-/* Search Bar */
+/* Estilos de la barra de búsqueda */
 .cBarra {
     width: 600px;
     margin-top: 80px;
@@ -114,10 +114,9 @@ input.barraInput2 {
     color: white;
     border: none;
     padding: 12px 20px;
-    cursor: pointer;
 }
 
-/* Publicaciones Container */
+/* Contenedor de publicaciones */
 .publicaciones-container {
     margin-top: 80px;
     margin-bottom: 80px;
@@ -130,7 +129,7 @@ input.barraInput2 {
     overflow-y: auto;
 }
 
-/* Publicacion Individual */
+/* Publicación individual */
 .publicacioncontainer {
     width: 100%;
     max-width: 700px;
@@ -168,35 +167,30 @@ input.barraInput2 {
     font-weight: bold;
 }
 
-/* Ajustar interacción sección */
+/* Botones de interacción */
 .interaccion {
     display: flex;
-    justify-content: flex-start; /* Alinear a la izquierda para eliminar el espacio */
-    margin-top: auto;
+    gap: 10px; /* Espacio entre los botones */
+    align-items: center; /* Centra verticalmente los botones */
 }
 
-.like, .comen {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    width: 40px; /* Ajustar el ancho */
-    height: 40px; /* Ajustar la altura */
-    display: flex; /* Flex para centrar el contenido */
-    align-items: center; /* Centrar verticalmente */
-    justify-content: center; /* Centrar horizontalmente */
-    padding: 0; /* Eliminar relleno */
-    margin: 0 20px; /* Margen para reducir la separación */
-    margin-top: 20px;
+.interaccion button {
+    background: none; /* Sin fondo */
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón */
+    padding: 5px; /* Espaciado interno */
+    display: flex; /* Alinea la imagen en el centro */
+    align-items: center; /* Centra verticalmente la imagen */
 }
 
-    /* Asegurarse de que los iconos sean del tamaño correcto */
-    .like img, .comen img {
-        width: 30px; /* Tamaño del icono */
-        height: 30px; /* Tamaño del icono */
-        object-fit: contain; /* Asegurar que el icono mantenga proporciones */
+    .interaccion button img {
+        width: 20px; /* Tamaño de la imagen */
+        height: 20px; /* Tamaño de la imagen */
+        margin-right: 5px; /* Espacio entre la imagen y el texto (si hay) */
     }
 
-/* Report Button */
+
+/* Botón de reporte */
 .repor {
     border-radius: 20px;
     background-color: #03AB87;
@@ -209,32 +203,30 @@ input.barraInput2 {
     cursor: pointer;
 }
 
-/* Modal Styles for Report */
+/* Estilos del modal para reporte */
 .modal2 {
-    display: none; /* Oculto por defecto */
-    position: fixed; /* Posición fija */
-    z-index: 100; /* Asegura que esté por encima de otros elementos */
+    display: none;
+    position: fixed;
+    z-index: 100;
     left: 0;
     top: 0;
-    width: 100%; /* Ancho completo */
-    height: 100%; /* Alto completo */
-    overflow: auto; /* Permite el desplazamiento si es necesario */
-    background-color: rgba(0, 0, 0, 0.4); /* Fondo oscuro con opacidad */
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-contentre {
-    background-color: #ffffff; /* Color de fondo blanco */
+    background-color: #ffffff;
     padding: 20px;
     border-radius: 15px;
-    width: 300px; /* Ajustar el ancho según sea necesario */
-    margin: 15% auto; /* Centramos vertical y horizontalmente */
+    width: 300px;
+    margin: 15% auto;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-    display: flex; /* Cambiado a flex */
-    flex-direction: column; /* Coloca los elementos en columna */
-    position: relative; /* Posición relativa para el cierre */
+    display: flex;
+    flex-direction: column;
 }
 
-    /* Content of the Modal */
     .modal-contentre p {
         margin: 10px 0;
         font-size: 14px;
@@ -246,11 +238,10 @@ input.barraInput2 {
         border: 1px solid #03AB87;
         border-radius: 10px;
         margin-bottom: 10px;
-        background-color: #f0f0f0; /* Fondo gris claro */
+        background-color: #f0f0f0;
         font-size: 14px;
     }
 
-    /* Submit Button in Modal */
     .modal-contentre button {
         background-color: #03AB87;
         color: white;
@@ -264,23 +255,22 @@ input.barraInput2 {
     }
 
         .modal-contentre button:hover {
-            background-color: #028771; /* Color en hover */
+            background-color: #028771;
         }
 
-    /* Close Button for Report Modal */
     .modal-contentre .close {
         position: absolute;
-        top: 10px; /* Ajustado para centrar verticalmente */
-        right: 10px; /* Ajustado para una mejor apariencia */
-        font-size: 18px; /* Tamaño de la X */
+        top: 10px;
+        right: 10px;
+        font-size: 18px;
         color: #287777;
         cursor: pointer;
     }
 
-/* Additional Modal Styles for Comments and Publishing */
-.modal-contentcomen, .modal-contentpu, .modal-contentcomenvi {
-    display: flex; /* Cambiado a flex */
-    flex-direction: column; /* Coloca los elementos en columna */
+/* Estilos del modal para hacer publicación */
+.modal-contentpu {
+    display: flex;
+    flex-direction: column;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -291,33 +281,27 @@ input.barraInput2 {
     width: 600px;
     max-width: 90%;
     color: white;
+
 }
 
-    /* Specific styling for the close button in all modals */
-    .modal-contentcomen .close,
-    .modal-contentpu .close,
-    .modal-contentcomenvi .close {
+
+    .modal-contentpu .close {
         position: absolute;
-        top: 10px; /* Ajustado para centrar verticalmente */
-        right: 10px; /* Ajustado para una mejor apariencia */
-        font-size: 18px; /* Tamaño de la X */
-        color: white; /* Color de la X */
+        top: 10px;
+        right: 10px;
+        font-size: 18px;
+        color: white;
         cursor: pointer;
     }
 
-    /* Input Fields in Modals */
-    .modal-contentcomen input,
-    .modal-contentpu input,
-    .modal-contentcomenvi input {
-        width: calc(100% - 20px); /* Calculado para ajustar con el padding */
+    .modal-contentpu input {
+        width: calc(100% - 20px);
         padding: 10px;
         border-radius: 5px;
         border: 1px solid #40BFBC;
-        margin-bottom: 10px; /* Espaciado entre inputs */
+        margin-bottom: 10px;
     }
 
-    /* Submit Buttons in Modals */
-    .modal-contentcomen button,
     .modal-contentpu button {
         background-color: #03AB87;
         color: white;
@@ -326,39 +310,211 @@ input.barraInput2 {
         border-radius: 10px;
         font-weight: bold;
         cursor: pointer;
-        width: auto; /* Cambiado a ancho automático */
+        width: auto;
         transition: background-color 0.3s ease;
     }
 
-/* Align buttons next to each other */
-.modal-contentpu {
+/*hacer comentario*/
+.modal3 {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6); /* Un poco más oscuro para resaltar el modal */
+}
+
+.modal-contenthacerco {
+    background-color: #ffffff;
+    padding: 30px; /* Espacio adicional para un mejor aspecto */
+    border-radius: 15px;
+    width: 90%; /* Cambiado a un porcentaje para responsividad */
+    max-width: 400px; /* Ancho máximo para evitar desbordamiento */
+    margin: 15% auto; /* Reduce el margen superior para más espacio en la pantalla */
+    box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.5); /* Sombra más pronunciada */
     display: flex;
-    flex-direction: column; /* Coloca los elementos en columna */
+    flex-direction: column;
+    position: relative; /* Para posicionar el botón de cerrar */
 }
 
-    .modal-contentpu .button-container {
-        display: flex; /* Flex para alinear los botones */
-        justify-content: space-between; /* Espaciado entre los botones */
-        margin-top: 20px; /* Espaciado arriba de los botones */
+    /* Cerrar botón */
+    .modal-contenthacerco .close {
+        position: absolute;
+        top: 15px; /* Más espacio desde la parte superior */
+        right: 15px; /* Más espacio desde la derecha */
+        font-size: 20px; /* Un poco más grande para mejor visibilidad */
+        color: #03AB87; /* Cambiado a un color que coincida con el tema */
+        cursor: pointer;
     }
 
-    /* Textarea for Comments */
-    .modal-contentcomen textarea,
-    .modal-contentpu textarea {
-        width: calc(100% - 20px); /* Calculado para ajustar con el padding */
-        padding: 10px;
+    /* Estilo del input y textarea */
+    .modal-contenthacerco input,
+    .modal-contenthacerco textarea {
+        width: calc(100% - 20px); /* Ocupa todo el ancho menos 20px para el padding */
+        padding: 10px; /* Espacio interno adecuado */
+        border-radius: 10px; /* Bordes más suaves */
+        border: 2px solid #40BFBC; /* Borde más grueso y con color */
+        margin-bottom: 15px; /* Espacio entre el input y el siguiente elemento */
+        font-size: 16px; /* Tamaño de fuente mejorado */
+        transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transiciones para efectos visuales */
+    }
+
+    /* Estilo del textarea */
+    .modal-contenthacerco textarea {
+        resize: vertical; /* Permitir el redimensionamiento vertical */
+        min-height: 60px; /* Altura mínima para el textarea */
+    }
+
+        /* Efecto de enfoque para input y textarea */
+        .modal-contenthacerco input:focus,
+        .modal-contenthacerco textarea:focus {
+            outline: none; /* Elimina el contorno por defecto */
+            border-color: #03AB87; /* Cambia el color del borde al enfocar */
+            box-shadow: 0 0 5px rgba(3, 171, 135, 0.5); /* Sombra para un efecto de resalte */
+        }
+
+    /* Botón de enviar */
+    .modal-contenthacerco button {
+        background-color: #03AB87;
+        color: white;
+        padding: 12px; /* Un poco más de padding */
+        border: none;
+        border-radius: 10px;
+        font-weight: bold;
+        cursor: pointer;
+        width: 100%; /* Ocupa todo el ancho */
+        transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones para el botón */
+    }
+
+        .modal-contenthacerco button:hover {
+            background-color: #028771; /* Color más oscuro al pasar el ratón */
+            transform: translateY(-2px); /* Efecto de elevación al pasar el ratón */
+        }
+
+        .modal-contenthacerco button:active {
+            transform: translateY(0); /* Regresa al estado original al hacer clic */
+        }
+
+
+/*   modal para mostra comentarios  */
+.modal4 {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-contentmostrarco {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    width: 300px;
+    margin: 15% auto;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+    /* Ajustes responsivos para modals */
+    @media (max-width: 768px) {
+        .modal-contentre,
+        .modal-contentpu {
+            width: 90%;
+            margin: 10% auto;
+        }
+    }
+    /* Ajustes para el contenedor de publicaciones */
+    .publicacioncontainer:hover {
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+}
+
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Fijo en la pantalla */
+    z-index: 1; /* Se asegura que esté encima de otros elementos */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Alto completo */
+    overflow: auto; /* Permite desplazamiento si es necesario */
+    background-color: rgb(0,0,0); /* Color de fondo */
+    background-color: rgba(0,0,0,0.4); /* Fondo semi-transparente */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* Margen en la parte superior y centrado */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Ancho del modal */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+/* Estilos para los modales */
+.modal3, .modal4 {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 500px;
+    padding: 20px;
+}
+
+.modal-contenthacerco, .modal-contentmostrarco {
+    padding: 20px;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.comentario {
+    padding: 10px;
+    margin: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+    .comentario button {
+        margin: 5px;
+        padding: 5px 10px;
+        background-color: #03AB87;
+        color: #fff;
+        border: none;
         border-radius: 5px;
-        border: 1px solid #40BFBC;
-        margin-bottom: 10px; /* Espaciado entre inputs */
-        resize: vertical; /* Permitir solo cambio de tamaño vertical */
+        cursor: pointer;
     }
 
-/* Responsive Modal Adjustments */
-@media (max-width: 768px) {
-    .modal-contentre,
-    .modal-contentcomen,
-    .modal-contentpu {
-        width: 90%; /* Asegura que el modal no se desborde en pantallas pequeñas */
-        margin: 10% auto; /* Mejor distribución en móviles */
-    }
-}
+        .comentario button:hover {
+            background-color: #028D64;
+        }

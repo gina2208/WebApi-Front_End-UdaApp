@@ -26,12 +26,44 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\ginna\Documents\GitHub\WebApi Frond_End UdaApp\WebApi Frond_End UdaApp
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/ginna/Documents/GitHub/WebApi Frond_End UdaApp/WebApi Frond_End UdaApp/Views/Home/Admin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ginna/Documents/GitHub/WebApi Frond_End UdaApp/WebApi Frond_End UdaApp/Views/Home/Error400.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFcnJvcjQwMC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ginna/Documents/GitHub/WebApi Frond_End UdaApp/WebApi Frond_End UdaApp/Views/Home/Error401.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFcnJvcjQwMS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ginna/Documents/GitHub/WebApi Frond_End UdaApp/WebApi Frond_End UdaApp/Views/Home/Error403.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFcnJvcjQwMy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ginna/Documents/GitHub/WebApi Frond_End UdaApp/WebApi Frond_End UdaApp/Views/Home/Error404.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFcnJvcjQwNC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ginna/Documents/GitHub/WebApi Frond_End UdaApp/WebApi Frond_End UdaApp/Views/Home/Error500.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFcnJvcjUwMC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ginna/Documents/GitHub/WebApi Frond_End UdaApp/WebApi Frond_End UdaApp/Views/Home/Gerente.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxHZXJlbnRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ginna/Documents/GitHub/WebApi Frond_End UdaApp/WebApi Frond_End UdaApp/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ginna/Documents/GitHub/WebApi Frond_End UdaApp/WebApi Frond_End UdaApp/Views/Home/Inicio.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmljaW8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ginna/Documents/GitHub/WebApi Frond_End UdaApp/WebApi Frond_End UdaApp/Views/Home/Moderador2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNb2RlcmFkb3IyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ginna/Documents/GitHub/WebApi Frond_End UdaApp/WebApi Frond_End UdaApp/Views/Home/PaginaPrincipal.cshtml]
