@@ -1,4 +1,10 @@
-﻿// Funciones de manejo de ventanas modales al inicio
+﻿
+// Función para obtener el token de la cookie
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
 
 // Mostrar y cerrar modal de publicación
 function mostrarVentanaEmergentePublicacion() {
@@ -36,7 +42,7 @@ function cerrarVentanaEditar() {
 async function enviarEdicion() {
     const idPublicacion = document.getElementById('idPublicacionEditar').value;
     const nuevoTitulo = document.getElementById('tituloEditar').value;
-    const token = localStorage.getItem('token');
+    const token = getCookie('token');
 
     try {
         const response = await fetch(`https://udapphosting-001-site1.ktempurl.com/api/Publicaciones/${idPublicacion}`, {
@@ -79,8 +85,8 @@ function mostrarMenu() {
 
 // Función para enviar una publicación a la API
 async function enviarPublicacion() {
-    const token = localStorage.getItem('token');
-    const idUsuario = localStorage.getItem('id');
+    const token = getCookie('token'); // Cambiado de localStorage a cookies
+    const idUsuario = getCookie('id'); // Cambiado de localStorage a cookies
     const titulo = document.getElementById('titulo').value;
     const url = 'https://udapphosting-001-site1.ktempurl.com/api/Publicaciones/hacer-publicacion';
 
@@ -113,8 +119,8 @@ async function enviarPublicacion() {
 
 // Función para cargar publicaciones
 async function cargarPublicaciones() {
-    const token = localStorage.getItem('token');
-    const idUsuario = localStorage.getItem('id'); // Obtiene el ID del usuario actual
+    const token = getCookie('token'); // Cambiado de localStorage a cookies
+    const idUsuario = getCookie('id'); // Cambiado de localStorage a cookies
     const url = 'https://udapphosting-001-site1.ktempurl.com/api/Publicaciones/pagina-principal';
 
     try {
@@ -130,7 +136,6 @@ async function cargarPublicaciones() {
             const contenedorPublicaciones = document.getElementById('publicacionesContainer');
             contenedorPublicaciones.innerHTML = '';
 
-
             publicaciones.forEach(publicacion => {
                 const publicacionHTML = `
           <div class="publicacioncontainer">
@@ -140,7 +145,7 @@ async function cargarPublicaciones() {
             </div>
             <p class="fechaPublicacion">Publicado el: ${new Date(publicacion.fechaPublicacion).toLocaleDateString()}</p>
             <div class="mensajeP">${publicacion.titulo}</div>
-           <button class="repor" onclick="mostrarVentanaEmergenteReporte(${publicacion.idPublicacion})">Reportar</button>
+            <button class="repor" onclick="mostrarVentanaEmergenteReporte(${publicacion.idPublicacion})">Reportar</button>
             <div class="interaccion">
                 <button class="like" onclick="darLike(${publicacion.idPublicacion})">
                     <img src="/css/imagenes/like.png" alt="Like"> 
@@ -149,15 +154,14 @@ async function cargarPublicaciones() {
                 <button class="ver-comentarios" onclick="mostrarVentanaVerComentarios(${publicacion.idPublicacion})">
                     <img src="/css/imagenes/comentario.png" alt="Comentarios"> 
                 </button>
-               <button class="comentar" onclick="mostrarVentanaComentario(${publicacion.idPublicacion})">
+                <button class="comentar" onclick="mostrarVentanaComentario(${publicacion.idPublicacion})">
                     <img src="/css/imagenes/comentario.png" alt="Comentar"> 
                 </button>
                 <button class="editar" onclick="mostrarVentanaEditar(${publicacion.idPublicacion}, '${publicacion.titulo}')">Editar</button>
                 <button class="eliminar" onclick="mostrarVentanaEliminar(${publicacion.idPublicacion})">Eliminar</button>
-
             </div>
-        </div>
-    `;
+          </div>
+        `;
                 contenedorPublicaciones.insertAdjacentHTML('beforeend', publicacionHTML);
             });
 
@@ -171,8 +175,8 @@ async function cargarPublicaciones() {
 
 // Función para dar like a una publicación
 async function darLike(idPublicacion) {
-    const token = localStorage.getItem('token');
-    const idUsuario = localStorage.getItem('id');
+    const token = getCookie('token'); // Cambiado de localStorage a cookies
+    const idUsuario = getCookie('id'); // Cambiado de localStorage a cookies
     const url = 'https://udapphosting-001-site1.ktempurl.com/api/Publicaciones/toggle-like';
 
     if (!token || !idUsuario) {
@@ -206,8 +210,8 @@ async function darLike(idPublicacion) {
 
 // Función para reportar una publicación
 async function reportarPublicacion() {
-    const token = localStorage.getItem('token');
-    const idUsuario = localStorage.getItem('id');
+    const token = getCookie('token'); // Cambiado de localStorage a cookies
+    const idUsuario = getCookie('id'); // Cambiado de localStorage a cookies
     const idPublicacion = document.getElementById('idPublicacion').value; // Obtener el ID de la publicación
     const motivo = document.getElementById('opcionesSelect').value; // Obtener el motivo seleccionado
 
@@ -252,11 +256,12 @@ async function reportarPublicacion() {
     }
 }
 
+
 // Función para enviar un comentario
 async function enviarComentario() {
     const idPublicacion = document.getElementById('idPublicacionComentario').value;
     const contenido = document.getElementById('contenidoComentario').value;
-    const token = localStorage.getItem('token');
+    const token = getCookie('token'); // Cambiado para obtener el token desde cookies
 
     // Verifica que idPublicacion y contenido estén definidos
     if (!idPublicacion || !contenido) {
@@ -291,12 +296,12 @@ async function enviarComentario() {
     }
 }
 
-// Función para enviar la edición
+// Función para enviar la edición de una publicación
 async function enviarEdicion() {
     const idPublicacion = document.getElementById('idPublicacionEditar').value;
     const nuevoTitulo = document.getElementById('tituloEditar').value;
-    const idUsuario = localStorage.getItem('id'); // ID del usuario que edita
-    const token = localStorage.getItem('token');
+    const idUsuario = getCookie('id'); // Cambiado para obtener el ID de usuario desde cookies
+    const token = getCookie('token'); // Cambiado para obtener el token desde cookies
 
     try {
         const response = await fetch(`https://udapphosting-001-site1.ktempurl.com/api/Publicaciones/actualizar-publicacion`, {
@@ -325,9 +330,9 @@ async function enviarEdicion() {
     }
 }
 
-//eliminar publicacion 
+// Función para eliminar una publicación
 async function eliminarPublicacion(idPublicacion) {
-    const token = localStorage.getItem('token');
+    const token = getCookie('token'); // Obtiene el token desde las cookies
 
     if (!idPublicacion) {
         console.error("ID de publicación no válido");
@@ -354,7 +359,6 @@ async function eliminarPublicacion(idPublicacion) {
         console.error("Error en la solicitud de eliminación:", error);
     }
 }
-
 function confirmarEliminacion() {
     const idPublicacion = document.getElementById('idPublicacionEliminar').value;
     eliminarPublicacion(idPublicacion); // Llamamos a eliminarPublicacion con el ID
@@ -441,8 +445,14 @@ function cerrarVentanaEditarComentario() {
 async function enviarEdicionComentario() {
     const idComentario = document.getElementById('idComentarioEditar').value;
     const contenidoComentario = document.getElementById('contenidoComentarioEditar').value;
-    const idUsuario = localStorage.getItem('id'); // ID del usuario que edita
-    const token = localStorage.getItem('token');
+    const idUsuario = getCookie('id'); // Obtiene el ID del usuario desde las cookies
+    const token = getCookie('token'); // Obtiene el token desde las cookies
+
+    // Verificar si idPublicacionSeleccionada está definido y el ID del comentario es válido
+    if (!idComentario || !idUsuario || !token) {
+        console.error("Datos incompletos para editar el comentario.");
+        return;
+    }
 
     try {
         const response = await fetch('https://udapphosting-001-site1.ktempurl.com/api/Comentario/actualizar-comentario', {
@@ -470,6 +480,7 @@ async function enviarEdicionComentario() {
     }
 }
 
+
 // Mostrar el modal de confirmación de eliminación
 function mostrarVentanaEliminarComentario(idComentario) {
     document.getElementById('idComentarioEliminar').value = idComentario;
@@ -482,13 +493,14 @@ function cerrarVentanaEliminarComentario() {
     document.getElementById("modalEliminarComentario").style.display = "none";
     document.getElementById("fondoModal").style.display = "none"; // Ocultar fondo
 }
+
 // Función para eliminar un comentario
 async function eliminarComentario(idComentario) {
-    const token = localStorage.getItem('token');
+    const token = getCookie('token'); // Obtener el token desde las cookies
 
-    if (!idComentario) {
-        console.error("ID de comentario no válido");
-        return; // Salir si no se tiene un ID válido
+    if (!idComentario || !token) {
+        console.error("Datos incompletos para eliminar el comentario.");
+        return; // Salir si no se tiene un ID válido o token
     }
 
     try {
@@ -512,10 +524,12 @@ async function eliminarComentario(idComentario) {
     }
 }
 
+// Función para confirmar la eliminación de un comentario
 function confirmarEliminacionComentario() {
     const idComentario = document.getElementById('idComentarioEliminar').value;
     eliminarComentario(idComentario); // Llamamos a eliminarComentario con el ID
 }
+
 
 // Llama a la función al cargar la página
 cargarPublicaciones();

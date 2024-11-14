@@ -1,8 +1,23 @@
-﻿
+﻿// Funciones para manejar cookies
+function setCookie(name, value, days = 1) {
+    const expires = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString();
+    document.cookie = `${name}=${value}; expires=${expires}; path=/; Secure`;
+}
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+function eraseCookie(name) {
+    document.cookie = `${name}=; Max-Age=-99999999; path=/`;
+}
+
 // Función para obtener publicaciones reportadas
 async function obtenerPublicacionesReportadas() {
-    const idUsuario = localStorage.getItem('id'); // Obtener el ID del usuario desde localStorage
-    const token = localStorage.getItem('token'); // Obtener el token desde localStorage
+    const idUsuario = getCookie('id'); // Obtener el ID del usuario desde las cookies
+    const token = getCookie('token'); // Obtener el token desde las cookies
 
     if (!idUsuario) {
         alert("ID de usuario no encontrado.");
@@ -28,7 +43,6 @@ async function obtenerPublicacionesReportadas() {
         console.error("Error en la solicitud:", error);
     }
 }
-
 
 // Función para mostrar publicaciones reportadas en el contenedor
 function mostrarPublicacionesReportadas(publicaciones) {
@@ -73,7 +87,6 @@ function cerrarModalDescargarReportes() {
 
 // Funciones para confirmar eliminación de publicaciones y reportes
 function confirmarEliminarPublicacion(idPublicacion) {
-    // Guardamos el id de la publicación en una variable global para usarlo en la eliminación
     window.idPublicacionAEliminar = idPublicacion;
     document.getElementById("eliminarPublicacionModal").style.display = "block";
 }
@@ -83,7 +96,6 @@ function cerrarModalEliminarPublicacion() {
 }
 
 function confirmarEliminarReporte(idReporte) {
-    // Guardamos el id del reporte en una variable global para usarlo en la eliminación
     window.idReporteAEliminar = idReporte;
     document.getElementById("eliminarReporteModal").style.display = "block";
 }

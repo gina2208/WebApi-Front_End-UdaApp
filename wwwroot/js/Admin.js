@@ -1,7 +1,5 @@
-﻿
-// Función para abrir el modal de asignar rol
+﻿// Función para abrir el modal de asignar rol
 function abrirRoleModal(usuarioId) {
-    // Establecer el ID del usuario seleccionado en un campo oculto o una variable global
     document.getElementById("roleModal").dataset.usuarioId = usuarioId;
     document.getElementById("roleModal").style.display = "block";
 }
@@ -13,7 +11,6 @@ function cerrarRoleModal() {
 
 // Función para abrir el modal de suspender usuario
 function abrirSuspendModal(usuarioId) {
-    // Establecer el ID del usuario seleccionado en un campo oculto o una variable global
     document.getElementById("suspendModal").dataset.usuarioId = usuarioId;
     document.getElementById("suspendModal").style.display = "block";
 }
@@ -39,12 +36,12 @@ async function asignarRol() {
 
     try {
         const response = await fetch(`https://udapphosting-001-site1.ktempurl.com/api/admin/usuarios/${encodeURIComponent(usuarioId)}/cambiar-rol`, {
-            method: 'PUT', // Método PUT
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
+                'Authorization': `Bearer ${getCookie('token')}`
             },
-            body: JSON.stringify(rolSeleccionado) // Enviar solo el string 'rolSeleccionado'
+            body: JSON.stringify(rolSeleccionado)
         });
 
         const data = await response.json();
@@ -72,10 +69,10 @@ async function confirmarSuspension() {
 
     try {
         const response = await fetch(`https://udapphosting-001-site1.ktempurl.com/api/admin/usuarios/${encodeURIComponent(usuarioId)}/cambiar-estado-suspension`, {
-            method: 'PUT', // Método PUT
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
+                'Authorization': `Bearer ${getCookie('token')}`
             }
         });
 
@@ -83,7 +80,7 @@ async function confirmarSuspension() {
         if (response.ok && data.exito) {
             alert(data.mensaje || "Usuario suspendido correctamente.");
             cerrarSuspendModal();
-            cargarUsuarios(); // Recargar la lista de usuarios después de suspender
+            cargarUsuarios();
         } else {
             alert("Error al suspender al usuario: " + (data.mensaje || "Operación fallida"));
         }
@@ -99,7 +96,7 @@ async function cargarUsuarios() {
         const response = await fetch('https://udapphosting-001-site1.ktempurl.com/api/admin/usuarios', {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
+                'Authorization': `Bearer ${getCookie('token')}`
             }
         });
 
@@ -107,7 +104,6 @@ async function cargarUsuarios() {
             const data = await response.json();
             console.log("Datos recibidos de la API:", data);
 
-            // Verifica que data.usuarios sea un array antes de llamarlo en mostrarUsuarios
             if (data.exito && Array.isArray(data.usuarios)) {
                 mostrarUsuarios(data.usuarios);
             } else {
@@ -128,7 +124,6 @@ function mostrarUsuarios(usuarios) {
     tablaUsuarios.innerHTML = "";
 
     usuarios.forEach(usuario => {
-        // Filtrar solo usuarios activos (no suspendidos)
         if (!usuario.estadoSuspension) {
             const fila = document.createElement("tr");
             fila.dataset.usuarioId = usuario.idUsuario;
@@ -149,6 +144,22 @@ function mostrarUsuarios(usuarios) {
             tablaUsuarios.appendChild(fila);
         }
     });
+}
+
+// Funciones de manejo de cookies
+function setCookie(name, value, days = 1) {
+    const expires = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString();
+    document.cookie = `${name}=${value}; expires=${expires}; path=/; Secure`;
+}
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+function eraseCookie(name) {
+    document.cookie = `${name}=; Max-Age=-99999999; path=/`;
 }
 
 // Llamar a cargarUsuarios cuando la página se cargue

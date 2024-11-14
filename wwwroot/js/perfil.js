@@ -22,9 +22,16 @@ function cerrarVentanaEmergenteEliminar() {
     modal.style.display = "none";
 }
 
+// Función para obtener el token de la cookie
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
 // Función para realizar una solicitud a la API con autorización
 async function fetchApiData(url) {
-    const token = localStorage.getItem('token');
+    const token = getCookie('token');
     if (!token) {
         console.error("Token no disponible. Inicia sesión nuevamente.");
         return;

@@ -38,9 +38,9 @@ async function iniciarSesion(event) {
 
         // Verificar si la respuesta indica éxito
         if (responseData.exito) {
-            // Guardar el rol y token en el localStorage
-            localStorage.setItem('id', responseData.usuario.id); // Guardar rol como int
-            localStorage.setItem('token', responseData.token); // Guardar token como Bearer token
+            // Guardar el rol y token en las cookies
+            setCookie('id', responseData.usuario.id, 1); // Guardar rol como int en cookie por 1 día
+            setCookie('token', responseData.token, 1); // Guardar token en cookie por 1 día
 
             // Redirigir al usuario a la página principal
             window.location.href = '/Home/PaginaPrincipal';
@@ -123,9 +123,25 @@ function EsTextoValido(value) {
     return /^[a-zA-Z\s]+$/.test(value); // Permite letras y espacios
 }
 
+// Funciones para manipular cookies
+function setCookie(name, value, days = 1) {
+    const expires = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString();
+    document.cookie = `${name}=${value}; expires=${expires}; path=/; Secure`;
+}
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+function eraseCookie(name) {
+    document.cookie = `${name}=; Max-Age=-99999999; path=/`;
+}
+
 // Función authorize para incluir el token en las solicitudes que lo requieran
 async function authorize(url, options = {}) {
-    const token = localStorage.getItem('token');
+    const token = getCookie('token');
 
     if (!token) {
         throw new Error("Token de autenticación no disponible. Inicia sesión nuevamente.");
