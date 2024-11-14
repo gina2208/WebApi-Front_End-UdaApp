@@ -19,7 +19,7 @@ async function iniciarSesion(event) {
 
     try {
         // Realiza la solicitud a la API
-        const response = await fetch('https://localhost:44380/api/Usuario/Login', {
+        const response = await fetch('https://udapphosting-001-site1.ktempurl.com/api/Usuario/Login', {
             method: "POST",
             body: JSON.stringify(data),
             headers: {

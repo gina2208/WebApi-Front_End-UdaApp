@@ -39,7 +39,7 @@ async function enviarEdicion() {
     const token = localStorage.getItem('token');
 
     try {
-        const response = await fetch(`https://localhost:44380/api/Publicaciones/${idPublicacion}`, {
+        const response = await fetch(`https://udapphosting-001-site1.ktempurl.com/api/Publicaciones/${idPublicacion}`, {
             method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -82,7 +82,7 @@ async function enviarPublicacion() {
     const token = localStorage.getItem('token');
     const idUsuario = localStorage.getItem('id');
     const titulo = document.getElementById('titulo').value;
-    const url = 'https://localhost:44380/api/Publicaciones/hacer-publicacion';
+    const url = 'https://udapphosting-001-site1.ktempurl.com/api/Publicaciones/hacer-publicacion';
 
     if (!token || !idUsuario) {
         console.error("Token o ID de usuario no disponible.");
@@ -115,7 +115,7 @@ async function enviarPublicacion() {
 async function cargarPublicaciones() {
     const token = localStorage.getItem('token');
     const idUsuario = localStorage.getItem('id'); // Obtiene el ID del usuario actual
-    const url = 'https://localhost:44380/api/Publicaciones/pagina-principal';
+    const url = 'https://udapphosting-001-site1.ktempurl.com/api/Publicaciones/pagina-principal';
 
     try {
         const response = await fetch(url, {
@@ -173,7 +173,7 @@ async function cargarPublicaciones() {
 async function darLike(idPublicacion) {
     const token = localStorage.getItem('token');
     const idUsuario = localStorage.getItem('id');
-    const url = 'https://localhost:44380/api/Publicaciones/toggle-like';
+    const url = 'https://udapphosting-001-site1.ktempurl.com/api/Publicaciones/toggle-like';
 
     if (!token || !idUsuario) {
         console.error("Token o ID de usuario no disponible.");
@@ -220,7 +220,7 @@ async function reportarPublicacion() {
     // Obtener la fecha actual en formato ISO 8601
     const fechaReporte = new Date().toISOString();
 
-    const url = 'https://localhost:44380/api/Publicaciones/reportar';
+    const url = 'https://udapphosting-001-site1.ktempurl.com/api/Publicaciones/reportar';
 
     try {
         const response = await fetch(url, {
@@ -265,7 +265,7 @@ async function enviarComentario() {
     }
 
     try {
-        const response = await fetch('https://localhost:44380/api/Comentario/crear-comentario', {
+        const response = await fetch('https://udapphosting-001-site1.ktempurl.com/api/Comentario/crear-comentario', {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -299,7 +299,7 @@ async function enviarEdicion() {
     const token = localStorage.getItem('token');
 
     try {
-        const response = await fetch(`https://localhost:44380/api/Publicaciones/actualizar-publicacion`, {
+        const response = await fetch(`https://udapphosting-001-site1.ktempurl.com/api/Publicaciones/actualizar-publicacion`, {
             method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -335,7 +335,7 @@ async function eliminarPublicacion(idPublicacion) {
     }
 
     try {
-        const response = await fetch(`https://localhost:44380/api/Publicaciones/eliminar-publicacion?idPublicacion=${idPublicacion}`, {
+        const response = await fetch(`https://udapphosting-001-site1.ktempurl.com/api/Publicaciones/eliminar-publicacion?idPublicacion=${idPublicacion}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -389,7 +389,7 @@ function cerrarVentanaVerComentarios() {
 }
 async function cargarComentarios(idPublicacion) {
     try {
-        const response = await fetch(`https://localhost:44380/api/Comentario/publicacion/${idPublicacion}`);
+        const response = await fetch(`https://udapphosting-001-site1.ktempurl.com/api/Comentario/publicacion/${idPublicacion}`);
 
         if (!response.ok) {
             throw new Error(`Error en la solicitud: ${response.status} - ${response.statusText}`);
@@ -445,7 +445,7 @@ async function enviarEdicionComentario() {
     const token = localStorage.getItem('token');
 
     try {
-        const response = await fetch('https://localhost:44380/api/Comentario/actualizar-comentario', {
+        const response = await fetch('https://udapphosting-001-site1.ktempurl.com/api/Comentario/actualizar-comentario', {
             method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -492,7 +492,7 @@ async function eliminarComentario(idComentario) {
     }
 
     try {
-        const response = await fetch(`https://localhost:44380/api/Comentario/eliminar-comentario?idComentario=${idComentario}`, {
+        const response = await fetch(`https://udapphosting-001-site1.ktempurl.com/api/Comentario/eliminar-comentario?idComentario=${idComentario}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${token}`,

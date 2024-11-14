@@ -54,7 +54,7 @@ async function fetchApiData(url) {
 
 // Función para cargar los datos del perfil del usuario en el HTML
 async function cargarPerfilUsuario() {
-    const url = 'https://localhost:44380/api/Usuario/Obtener-usuario-token';
+    const url = 'https://udapphosting-001-site1.ktempurl.com/api/Usuario/Obtener-usuario-token';
     const data = await fetchApiData(url);
 
     if (data) {

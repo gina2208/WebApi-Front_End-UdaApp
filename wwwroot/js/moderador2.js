@@ -10,7 +10,7 @@ async function obtenerPublicacionesReportadas() {
     }
 
     try {
-        const response = await fetch(`https://localhost:44380/api/Moderador/listar-publicaciones-reportadas?idUsuario=${idUsuario}`, {
+        const response = await fetch(`https://udapphosting-001-site1.ktempurl.com/api/Moderador/listar-publicaciones-reportadas?idUsuario=${idUsuario}`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`, // Autorización si es necesaria
@@ -95,7 +95,7 @@ function cerrarModalEliminarReporte() {
 // Función para eliminar una publicación
 async function eliminarPublicacion() {
     try {
-        const response = await fetch(`https://localhost:44380/api/Moderador/eliminar-publicacion-mod`, {
+        const response = await fetch(`https://udapphosting-001-site1.ktempurl.com/api/Moderador/eliminar-publicacion-mod`, {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ idPublicacion: window.idPublicacionAEliminar })
@@ -116,7 +116,7 @@ async function eliminarPublicacion() {
 // Función para eliminar un reporte
 async function eliminarReporte() {
     try {
-        const response = await fetch(`https://localhost:44380/api/Moderador/eliminar-reporte-mod`, {
+        const response = await fetch(`https://udapphosting-001-site1.ktempurl.com/api/Moderador/eliminar-reporte-mod`, {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ idReporte: window.idReporteAEliminar })
@@ -137,7 +137,7 @@ async function eliminarReporte() {
 // Función para descargar reportes en PDF
 async function descargarReportes() {
     try {
-        const response = await fetch(`https://localhost:44380/api/Reporte/descargar-reporte-publicaciones-reportadas`, {
+        const response = await fetch(`https://udapphosting-001-site1.ktempurl.com/api/Reporte/descargar-reporte-publicaciones-reportadas`, {
             method: 'GET'
         });
 

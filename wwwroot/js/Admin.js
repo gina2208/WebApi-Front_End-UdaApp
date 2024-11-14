@@ -38,7 +38,7 @@ async function asignarRol() {
     }
 
     try {
-        const response = await fetch(`https://localhost:44380/api/admin/usuarios/${encodeURIComponent(usuarioId)}/cambiar-rol`, {
+        const response = await fetch(`https://udapphosting-001-site1.ktempurl.com/api/admin/usuarios/${encodeURIComponent(usuarioId)}/cambiar-rol`, {
             method: 'PUT', // Método PUT
             headers: {
                 'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ async function confirmarSuspension() {
     }
 
     try {
-        const response = await fetch(`https://localhost:44380/api/admin/usuarios/${encodeURIComponent(usuarioId)}/cambiar-estado-suspension`, {
+        const response = await fetch(`https://udapphosting-001-site1.ktempurl.com/api/admin/usuarios/${encodeURIComponent(usuarioId)}/cambiar-estado-suspension`, {
             method: 'PUT', // Método PUT
             headers: {
                 'Content-Type': 'application/json',
@@ -96,7 +96,7 @@ async function confirmarSuspension() {
 // Función para cargar la lista de usuarios
 async function cargarUsuarios() {
     try {
-        const response = await fetch('https://localhost:44380/api/admin/usuarios', {
+        const response = await fetch('https://udapphosting-001-site1.ktempurl.com/api/admin/usuarios', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`

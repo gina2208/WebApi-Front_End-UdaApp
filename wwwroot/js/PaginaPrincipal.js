@@ -37,7 +37,7 @@ async function enviarEdicion() {
     const token = localStorage.getItem('token');
 
     try {
-        const response = await fetch(`https://localhost:44380/api/Publicaciones/${idPublicacion}`, {
+        const response = await fetch(`https://udapphosting-001-site1.ktempurl.com/api/Publicaciones/${idPublicacion}`, {
             method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -80,7 +80,7 @@ async function enviarPublicacion() {
     const token = localStorage.getItem('token');
     const idUsuario = localStorage.getItem('id');
     const titulo = document.getElementById('titulo').value;
-    const url = 'https://localhost:44380/api/Publicaciones/hacer-publicacion';
+    const url = 'https://udapphosting-001-site1.ktempurl.com/api/Publicaciones/hacer-publicacion';
 
     if (!token || !idUsuario) {
         console.error("Token o ID de usuario no disponible.");
@@ -113,7 +113,7 @@ async function enviarPublicacion() {
 async function cargarPublicaciones() {
     const token = localStorage.getItem('token');
     const idUsuario = localStorage.getItem('id'); // Obtiene el ID del usuario actual
-    const url = 'https://localhost:44380/api/Publicaciones/pagina-principal';
+    const url = 'https://udapphosting-001-site1.ktempurl.com/api/Publicaciones/pagina-principal';
 
     try {
         const response = await fetch(url, {
@@ -171,7 +171,7 @@ async function cargarPublicaciones() {
 async function darLike(idPublicacion) {
     const token = localStorage.getItem('token');
     const idUsuario = localStorage.getItem('id');
-    const url = 'https://localhost:44380/api/Publicaciones/toggle-like';
+    const url = 'https://udapphosting-001-site1.ktempurl.com/api/Publicaciones/toggle-like';
 
     if (!token || !idUsuario) {
         console.error("Token o ID de usuario no disponible.");
@@ -208,7 +208,7 @@ async function reportarPublicacion() {
     const idUsuario = localStorage.getItem('id');
     const idPublicacion = document.getElementById('idPublicacion').value;
     const motivo = document.getElementById('opcionesSelect').value;
-    const url = 'https://localhost:44380/api/Publicaciones/reportar';
+    const url = 'https://udapphosting-001-site1.ktempurl.com/api/Publicaciones/reportar';
 
     try {
         const response = await fetch(url, {
@@ -238,7 +238,7 @@ async function enviarComentario() {
     const token = localStorage.getItem('token');
 
     try {
-        const response = await fetch(`https://localhost:44380/api/Publicaciones/${idPublicacion}/comentarios`, {
+        const response = await fetch(`https://udapphosting-001-site1.ktempurl.com/api/Publicaciones/${idPublicacion}/comentarios`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -265,7 +265,7 @@ async function enviarEdicion() {
     const token = localStorage.getItem('token');
 
     try {
-        const response = await fetch(`https://localhost:44380/api/Publicaciones/actualizar-publicacion`, {
+        const response = await fetch(`https://udapphosting-001-site1.ktempurl.com/api/Publicaciones/actualizar-publicacion`, {
             method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -297,7 +297,7 @@ async function eliminarPublicacion(idPublicacion) {
     const token = localStorage.getItem('token'); // Obtener token desde localStorage
     try {
         // Realizar la solicitud DELETE al backend con el idPublicacion y el token en el encabezado
-        const response = await fetch(`https://localhost:44380/api/Publicaciones/eliminar-publicacion?idPublicacion=${idPublicacion}`, {
+        const response = await fetch(`https://udapphosting-001-site1.ktempurl.com/api/Publicaciones/eliminar-publicacion?idPublicacion=${idPublicacion}`, {
             method: 'DELETE', // Método HTTP DELETE
             headers: {
                 'Authorization': `Bearer ${token}`, // Pasar el token en el encabezado Authorization
@@ -352,7 +352,7 @@ function cerrarVentanaVerComentarios() {
 // Función para cargar los comentarios de una publicación
 async function cargarComentarios(idPublicacion) {
     try {
-        const response = await fetch(`https://localhost:44380/api/Comentario/publicacion/${idPublicacion}`);
+        const response = await fetch(`https://udapphosting-001-site1.ktempurl.com/api/Comentario/publicacion/${idPublicacion}`);
         const comentarios = await response.json();
         const listaComentarios = document.getElementById("listaComentarios");
         listaComentarios.innerHTML = "";
@@ -384,7 +384,7 @@ async function enviarComentario() {
     };
 
     try {
-        const response = await fetch('https://localhost:44380/api/Comentario/crear-comentario', {
+        const response = await fetch('https://udapphosting-001-site1.ktempurl.com/api/Comentario/crear-comentario', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -422,7 +422,7 @@ async function editarComentario() {
     };
 
     try {
-        const response = await fetch('https://localhost:44380/api/Comentario/actualizar-comentario', {
+        const response = await fetch('https://udapphosting-001-site1.ktempurl.com/api/Comentario/actualizar-comentario', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -444,7 +444,7 @@ async function editarComentario() {
 // Función para eliminar un comentario
 async function eliminarComentario(idComentario) {
     try {
-        const response = await fetch(`https://localhost:44380/api/Comentario/eliminar-comentario/${idComentario}`, {
+        const response = await fetch(`https://udapphosting-001-site1.ktempurl.com/api/Comentario/eliminar-comentario/${idComentario}`, {
             method: 'DELETE'
         });
 

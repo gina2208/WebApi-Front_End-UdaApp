@@ -26,7 +26,7 @@
     showLoadingState(true);
 
     try {
-        const response = await fetch('https://localhost:44380/api/Usuario/Registro', {
+        const response = await fetch('https://udapphosting-001-site1.ktempurl.com/api/Usuario/Registro', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
