@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "aQv/Smj/OP//zLzFGLWJj+THGqZBq1bdBG9Anz6/pnc=",
+  "Hash": "6H0Xl6lzbfxM5LS6zmfd1h7rFK0pMPlxbCl9Dw3I9BA=",
   "Source": "WebApi Frond_End UdaApp",
   "BasePath": "_content/WebApi Frond_End UdaApp",
   "Mode": "Default",
@@ -110,6 +110,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\Error401.css"
+    },
+    {
+      "Identity": "C:\\Users\\ginna\\Documents\\GitHub\\WebApi Frond_End UdaApp\\WebApi Frond_End UdaApp\\wwwroot\\css\\imagenes\\admin.png",
+      "SourceId": "WebApi Frond_End UdaApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ginna\\Documents\\GitHub\\WebApi Frond_End UdaApp\\WebApi Frond_End UdaApp\\wwwroot\\",
+      "BasePath": "_content/WebApi Frond_End UdaApp",
+      "RelativePath": "css/imagenes/admin.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Always",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\imagenes\\admin.png"
     },
     {
       "Identity": "C:\\Users\\ginna\\Documents\\GitHub\\WebApi Frond_End UdaApp\\WebApi Frond_End UdaApp\\wwwroot\\css\\imagenes\\chat.png",
@@ -530,6 +549,25 @@
       "OriginalItemSpec": "wwwroot\\css\\paginaprincipal.css"
     },
     {
+      "Identity": "C:\\Users\\ginna\\Documents\\GitHub\\WebApi Frond_End UdaApp\\WebApi Frond_End UdaApp\\wwwroot\\css\\paginaprincipalp.css",
+      "SourceId": "WebApi Frond_End UdaApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ginna\\Documents\\GitHub\\WebApi Frond_End UdaApp\\WebApi Frond_End UdaApp\\wwwroot\\",
+      "BasePath": "_content/WebApi Frond_End UdaApp",
+      "RelativePath": "css/paginaprincipalp.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\paginaprincipalp.css"
+    },
+    {
       "Identity": "C:\\Users\\ginna\\Documents\\GitHub\\WebApi Frond_End UdaApp\\WebApi Frond_End UdaApp\\wwwroot\\css\\Perfil.css",
       "SourceId": "WebApi Frond_End UdaApp",
       "SourceType": "Discovered",
@@ -680,6 +718,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\PaginaPrincipal.js"
+    },
+    {
+      "Identity": "C:\\Users\\ginna\\Documents\\GitHub\\WebApi Frond_End UdaApp\\WebApi Frond_End UdaApp\\wwwroot\\js\\PaginaPrincipalp.js",
+      "SourceId": "WebApi Frond_End UdaApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ginna\\Documents\\GitHub\\WebApi Frond_End UdaApp\\WebApi Frond_End UdaApp\\wwwroot\\",
+      "BasePath": "_content/WebApi Frond_End UdaApp",
+      "RelativePath": "js/PaginaPrincipalp.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\PaginaPrincipalp.js"
     },
     {
       "Identity": "C:\\Users\\ginna\\Documents\\GitHub\\WebApi Frond_End UdaApp\\WebApi Frond_End UdaApp\\wwwroot\\js\\perfil.js",

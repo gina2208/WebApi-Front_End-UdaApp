@@ -28,27 +28,32 @@ async function asignarRol() {
     const usuarioId = document.getElementById("roleModal").dataset.usuarioId;
     const rolSeleccionado = document.getElementById("rolSelect").value;
 
-    if (!usuarioId || !rolSeleccionado) {
-        alert("Debe seleccionar un usuario y un rol.");
+    if (!usuarioId) {
+        alert("Debe seleccionar un usuario.");
+        return;
+    }
+    if (!rolSeleccionado) {
+        alert("Debe seleccionar un rol.");
         return;
     }
 
     try {
-        const response = await fetch(`https://localhost:44380/api/admin/usuarios/${usuarioId}/cambiar-rol`, {
-            method: 'POST',
+        const response = await fetch(`https://localhost:44380/api/admin/usuarios/${encodeURIComponent(usuarioId)}/cambiar-rol`, {
+            method: 'PUT', // Método PUT
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}` 
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             },
-            body: JSON.stringify({ rol: rolSeleccionado })
+            body: JSON.stringify(rolSeleccionado) // Enviar solo el string 'rolSeleccionado'
         });
 
-        if (response.ok) {
-            alert("Rol asignado correctamente.");
+        const data = await response.json();
+        if (response.ok && data.exito) {
+            alert(data.mensaje || "Rol asignado correctamente.");
             cerrarRoleModal();
-            cargarUsuarios(); // Recargar la lista de usuarios después de asignar el rol
+            cargarUsuarios();
         } else {
-            alert("Error al asignar el rol.");
+            alert("Error al asignar el rol: " + (data.mensaje || "Operación fallida"));
         }
     } catch (error) {
         console.error("Error en la solicitud:", error);
@@ -66,20 +71,21 @@ async function confirmarSuspension() {
     }
 
     try {
-        const response = await fetch(`https://localhost:44380/api/admin/usuarios/${usuarioId}/cambiar-estado-suspension`, {
-            method: 'POST',
+        const response = await fetch(`https://localhost:44380/api/admin/usuarios/${encodeURIComponent(usuarioId)}/cambiar-estado-suspension`, {
+            method: 'PUT', // Método PUT
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
         });
 
-        if (response.ok) {
-            alert("Usuario suspendido correctamente.");
+        const data = await response.json();
+        if (response.ok && data.exito) {
+            alert(data.mensaje || "Usuario suspendido correctamente.");
             cerrarSuspendModal();
             cargarUsuarios(); // Recargar la lista de usuarios después de suspender
         } else {
-            alert("Error al suspender al usuario.");
+            alert("Error al suspender al usuario: " + (data.mensaje || "Operación fallida"));
         }
     } catch (error) {
         console.error("Error en la solicitud:", error);
@@ -93,15 +99,22 @@ async function cargarUsuarios() {
         const response = await fetch('https://localhost:44380/api/admin/usuarios', {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}` 
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
         });
 
         if (response.ok) {
-            const usuarios = await response.json();
-            mostrarUsuarios(usuarios);
+            const data = await response.json();
+            console.log("Datos recibidos de la API:", data);
+
+            // Verifica que data.usuarios sea un array antes de llamarlo en mostrarUsuarios
+            if (data.exito && Array.isArray(data.usuarios)) {
+                mostrarUsuarios(data.usuarios);
+            } else {
+                alert("Error al cargar los usuarios: " + (data.mensaje || "Formato de datos incorrecto"));
+            }
         } else {
-            alert("Error al cargar los usuarios.");
+            alert("Error al cargar los usuarios: Código de estado " + response.status);
         }
     } catch (error) {
         console.error("Error en la solicitud:", error);
@@ -112,26 +125,29 @@ async function cargarUsuarios() {
 // Función para mostrar los usuarios en la tabla
 function mostrarUsuarios(usuarios) {
     const tablaUsuarios = document.getElementById("userTable");
-    tablaUsuarios.innerHTML = ""; 
+    tablaUsuarios.innerHTML = "";
 
     usuarios.forEach(usuario => {
-        const fila = document.createElement("tr");
-        fila.dataset.usuarioId = usuario.id;
-        fila.innerHTML = `
-            <td>${usuario.id}</td>
-            <td>${usuario.nombre}</td>
-            <td>${usuario.correo}</td>
-            <td>${usuario.rol}</td>
-            <td>
-                <button onclick="abrirRoleModal(${usuario.id})">Asignar Rol</button>
-                <button class="suspend" onclick="abrirSuspendModal(${usuario.id})">Suspender</button>
-            </td>
-        `;
-        fila.onclick = function () {
-            document.querySelectorAll(".user-list tr").forEach(row => row.classList.remove("selected"));
-            fila.classList.add("selected");
-        };
-        tablaUsuarios.appendChild(fila);
+        // Filtrar solo usuarios activos (no suspendidos)
+        if (!usuario.estadoSuspension) {
+            const fila = document.createElement("tr");
+            fila.dataset.usuarioId = usuario.idUsuario;
+            fila.innerHTML = `
+                <td>${usuario.idUsuario}</td>
+                <td>${usuario.nombreUsuario}</td>
+                <td>${usuario.email}</td>
+                <td>${usuario.nombreRol}</td>
+                <td>
+                    <button onclick="abrirRoleModal(${usuario.idUsuario})">Asignar Rol</button>
+                    <button class="suspend" onclick="abrirSuspendModal(${usuario.idUsuario})">Suspender</button>
+                </td>
+            `;
+            fila.onclick = function () {
+                document.querySelectorAll(".user-list tr").forEach(row => row.classList.remove("selected"));
+                fila.classList.add("selected");
+            };
+            tablaUsuarios.appendChild(fila);
+        }
     });
 }
 

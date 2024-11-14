@@ -1,10 +1,26 @@
-﻿// Función para obtener publicaciones reportadas
+﻿
+// Función para obtener publicaciones reportadas
 async function obtenerPublicacionesReportadas() {
+    const idUsuario = localStorage.getItem('id'); // Obtener el ID del usuario desde localStorage
+    const token = localStorage.getItem('token'); // Obtener el token desde localStorage
+
+    if (!idUsuario) {
+        alert("ID de usuario no encontrado.");
+        return;
+    }
+
     try {
-        const response = await fetch('https://localhost:44380/api/Moderador/listar-publicaciones-reportadas');
+        const response = await fetch(`https://localhost:44380/api/Moderador/listar-publicaciones-reportadas?idUsuario=${idUsuario}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`, // Autorización si es necesaria
+                'Content-Type': 'application/json'
+            }
+        });
+
         if (response.ok) {
             const publicaciones = await response.json();
-            mostrarPublicacionesReportadas(publicaciones);
+            mostrarPublicacionesReportadas(publicaciones); // Llamada a la función para mostrar las publicaciones
         } else {
             alert("Error al obtener publicaciones reportadas.");
         }
@@ -12,6 +28,7 @@ async function obtenerPublicacionesReportadas() {
         console.error("Error en la solicitud:", error);
     }
 }
+
 
 // Función para mostrar publicaciones reportadas en el contenedor
 function mostrarPublicacionesReportadas(publicaciones) {

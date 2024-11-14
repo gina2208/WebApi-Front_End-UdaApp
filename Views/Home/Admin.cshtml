@@ -9,7 +9,7 @@
 <header>
     <img src="/css/imagenes/logo.png" alt="Logo udapp" class="logo">
     <h1>Administración de Usuarios</h1>
-    <button id="logoutButton" onclick="logout()">Salir</button>
+    <button id="Salir" onclick="window.location.href='@Url.Action("PaginaPrincipal", "Home")'">Salir</button>
 </header>
 
 <main>
@@ -40,12 +40,11 @@
         <form id="roleForm">
             <label for="rolSelect">Selecciona el Rol:</label>
             <select id="rolSelect">
-                <option value="estudiante">Estudiante</option>
-                <option value="profesor">Profesor</option>
-                <option value="administrativos">Administrativos</option>
-                <option value="admin">Administrador del sistema</option>
-                <option value="moderator">Moderador</option>
+                <option value="Admin">Administrador del sistema</option>
+                <option value="Moderador">Moderador</option>
+                <option value="General">General</option>
                 <option value="Gerente">Gerente</option>
+             
             </select>
             <button type="button" onclick="asignarRol()">Asignar</button>
         </form>

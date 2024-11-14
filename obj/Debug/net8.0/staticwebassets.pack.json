@@ -37,6 +37,10 @@
       "PackagePath": "staticwebassets\\css\\imagenes\\UdApp_sign.png"
     },
     {
+      "Id": "C:\\Users\\ginna\\Documents\\GitHub\\WebApi Frond_End UdaApp\\WebApi Frond_End UdaApp\\wwwroot\\css\\imagenes\\admin.png",
+      "PackagePath": "staticwebassets\\css\\imagenes\\admin.png"
+    },
+    {
       "Id": "C:\\Users\\ginna\\Documents\\GitHub\\WebApi Frond_End UdaApp\\WebApi Frond_End UdaApp\\wwwroot\\css\\imagenes\\chat.png",
       "PackagePath": "staticwebassets\\css\\imagenes\\chat.png"
     },
@@ -109,6 +113,10 @@
       "PackagePath": "staticwebassets\\css\\paginaprincipal.css"
     },
     {
+      "Id": "C:\\Users\\ginna\\Documents\\GitHub\\WebApi Frond_End UdaApp\\WebApi Frond_End UdaApp\\wwwroot\\css\\paginaprincipalp.css",
+      "PackagePath": "staticwebassets\\css\\paginaprincipalp.css"
+    },
+    {
       "Id": "C:\\Users\\ginna\\Documents\\GitHub\\WebApi Frond_End UdaApp\\WebApi Frond_End UdaApp\\wwwroot\\css\\registro.css",
       "PackagePath": "staticwebassets\\css\\registro.css"
     },
@@ -131,6 +139,10 @@
     {
       "Id": "C:\\Users\\ginna\\Documents\\GitHub\\WebApi Frond_End UdaApp\\WebApi Frond_End UdaApp\\wwwroot\\js\\PaginaPrincipal.js",
       "PackagePath": "staticwebassets\\js\\PaginaPrincipal.js"
+    },
+    {
+      "Id": "C:\\Users\\ginna\\Documents\\GitHub\\WebApi Frond_End UdaApp\\WebApi Frond_End UdaApp\\wwwroot\\js\\PaginaPrincipalp.js",
+      "PackagePath": "staticwebassets\\js\\PaginaPrincipalp.js"
     },
     {
       "Id": "C:\\Users\\ginna\\Documents\\GitHub\\WebApi Frond_End UdaApp\\WebApi Frond_End UdaApp\\wwwroot\\js\\Registro.js",

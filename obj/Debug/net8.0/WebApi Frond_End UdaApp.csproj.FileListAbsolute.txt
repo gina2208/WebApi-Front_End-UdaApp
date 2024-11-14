@@ -690,3 +690,4 @@ C:\Users\ginna\Documents\GitHub\WebApi Frond_End UdaApp\WebApi Frond_End UdaApp\
 C:\Users\ginna\Documents\GitHub\WebApi Frond_End UdaApp\WebApi Frond_End UdaApp\obj\Debug\net8.0\ref\WebApi Frond_End UdaApp.dll
 C:\Users\ginna\Documents\GitHub\WebApi Frond_End UdaApp\WebApi Frond_End UdaApp\bin\Debug\net8.0\wwwroot\css\imagenes\like.png
 C:\Users\ginna\Documents\GitHub\WebApi Frond_End UdaApp\WebApi Frond_End UdaApp\bin\Debug\net8.0\wwwroot\css\imagenes\Perfil.png
+C:\Users\ginna\Documents\GitHub\WebApi Frond_End UdaApp\WebApi Frond_End UdaApp\bin\Debug\net8.0\wwwroot\css\imagenes\admin.png

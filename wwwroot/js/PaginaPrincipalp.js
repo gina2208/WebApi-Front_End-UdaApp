@@ -10,9 +10,11 @@ function cerrarVentanaEmergentePublicacion() {
 }
 
 // Mostrar y cerrar modal de reporte
-function mostrarVentanaEmergenteReporte() {
-    document.getElementById("modal2").style.display = "block";
+function mostrarVentanaEmergenteReporte(idPublicacion) {
+    document.getElementById('idPublicacion').value = idPublicacion;
+    document.getElementById('modal2').style.display = 'block';
 }
+
 
 function cerrarVentanaEmergenteReporte() {
     document.getElementById("modal2").style.display = "none";
@@ -138,7 +140,7 @@ async function cargarPublicaciones() {
             </div>
             <p class="fechaPublicacion">Publicado el: ${new Date(publicacion.fechaPublicacion).toLocaleDateString()}</p>
             <div class="mensajeP">${publicacion.titulo}</div>
-            <button class="repor" onclick="mostrarVentanaEmergenteReporte()">Reportar</button>
+           <button class="repor" onclick="mostrarVentanaEmergenteReporte(${publicacion.idPublicacion})">Reportar</button>
             <div class="interaccion">
                 <button class="like" onclick="darLike(${publicacion.idPublicacion})">
                     <img src="/css/imagenes/like.png" alt="Like"> 
@@ -147,7 +149,7 @@ async function cargarPublicaciones() {
                 <button class="ver-comentarios" onclick="mostrarVentanaVerComentarios(${publicacion.idPublicacion})">
                     <img src="/css/imagenes/comentario.png" alt="Comentarios"> 
                 </button>
-                <button class="comentar" onclick="mostrarVentanaComentario(${publicacion.idPublicacion})">
+               <button class="comentar" onclick="mostrarVentanaComentario(${publicacion.idPublicacion})">
                     <img src="/css/imagenes/comentario.png" alt="Comentar"> 
                 </button>
                 <button class="editar" onclick="mostrarVentanaEditar(${publicacion.idPublicacion}, '${publicacion.titulo}')">Editar</button>
@@ -206,8 +208,18 @@ async function darLike(idPublicacion) {
 async function reportarPublicacion() {
     const token = localStorage.getItem('token');
     const idUsuario = localStorage.getItem('id');
-    const idPublicacion = document.getElementById('idPublicacion').value;
-    const motivo = document.getElementById('opcionesSelect').value;
+    const idPublicacion = document.getElementById('idPublicacion').value; // Obtener el ID de la publicación
+    const motivo = document.getElementById('opcionesSelect').value; // Obtener el motivo seleccionado
+
+    // Verificar si los campos requeridos están completos
+    if (!idPublicacion || !motivo) {
+        console.error("Faltan datos para reportar la publicación.");
+        return; // Salir si faltan datos
+    }
+
+    // Obtener la fecha actual en formato ISO 8601
+    const fechaReporte = new Date().toISOString();
+
     const url = 'https://localhost:44380/api/Publicaciones/reportar';
 
     try {
@@ -217,17 +229,26 @@ async function reportarPublicacion() {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ idPublicacion: parseInt(idPublicacion), idUsuarioReportador: parseInt(idUsuario), motivo })
+            body: JSON.stringify({
+                idPublicacion: parseInt(idPublicacion),
+                idUsuarioReportador: parseInt(idUsuario),
+                motivo: motivo,
+                fechaReporte: fechaReporte // Enviar la fecha actual
+            })
         });
 
         if (response.ok) {
-            console.log("Reporte enviado.");
-            cerrarVentanaEmergenteReporte();
+            console.log("Reporte enviado con éxito.");
+            alert("Publicación reportada con éxito.");
+            cerrarVentanaEmergenteReporte(); // Cerrar el modal de reporte
         } else {
-            console.error("Error:", response.statusText);
+            const errorData = await response.json();
+            console.error("Error al reportar publicación:", errorData.Message);
+            alert("Hubo un error al reportar la publicación. Inténtalo nuevamente.");
         }
     } catch (error) {
         console.error('Error en la solicitud de reporte:', error);
+        alert("Hubo un error al procesar la solicitud. Inténtalo nuevamente.");
     }
 }
 
@@ -237,26 +258,39 @@ async function enviarComentario() {
     const contenido = document.getElementById('contenidoComentario').value;
     const token = localStorage.getItem('token');
 
+    // Verifica que idPublicacion y contenido estén definidos
+    if (!idPublicacion || !contenido) {
+        console.error("Faltan datos: idPublicacion o contenido.");
+        return;
+    }
+
     try {
-        const response = await fetch(`https://localhost:44380/api/Publicaciones/${idPublicacion}/comentarios`, {
+        const response = await fetch('https://localhost:44380/api/Comentario/crear-comentario', {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ contenido })
+            body: JSON.stringify({
+                comentario: contenido, // Asegúrate de que el nombre de la propiedad es "comentario"
+                idPublicacion: parseInt(idPublicacion)
+            })
         });
 
         if (response.ok) {
-            cerrarVentanaComentario();
+            console.log("Comentario enviado con éxito.");
+            cerrarVentanaComentario(); // Cerrar el modal
             await cargarPublicaciones(); // Recargar publicaciones para ver el nuevo comentario
         } else {
             console.error("Error al enviar comentario:", response.statusText);
+            const errorData = await response.json();
+            console.error("Detalles del error:", errorData);
         }
     } catch (error) {
         console.error("Error en la solicitud de comentario:", error);
     }
 }
+
 // Función para enviar la edición
 async function enviarEdicion() {
     const idPublicacion = document.getElementById('idPublicacionEditar').value;
@@ -291,34 +325,39 @@ async function enviarEdicion() {
     }
 }
 
-
-// Función para eliminar una publicación
+//eliminar publicacion 
 async function eliminarPublicacion(idPublicacion) {
-    const token = localStorage.getItem('token'); // Obtener token desde localStorage
+    const token = localStorage.getItem('token');
+
+    if (!idPublicacion) {
+        console.error("ID de publicación no válido");
+        return; // Salir si no se tiene un ID válido
+    }
+
     try {
-        // Realizar la solicitud DELETE al backend con el idPublicacion y el token en el encabezado
         const response = await fetch(`https://localhost:44380/api/Publicaciones/eliminar-publicacion?idPublicacion=${idPublicacion}`, {
-            method: 'DELETE', // Método HTTP DELETE
+            method: 'DELETE',
             headers: {
-                'Authorization': `Bearer ${token}`, // Pasar el token en el encabezado Authorization
-                'Content-Type': 'application/json', // Especificar el tipo de contenido
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
             }
         });
 
-        // Verificar si la respuesta es exitosa
         if (response.ok) {
-            console.log("Publicación eliminada."); // Mensaje de éxito
-            cargarPublicaciones(); // Recargar la lista de publicaciones después de eliminar
-            cerrarVentanaEliminar(); // Cerrar la ventana de confirmación de eliminación
+            console.log("Publicación eliminada.");
+            cargarPublicaciones(); // Recargar publicaciones después de eliminar
+            cerrarVentanaEliminar(); // Cerrar el modal de confirmación
         } else {
-            // Si la respuesta no es exitosa, mostrar el error
             console.error("Error al eliminar publicación:", response.statusText);
-            alert('Hubo un problema al eliminar la publicación'); // Alerta al usuario
         }
     } catch (error) {
-        // Manejar cualquier error en la solicitud
         console.error("Error en la solicitud de eliminación:", error);
     }
+}
+
+function confirmarEliminacion() {
+    const idPublicacion = document.getElementById('idPublicacionEliminar').value;
+    eliminarPublicacion(idPublicacion); // Llamamos a eliminarPublicacion con el ID
 }
 
 
@@ -328,8 +367,8 @@ let idComentarioSeleccionado = null;
 
 // Función para mostrar el modal para añadir un comentario
 function mostrarVentanaComentario(idPublicacion) {
-    idPublicacionSeleccionada = idPublicacion;
-    document.getElementById("modal3").style.display = "block";
+    document.getElementById('idPublicacionComentario').value = idPublicacion;
+    document.getElementById('modal3').style.display = 'block';
 }
 
 // Función para cerrar el modal de añadir comentario
@@ -348,23 +387,32 @@ function mostrarVentanaVerComentarios(idPublicacion) {
 function cerrarVentanaVerComentarios() {
     document.getElementById("modal4").style.display = "none";
 }
-
-// Función para cargar los comentarios de una publicación
 async function cargarComentarios(idPublicacion) {
     try {
         const response = await fetch(`https://localhost:44380/api/Comentario/publicacion/${idPublicacion}`);
+
+        if (!response.ok) {
+            throw new Error(`Error en la solicitud: ${response.status} - ${response.statusText}`);
+        }
+
         const comentarios = await response.json();
         const listaComentarios = document.getElementById("listaComentarios");
         listaComentarios.innerHTML = "";
 
-        if (comentarios.length > 0) {
-            comentarios.forEach(comentario => {
+        // Asegurarse de que los comentarios sean de la publicación correcta
+        const comentariosDeLaPublicacion = comentarios.filter(comentario => comentario.idPublicacion === idPublicacion);
+
+        if (comentariosDeLaPublicacion.length > 0) {
+            comentariosDeLaPublicacion.forEach(comentario => {
+                // Formatear la fecha de creación
+                const fechaFormateada = new Date(comentario.fechaCreacion).toLocaleString();
+
                 listaComentarios.innerHTML += `
                     <div class="comentario">
-                        <p>${comentario.comentario}</p>
-                        <button onclick="mostrarVentanaEditarComentario(${comentario.idComentario})">Editar</button>
-                        <button onclick="eliminarComentario(${comentario.idComentario})">Eliminar</button>
-                    </div>`;
+                        <p><strong>${comentario.nombreUsuarioComentador}</strong> - ${fechaFormateada}</p>
+                        <p>${comentario.contenido}</p>
+                       <button onclick="mostrarVentanaEditarComentario(${comentario.idComentario}, '${comentario.contenido}')">Editar</button>
+                    <button onclick="mostrarVentanaEliminarComentario(${comentario.idComentario})">Eliminar</button> </div>`;
             });
         } else {
             listaComentarios.innerHTML = "<p>No hay comentarios disponibles aún. ¡Sé el primero en comentar!</p>";
@@ -374,88 +422,99 @@ async function cargarComentarios(idPublicacion) {
     }
 }
 
-// Función para enviar un comentario nuevo
-async function enviarComentario() {
-    const contenidoComentario = document.getElementById("contenidoComentario").value;
-
-    const nuevoComentario = {
-        comentario: contenidoComentario,
-        idPublicacion: idPublicacionSeleccionada
-    };
-
-    try {
-        const response = await fetch('https://localhost:44380/api/Comentario/crear-comentario', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(nuevoComentario)
-        });
-
-        if (response.ok) {
-            cerrarVentanaComentario();
-            mostrarVentanaVerComentarios(idPublicacionSeleccionada); // Actualizar lista de comentarios
-        } else {
-            console.error("Error al crear el comentario");
-        }
-    } catch (error) {
-        console.error("Error en la solicitud:", error);
-    }
+// Mostrar el modal de edición con el contenido actual del comentario
+function mostrarVentanaEditarComentario(idComentario, contenido) {
+    document.getElementById('idComentarioEditar').value = idComentario;
+    document.getElementById('contenidoComentarioEditar').value = contenido;
+    document.getElementById("modalEditarComentario").style.display = "block";
+    document.getElementById("fondoModal").style.display = "block"; // Mostrar fondo
 }
 
-// Función para mostrar el modal de edición de comentario
-function mostrarVentanaEditarComentario(idComentario) {
-    idComentarioSeleccionado = idComentario;
-    const comentario = document.getElementById("contenidoComentario");
-    comentario.value = ""; // Aquí puedes poner el contenido actual del comentario si es necesario
-    mostrarVentanaComentario(idPublicacionSeleccionada);
+// Cerrar el modal de edición
+function cerrarVentanaEditarComentario() {
+    document.getElementById("modalEditarComentario").style.display = "none";
+    document.getElementById("fondoModal").style.display = "none"; // Ocultar fondo
 }
 
-// Función para editar un comentario existente
-async function editarComentario() {
-    const contenidoComentario = document.getElementById("contenidoComentario").value;
 
-    const comentarioEditado = {
-        idComentario: idComentarioSeleccionado,
-        idPublicacion: idPublicacionSeleccionada,
-        contenido: contenidoComentario
-    };
+// Función para enviar la edición de un comentario
+async function enviarEdicionComentario() {
+    const idComentario = document.getElementById('idComentarioEditar').value;
+    const contenidoComentario = document.getElementById('contenidoComentarioEditar').value;
+    const idUsuario = localStorage.getItem('id'); // ID del usuario que edita
+    const token = localStorage.getItem('token');
 
     try {
         const response = await fetch('https://localhost:44380/api/Comentario/actualizar-comentario', {
             method: 'PUT',
             headers: {
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(comentarioEditado)
+            body: JSON.stringify({
+                idComentario: parseInt(idComentario), // ID del comentario
+                idPublicacion: parseInt(idPublicacionSeleccionada), // ID de la publicación
+                contenido: contenidoComentario // Nuevo contenido del comentario
+            })
         });
 
         if (response.ok) {
-            cerrarVentanaComentario();
-            mostrarVentanaVerComentarios(idPublicacionSeleccionada); // Actualizar lista de comentarios
+            console.log("Comentario editado.");
+            cargarComentarios(idPublicacionSeleccionada); // Recargar comentarios después de editar
+            cerrarVentanaEditarComentario();
         } else {
-            console.error("Error al editar el comentario");
+            console.error("Error al editar el comentario:", response.statusText);
         }
     } catch (error) {
-        console.error("Error en la solicitud:", error);
+        console.error("Error en la solicitud de edición:", error);
     }
 }
 
+// Mostrar el modal de confirmación de eliminación
+function mostrarVentanaEliminarComentario(idComentario) {
+    document.getElementById('idComentarioEliminar').value = idComentario;
+    document.getElementById("modalEliminarComentario").style.display = "block";
+    document.getElementById("fondoModal").style.display = "block"; // Mostrar fondo
+}
+
+// Cerrar el modal de eliminación
+function cerrarVentanaEliminarComentario() {
+    document.getElementById("modalEliminarComentario").style.display = "none";
+    document.getElementById("fondoModal").style.display = "none"; // Ocultar fondo
+}
 // Función para eliminar un comentario
 async function eliminarComentario(idComentario) {
+    const token = localStorage.getItem('token');
+
+    if (!idComentario) {
+        console.error("ID de comentario no válido");
+        return; // Salir si no se tiene un ID válido
+    }
+
     try {
-        const response = await fetch(`https://localhost:44380/api/Comentario/eliminar-comentario/${idComentario}`, {
-            method: 'DELETE'
+        const response = await fetch(`https://localhost:44380/api/Comentario/eliminar-comentario?idComentario=${idComentario}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
         });
 
         if (response.ok) {
-            mostrarVentanaVerComentarios(idPublicacionSeleccionada); // Actualizar lista de comentarios
+            console.log("Comentario eliminado.");
+            cargarComentarios(idPublicacionSeleccionada); // Recargar comentarios después de eliminar
+            cerrarVentanaEliminarComentario(); // Cerrar el modal de confirmación
         } else {
-            console.error("Error al eliminar el comentario");
+            console.error("Error al eliminar el comentario:", response.statusText);
         }
     } catch (error) {
-        console.error("Error en la solicitud:", error);
+        console.error("Error en la solicitud de eliminación:", error);
     }
+}
+
+function confirmarEliminacionComentario() {
+    const idComentario = document.getElementById('idComentarioEliminar').value;
+    eliminarComentario(idComentario); // Llamamos a eliminarComentario con el ID
 }
 
 // Llama a la función al cargar la página

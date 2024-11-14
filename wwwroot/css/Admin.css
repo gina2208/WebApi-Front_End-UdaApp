@@ -12,7 +12,6 @@ body {
 }
 
 /* Header */
-/* Estilos para el header */
 header {
     background-color: #03ab87;
     color: white;
@@ -35,26 +34,24 @@ header {
         height: 100px;
     }
 
-#logoutButton {
+#Salir {
     border-radius: 10px;
     background-color: #03AB87;
-    border:   1px;
+    border: none;
     padding: 8px;
-    width: 130px;
+    width: 150px;
     color: white;
-    margin: 20px;
-    position: fixed;
-    position: absolute;
     font-weight: bold;
     font-size: 16px;
+    position: fixed;
+    top: 10px;
     right: 10px;
-    top: 50px;
+    cursor: pointer;
+    z-index: 10;
 }
 
-    #logoutButton:hover {
-        background-color: white;
-        color: #03ab87;
-        border-color: #03ab87;
+    #Salir:hover {
+        background-color: #028D64;
     }
 
 /* Main Section */
@@ -108,33 +105,33 @@ button {
 .modal {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: 50%; /* Centrado vertical */
+    left: 50%; /* Centrado horizontal */
+    transform: translate(-50%, -50%); /* Ajusta para el verdadero centro */
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 10;
     justify-content: center;
     align-items: center;
+    min-width: 300px; /* Evita que el modal sea muy pequeño */
+    max-width: 500px; /* Controla el ancho máximo del modal */
+    width: 100%;
 }
 
 .modal-content {
     background-color: white;
     padding: 20px;
     border-radius: 10px;
-    width: 300px;
     text-align: center;
     position: relative;
 }
 
-    /* Centrado de título */
     .modal-content h3 {
         margin: 0;
         font-size: 20px;
         font-weight: bold;
         color: #03ab87; /* Nuevo verde */
         text-align: center;
-        margin-top: 0; /* Asegura que el título esté en la parte superior del modal */
+        margin-top: 0;
     }
 
 /* Estilo de los botones en los modales */
@@ -154,8 +151,8 @@ select, button {
     font-size: 24px;
     cursor: pointer;
     color: #333;
-    padding: 0; /* Elimina padding extra */
-    margin: 0; /* Elimina margen */
+    padding: 0;
+    margin: 0;
 }
 
 /* Botón de suspender */
