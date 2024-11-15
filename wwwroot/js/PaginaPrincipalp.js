@@ -285,15 +285,24 @@ async function darLike(idPublicacion) {
             const data = await response.json();
             const likeCountSpan = document.querySelector(`.like-count[data-id="${idPublicacion}"]`);
             if (likeCountSpan) {
-                likeCountSpan.textContent = data.numeroLikes;
+                if (typeof data.numeroLikes === 'number') {
+                    // Usar el valor devuelto por la API si está disponible
+                    likeCountSpan.textContent = data.numeroLikes;
+                } else {
+                    // Ajuste manual basado en el estado de like
+                    const currentLikes = parseInt(likeCountSpan.textContent);
+                    const newLikes = data.likeStatus ? currentLikes = currentLikes + 1 : currentLikes + 1;
+                    likeCountSpan.textContent = newLikes;
+                }
             }
         } else {
-            console.error("Error:", response.statusText);
+            console.error("Error al dar like:", response.statusText);
         }
     } catch (error) {
         console.error('Error en la solicitud de like:', error);
     }
-}
+    }
+
 
 // Función para reportar una publicación
 async function reportarPublicacion() {

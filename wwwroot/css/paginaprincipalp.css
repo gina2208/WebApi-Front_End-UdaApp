@@ -1,4 +1,10 @@
-﻿/* Estilos generales */
+﻿/* ===== Estilos Globales ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -7,19 +13,77 @@ body {
     overflow-x: hidden;
 }
 
-/* Estilos del pie de página */
-.pie {
+/* ===== Encabezado General ===== */
+header {
     width: 100%;
-    height: 60px;
+    background-color: #03AB87;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Botones Generales ===== */
+button {
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+    button:hover {
+        transform: scale(1.05);
+    }
+
+    button:active {
+        transform: scale(0.95);
+    }
+
+/* ===== Estilo de Botones ===== */
+.primary-btn {
+    background-color: #03AB87;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+    .primary-btn:hover {
+        background-color: #028A6C;
+    }
+
+.secondary-btn {
+    background-color: white;
+    color: #03AB87;
+    border: 2px solid #03AB87;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+    .secondary-btn:hover {
+        background-color: #03AB87;
+        color: white;
+    }
+
+/* ===== Pie de Página ===== */
+footer {
+    width: 100%;
     background-color: #00E3B8;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
     position: fixed;
     bottom: 0;
     left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.1);
 }
-
 /* Estilos del menú */
 .menu {
     width: 60px;
@@ -27,16 +91,49 @@ body {
     top: 50%;
     transform: translateY(-50%);
     left: 100px;
-    display: none;
+    display: block; /* Cambié 'none' a 'block' para que el menú se muestre */
+    transition: all 0.5s ease-in-out; /* Suaviza la entrada del menú */
+    border-radius: 8px; /* Bordes redondeados */
 }
 
+    /* Estilos de los botones */
     .menu button {
-        width: 100%;
+        width: 70%;
         height: 50px;
         background-color: transparent;
         border: none;
-        margin-bottom: 50px;
+        margin-bottom: 20px; /* Menos espacio entre botones */
         cursor: pointer;
+        color: black; /* Color de texto */
+        font-size: 16px; /* Tamaño de fuente */
+        text-align: inherit; /* Alineación de texto */
+        padding-left: 20px; /* Espacio para el texto */
+        transition: all 0.3s ease; /* Transición suave para el hover */
+        border-radius: 5px; /* Bordes redondeados */
+    }
+
+        /* Animación de hover en los botones */
+        .menu button:hover {
+            transform: scale(1.05); /* Efecto de aumento */
+        }
+
+        /* Estilo cuando el botón está seleccionado */
+        .menu button.selected {
+            background-color: rgba(255, 255, 255, 0.1); /* Fondo claro al seleccionar */
+            border-left: 4px solid #ff6347; /* Borde rojo en la izquierda */
+            padding-left: 16px; /* Efecto de desplazamiento */
+        }
+
+    /* Menú visible y animado */
+    .menu.show {
+        display: block; /* Muestra el menú */
+        opacity: 1;
+    }
+
+    /* Si deseas esconder el menú con una animación suave */
+    .menu.hide {
+        display: none;
+        opacity: 0;
     }
 
 /* Estilos del logo */
@@ -114,6 +211,15 @@ input.barraInput2 {
     color: white;
     border: none;
     padding: 12px 20px;
+}
+
+.like.liked img {
+    filter: hue-rotate(45deg); /* Cambia el color del ícono para mostrar el estado "liked" */
+}
+
+button.like.liked {
+    background-color: #ffdddd;
+    cursor: default;
 }
 
 /* Contenedor de publicaciones */

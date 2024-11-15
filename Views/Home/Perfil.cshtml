@@ -13,9 +13,9 @@
     <button class="paginapb" onclick="window.location.href='@Url.Action("PaginaPrincipal", "Home")'">Pagina Principal</button>
 
     <div class="contenPer">
-        <div class="cedula">123456789</div>
-        <div class="correo">usuario@ejemplo.com</div>
-        <div class="nombre">Juan Pérez</div>
+        <div class="cedula"></div>
+        <div class="correo"></div>
+        <div class="nombre"></div>
         <button class="editar" onclick="mostrarVentanaEmergenteEditar()">Editar</button>
         <button class="eliminaru" onclick="mostrarVentanaEmergenteEliminar()">Eliminar Usuario</button>
     </div>
@@ -32,9 +32,9 @@
                 <p>Editar Datos del Usuario</p>
                 <form id="formularioEditarUsuario" action="@Url.Action("EditarUsuario", "Home")" method="post">
                     <input type="hidden" name="Id" id="idUsuario" value="1" />
-                    <input type="text" id="nombreUsuario" name="Nombre" placeholder="NOMBRE" value="Juan" required>
-                    <input type="text" id="cedulaUsuario" name="Cedula" placeholder="CEDULA" value="123456789" required>
-                    <input type="email" id="correoUsuario" name="Email" placeholder="CORREO" value="usuario@ejemplo.com" required>
+                    <input type="text" id="nombreUsuario" name="Nombre" placeholder="NOMBRE" value="" required>
+                    <input type="text" id="cedulaUsuario" name="Cedula" placeholder="CEDULA" value="" required>
+                    <input type="email" id="correoUsuario" name="Email" placeholder="CORREO" value="" required>
                     <div class="botones">
                         <button type="button" onclick="cerrarVentanaEmergenteEditarUsuario()" class="cancelar">Cancelar</button>
                         <button type="submit">Actualizar</button>

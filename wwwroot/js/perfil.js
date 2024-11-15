@@ -68,7 +68,7 @@ async function cargarPerfilUsuario() {
         // Asigna los datos a los elementos correspondientes en el HTML
         document.querySelector('.cedula').innerText = data.cedula;
         document.querySelector('.correo').innerText = data.email;
-        document.querySelector('.nombre').innerText = `${data.nombre} ${data.apellido}`;
+        document.querySelector('.nombre').innerText = data.nombre;
         document.getElementById('idUsuario').value = data.idUsuario;
         document.getElementById('nombreUsuario').value = data.nombre;
         document.getElementById('cedulaUsuario').value = data.cedula;
