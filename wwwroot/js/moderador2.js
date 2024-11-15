@@ -66,7 +66,7 @@ function mostrarPublicacionesReportadas(reportesDto) {
             <p><strong>Motivo Reporte:</strong> ${reporte.motivoReporte}</p>
             <p><strong>Usuario Publicador:</strong> ${reporte.nombreUsuarioPublicacador}</p>
             <div class="botonesR">
-               <button onclick="confirmarEliminarPublicacion(${reporte.idPublicacionReportada})">Eliminar Publicación</button>
+               <button onclick="confirmarEliminarPublicacion(${reporte.idPublicacionReportada}, ${reporte.idReporte})">Eliminar Publicación</button>
                 <button onclick="confirmarEliminarReporte(${reporte.idReporte})">Eliminar Reporte</button>
             </div>
         `;
@@ -85,24 +85,18 @@ function cerrarVentanaEmergenteReportes() {
     document.getElementById("modal").style.display = "none";
 }
 
-function mostrarVentanaEmergenteDescargarReportes() {
-    document.getElementById("descargarReportesModal").style.display = "block";
-}
-
-function cerrarModalDescargarReportes() {
-    document.getElementById("descargarReportesModal").style.display = "none";
-}
-
 // Funciones para confirmar eliminación de publicaciones y reportes
-function confirmarEliminarPublicacion(idPublicacion) {
-    if (!idPublicacion) {
-        console.error("ID de publicación no válido:", idPublicacion);
-        alert("Error: No se pudo obtener el ID de la publicación a eliminar.");
+
+function confirmarEliminarPublicacion(idPublicacion, idReporte) {
+    if (!idReporte) {
+        console.error("ID de reporte no válido:", idReporte);
+        alert("Error: No se pudo obtener el ID del reporte.");
         return;
     }
 
-    window.idPublicacionAEliminar = idPublicacion;
-    console.log("Publicación seleccionada para eliminar, ID:", idPublicacion);
+    // Guardamos el idReporte para usarlo en la eliminación
+    window.idReporteAEliminar = idReporte;
+    console.log("Reporte seleccionado para eliminar, ID:", idReporte);
     document.getElementById("eliminarPublicacionModal").style.display = "block";
 }
 
@@ -120,11 +114,11 @@ function cerrarModalEliminarReporte() {
     document.getElementById("eliminarReporteModal").style.display = "none";
 }
 async function eliminarPublicacion() {
-    const idPublicacion = window.idPublicacionAEliminar;
+    const idReporte = window.idReporteAEliminar;
 
-    if (!idPublicacion) {
-        console.error("No se encontró el ID de la publicación a eliminar.");
-        alert("Error: No se encontró la publicación a eliminar.");
+    if (!idReporte) {
+        console.error("No se encontró el ID del reporte a eliminar.");
+        alert("Error: No se encontró el reporte a eliminar.");
         return;
     }
 
@@ -132,8 +126,15 @@ async function eliminarPublicacion() {
         const idUsuario = getCookie('id'); // Obtener el ID del moderador desde las cookies
         const token = getCookie('token'); // Obtener el token desde las cookies
 
+        if (!idUsuario || !token) {
+            alert("ID de usuario o token no encontrados.");
+            return;
+        }
 
-        const response = await fetch(`https://webapiudapp.somee.com/api/Moderador/eliminar-publicacion-mod?idPublicacion=${idPublicacion}&idUsuario=${idUsuario}`, {
+        // Utilizamos `idReporte` en lugar de `idPublicacion`
+        const url = `https://webapiudapp.somee.com/api/Moderador/eliminar-publicacion-mod?idReporte=${idReporte}&idUsuario=${idUsuario}`;
+
+        const response = await fetch(url, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -150,14 +151,13 @@ async function eliminarPublicacion() {
         }
 
         cerrarModalEliminarPublicacion();
-        obtenerPublicacionesReportadas(); // Actualizar la lista
+        obtenerPublicacionesReportadas(); // Actualizar la lista de publicaciones reportadas
 
     } catch (error) {
         console.error("Error en la solicitud:", error);
         alert("Ocurrió un error al intentar eliminar la publicación.");
     }
 }
-
 
 // Función para eliminar un reporte
 async function eliminarReporte() {

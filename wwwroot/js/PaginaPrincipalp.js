@@ -117,10 +117,16 @@ async function enviarPublicacion() {
     }
 }
 
-// Función para cargar publicaciones
 async function cargarPublicaciones() {
-    const token = getCookie('token'); // Cambiado de localStorage a cookies
-    const idUsuario = getCookie('id'); // Cambiado de localStorage a cookies
+    const token = getCookie('token');
+    const idUsuario = parseInt(getCookie('id')); // Asegúrate de que sea un número
+
+
+    if (!idUsuario || isNaN(idUsuario)) {
+        console.error('El ID de usuario no se obtuvo correctamente');
+        return;
+    }
+
     const url = 'https://udapphosting-001-site1.ktempurl.com/api/Publicaciones/pagina-principal';
 
     try {
@@ -131,47 +137,57 @@ async function cargarPublicaciones() {
             }
         });
 
-        if (response.ok) {
-            const publicaciones = await response.json();
-            const contenedorPublicaciones = document.getElementById('publicacionesContainer');
-            contenedorPublicaciones.innerHTML = '';
-
-            publicaciones.forEach(publicacion => {
-                const publicacionHTML = `
-          <div class="publicacioncontainer">
-            <div class="usuarioPerfil">
-                <img src="/css/imagenes/Perfil.png" class="usu" alt="Perfil de usuario">
-                <p class="usuarioP">${publicacion.nombreUsuario}</p>
-            </div>
-            <p class="fechaPublicacion">Publicado el: ${new Date(publicacion.fechaPublicacion).toLocaleDateString()}</p>
-            <div class="mensajeP">${publicacion.titulo}</div>
-            <button class="repor" onclick="mostrarVentanaEmergenteReporte(${publicacion.idPublicacion})">Reportar</button>
-            <div class="interaccion">
-                <button class="like" onclick="darLike(${publicacion.idPublicacion})">
-                    <img src="/css/imagenes/like.png" alt="Like"> 
-                    <span class="like-count" data-id="${publicacion.idPublicacion}">${publicacion.numeroLikes}</span>
-                </button>
-                <button class="ver-comentarios" onclick="mostrarVentanaVerComentarios(${publicacion.idPublicacion})">
-                    <img src="/css/imagenes/comentario.png" alt="Comentarios"> 
-                </button>
-                <button class="comentar" onclick="mostrarVentanaComentario(${publicacion.idPublicacion})">
-                    <img src="/css/imagenes/comentario.png" alt="Comentar"> 
-                </button>
-                <button class="editar" onclick="mostrarVentanaEditar(${publicacion.idPublicacion}, '${publicacion.titulo}')">Editar</button>
-                <button class="eliminar" onclick="mostrarVentanaEliminar(${publicacion.idPublicacion})">Eliminar</button>
-            </div>
-          </div>
-        `;
-                contenedorPublicaciones.insertAdjacentHTML('beforeend', publicacionHTML);
-            });
-
-        } else {
-            console.error("Error:", response.statusText);
+        if (!response.ok) {
+            console.error("Error al obtener publicaciones:", response.statusText);
+            return;
         }
+
+        const publicaciones = await response.json();
+        console.log('Respuesta completa de publicaciones:', publicaciones); // Verificar estructura
+
+        const contenedorPublicaciones = document.getElementById('publicacionesContainer');
+        contenedorPublicaciones.innerHTML = '';
+
+        publicaciones.forEach(publicacion => {
+
+            const esCreador = publicacion.idUsuarioPublicador ? idUsuario === parseInt(publicacion.idUsuarioPublicador) : false;
+
+
+            const publicacionHTML = `
+                <div class="publicacioncontainer">
+                    <div class="usuarioPerfil">
+                        <img src="/css/imagenes/Perfil.png" class="usu" alt="Perfil de usuario">
+                        <p class="usuarioP">${publicacion.nombreUsuario}</p>
+                    </div>
+                    <p class="fechaPublicacion">Publicado el: ${new Date(publicacion.fechaPublicacion).toLocaleDateString()}</p>
+                    <div class="mensajeP">${publicacion.titulo}</div>
+                    <button class="repor" onclick="mostrarVentanaEmergenteReporte(${publicacion.idPublicacion})">Reportar</button>
+                    <div class="interaccion">
+                        <button class="like" onclick="darLike(${publicacion.idPublicacion})">
+                            <img src="/css/imagenes/like.png" alt="Like"> 
+                            <span class="like-count" data-id="${publicacion.idPublicacion}">${publicacion.numeroLikes}</span>
+                        </button>
+                        <button class="ver-comentarios" onclick="mostrarVentanaVerComentarios(${publicacion.idPublicacion})">
+                            <img src="/css/imagenes/comentario.png" alt="Comentarios"> 
+                        </button>
+                        <button class="comentar" onclick="mostrarVentanaComentario(${publicacion.idPublicacion})">
+                            <img src="/css/imagenes/comentario.png" alt="Comentar"> 
+                        </button>
+                        ${esCreador ? `
+                            <button class="editar" onclick="mostrarVentanaEditar(${publicacion.idPublicacion}, '${publicacion.titulo}')">Editar</button>
+                            <button class="eliminar" onclick="mostrarVentanaEliminar(${publicacion.idPublicacion})">Eliminar</button>
+                        ` : ''}
+                    </div>
+                </div>`;
+            contenedorPublicaciones.insertAdjacentHTML('beforeend', publicacionHTML);
+        });
+
     } catch (error) {
         console.error('Error al cargar las publicaciones:', error);
     }
 }
+
+
 
 // Función para dar like a una publicación
 async function darLike(idPublicacion) {
@@ -390,10 +406,16 @@ function mostrarVentanaVerComentarios(idPublicacion) {
 // Función para cerrar el modal de ver comentarios
 function cerrarVentanaVerComentarios() {
     document.getElementById("modal4").style.display = "none";
-}
-async function cargarComentarios(idPublicacion) {
+} async function cargarComentarios(idPublicacion) {
+    const token = getCookie('token');
+    const idUsuario = getCookie('id');
     try {
-        const response = await fetch(`https://udapphosting-001-site1.ktempurl.com/api/Comentario/publicacion/${idPublicacion}`);
+        const response = await fetch(`https://udapphosting-001-site1.ktempurl.com/api/Comentario/publicacion/${idPublicacion}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
 
         if (!response.ok) {
             throw new Error(`Error en la solicitud: ${response.status} - ${response.statusText}`);
@@ -403,20 +425,22 @@ async function cargarComentarios(idPublicacion) {
         const listaComentarios = document.getElementById("listaComentarios");
         listaComentarios.innerHTML = "";
 
-        // Asegurarse de que los comentarios sean de la publicación correcta
         const comentariosDeLaPublicacion = comentarios.filter(comentario => comentario.idPublicacion === idPublicacion);
 
         if (comentariosDeLaPublicacion.length > 0) {
             comentariosDeLaPublicacion.forEach(comentario => {
-                // Formatear la fecha de creación
+                const esCreadorComentario = idUsuario == comentario.idUsuario; // Verifica si es el creador
                 const fechaFormateada = new Date(comentario.fechaCreacion).toLocaleString();
 
                 listaComentarios.innerHTML += `
                     <div class="comentario">
                         <p><strong>${comentario.nombreUsuarioComentador}</strong> - ${fechaFormateada}</p>
                         <p>${comentario.contenido}</p>
-                       <button onclick="mostrarVentanaEditarComentario(${comentario.idComentario}, '${comentario.contenido}')">Editar</button>
-                    <button onclick="mostrarVentanaEliminarComentario(${comentario.idComentario})">Eliminar</button> </div>`;
+                        ${esCreadorComentario ? `
+                            <button onclick="mostrarVentanaEditarComentario(${comentario.idComentario}, '${comentario.contenido}')">Editar</button>
+                            <button onclick="mostrarVentanaEliminarComentario(${comentario.idComentario})">Eliminar</button>
+                        ` : ''}
+                    </div>`;
             });
         } else {
             listaComentarios.innerHTML = "<p>No hay comentarios disponibles aún. ¡Sé el primero en comentar!</p>";
@@ -425,6 +449,7 @@ async function cargarComentarios(idPublicacion) {
         console.error("Error al cargar comentarios:", error);
     }
 }
+
 
 // Mostrar el modal de edición con el contenido actual del comentario
 function mostrarVentanaEditarComentario(idComentario, contenido) {

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "UbqHqXRvYh0Ja72tVrGhwvr5UBhnA4/kPEHIMsS077c=",
+  "Hash": "SjRYzWgJeNj+rH7AQwhiUFlBjArilJpXtKM5fJfVIY0=",
   "Source": "WebApi Frond_End UdaApp",
   "BasePath": "_content/WebApi Frond_End UdaApp",
   "Mode": "Default",
@@ -775,6 +775,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\PaginaPrincipalp.js"
+    },
+    {
+      "Identity": "C:\\Users\\ginna\\Documents\\GitHub\\WebApi Frond_End UdaApp\\WebApi Frond_End UdaApp\\wwwroot\\js\\pagp.js",
+      "SourceId": "WebApi Frond_End UdaApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ginna\\Documents\\GitHub\\WebApi Frond_End UdaApp\\WebApi Frond_End UdaApp\\wwwroot\\",
+      "BasePath": "_content/WebApi Frond_End UdaApp",
+      "RelativePath": "js/pagp.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\pagp.js"
     },
     {
       "Identity": "C:\\Users\\ginna\\Documents\\GitHub\\WebApi Frond_End UdaApp\\WebApi Frond_End UdaApp\\wwwroot\\js\\perfil.js",
