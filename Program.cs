@@ -27,22 +27,19 @@ app.UseStatusCodePages(context =>
     switch (response.StatusCode)
     {
         case 401:
-            response.Redirect("/Account/Login");  // Página de inicio de sesión
+            response.Redirect("/Home/Error401");  // Página de inicio de sesión
             break;
         case 403:
-            response.Redirect("/Error/AccessDenied");  // Página de acceso denegado
+            response.Redirect("/Home/Error403");  // Página de acceso denegado
             break;
         case 404:
-            response.Redirect("/Error/NotFound");  // Página de no encontrado
+            response.Redirect("/Home/Error404");  // Página de no encontrado
             break;
         case 500:
-            response.Redirect("/Error/InternalServerError");  // Página de error interno
+            response.Redirect("/Home/Error500");  // Página de error interno
             break;
         case 400:
-            response.Redirect("/Error/BadRequest");  // Página de solicitud incorrecta
-            break;
-        case 429:
-            response.Redirect("/Error/TooManyRequests");  // Página de demasiadas solicitudes
+            response.Redirect("/Home/Error400");  // Página de solicitud incorrecta
             break;
     }
     return Task.CompletedTask;

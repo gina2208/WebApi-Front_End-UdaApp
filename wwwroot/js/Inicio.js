@@ -49,7 +49,8 @@ async function iniciarSesion(event) {
         }
     } catch (error) {
         console.error("Error en la solicitud:", error);
-        document.getElementById("EmailError").innerText = "Error al iniciar sesión. Intenta de nuevo.";
+        document.getElementById("EmailError").innerText = "Falla en el inicio de sesión " + error;
+
     } finally {
         // Ocultar el estado de carga
         showLoadingState(false);
