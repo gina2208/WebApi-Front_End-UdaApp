@@ -45,7 +45,7 @@
     z-index: 2;
 }
 
-#reporteA, #reporteD, #reporteS {
+.boton {
     border-radius: 10px;
     background-color: #03AB87;
     border: none;
@@ -107,14 +107,14 @@ h1 {
     cursor: pointer;
 }
 
-.desca {
+.botonD, .botonE {
     border-radius: 10px;
     background-color: #03AB87;
     border: none;
-    padding: 8px;
+    padding: 5px;
     width: 130px;
     color: white;
-    margin: 20px;
+    margin: 6px;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 10px;
 }
