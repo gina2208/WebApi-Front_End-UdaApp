@@ -18,13 +18,8 @@
         </div>
     </div>
 
-    <div class="menu" id="menu">
-        <button><img src="~/css/imagenes/perfil.png" class="perfil" height="80" width="80" onclick="window.location.href='@Url.Action("Perfil", "Home")'">Perfil</button>
-        <button><img src="~/css/imagenes/publicacion.png" class="publicacion" height="80" width="80" onclick="mostrarVentanaEmergentePublicacion()">Hacer publicacion</button>
-        <button><img src="~/css/imagenes/moderar.png" class="moderar" height="80" width="80" onclick="window.location.href='@Url.Action("Moderador2","Home")'">Moderador</button>
-        <button><img src="~/css/imagenes/admin.png" class="moderar" height="80" width="80" onclick="window.location.href='@Url.Action("Admin","Home")'">Admin</button>
-        <button onclick="window.location.href='@Url.Action("Gerente","Home")'">Gerente</button>
-    </div>
+    <!-- Contenedor del menú donde se generarán los botones dinámicamente -->
+    <div class="menu" id="menu"></div>
 
     <!-- Contenedor para mostrar publicaciones -->
     <div class="publicaciones-container" id="publicacionesContainer"></div>
@@ -74,11 +69,9 @@
                 <input type="hidden" id="idPublicacionComentario" value="" />
                 <textarea id="contenidoComentario" placeholder="Escribe tu comentario aquí..." required></textarea>
                 <button type="button" onclick="enviarComentario()">Comentar</button>
-
             </form>
         </div>
     </div>
-
 
     <!-- Ventana emergente para ver comentarios de una publicación -->
     <div id="modal4" class="modal4" style="display: none;">
@@ -89,7 +82,6 @@
         </div>
     </div>
 
-    
     <!-- Modal para Editar -->
     <div id="modal5" class="modal">
         <div class="modal-content">
@@ -98,8 +90,6 @@
             <input type="hidden" id="idPublicacionEditar">
             <label for="tituloEditar">Título:</label>
             <input type="text" id="tituloEditar" required>
-     
-        
             <button class="boton" onclick="enviarEdicion()">Guardar Cambios</button>
             <button class="boton" onclick="cerrarVentanaEditar()">Cancelar</button>
         </div>
@@ -120,21 +110,21 @@
     <!-- Modal para Editar Comentario -->
     <div id="modalEditarComentario" class="modal">
         <div class="modal-content">
-        <h3>Editar Comentario</h3>
-        <input type="hidden" id="idComentarioEditar" />
-        <textarea id="contenidoComentarioEditar" rows="4" cols="50" placeholder="Edita tu comentario..."></textarea><br><br>
-        <button class="boton" type="button" onclick="enviarEdicionComentario()">Guardar Cambios</button>
-        <button class="boton" type="button" onclick="cerrarVentanaEditarComentario()">Cancelar</button>
+            <h3>Editar Comentario</h3>
+            <input type="hidden" id="idComentarioEditar" />
+            <textarea id="contenidoComentarioEditar" rows="4" cols="50" placeholder="Edita tu comentario..."></textarea><br><br>
+            <button class="boton" type="button" onclick="enviarEdicionComentario()">Guardar Cambios</button>
+            <button class="boton" type="button" onclick="cerrarVentanaEditarComentario()">Cancelar</button>
         </div>
     </div>
 
     <!-- Modal para Confirmar Eliminación de Comentario -->
     <div id="modalEliminarComentario" class="modal">
         <div class="modal-content">
-        <h3>Eliminar Comentario</h3>
-        <input type="hidden" id="idComentarioEliminar" />
-        <p>¿Estás seguro de que deseas eliminar este comentario?</p>
-            <button class="boton" type="button" onclick=confirmarEliminacionComentario()>Sí, eliminar</button>
+            <h3>Eliminar Comentario</h3>
+            <input type="hidden" id="idComentarioEliminar" />
+            <p>¿Estás seguro de que deseas eliminar este comentario?</p>
+            <button class="boton" type="button" onclick="confirmarEliminacionComentario()">Sí, eliminar</button>
             <button class="boton" type="button" onclick="cerrarVentanaEliminarComentario()">Cancelar</button>
         </div>
     </div>
@@ -142,5 +132,5 @@
     <!-- Fondo para oscurecer el contenido detrás del modal (opcional) -->
     <div id="fondoModal"></div>
 
-    <script src="/js/pagp.js"></script>
+    <script src="/js/paginaprincipalp.js"></script>
 </body>

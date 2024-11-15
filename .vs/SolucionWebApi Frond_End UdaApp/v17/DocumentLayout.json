@@ -1,37 +1,45 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Frond_End-UdaApp\\",
+  "WorkspaceRootPath": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Front_End-UdaApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1342ACB5-820F-43F5-AA2B-5446CEA0FDFD}|WebApi Frond_End UdaApp.csproj|c:\\users\\usuario\\documents\\github\\webapi-frond_end-udaapp\\views\\home\\perfil.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{1342ACB5-820F-43F5-AA2B-5446CEA0FDFD}|WebApi Frond_End UdaApp.csproj|c:\\users\\usuario\\documents\\github\\webapi-front_end-udaapp\\views\\home\\paginaprincipal.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1342ACB5-820F-43F5-AA2B-5446CEA0FDFD}|WebApi Frond_End UdaApp.csproj|solutionrelative:views\\home\\paginaprincipal.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1342ACB5-820F-43F5-AA2B-5446CEA0FDFD}|WebApi Frond_End UdaApp.csproj|c:\\users\\usuario\\documents\\github\\webapi-front_end-udaapp\\wwwroot\\js\\paginaprincipalp.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{1342ACB5-820F-43F5-AA2B-5446CEA0FDFD}|WebApi Frond_End UdaApp.csproj|solutionrelative:wwwroot\\js\\paginaprincipalp.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1342ACB5-820F-43F5-AA2B-5446CEA0FDFD}|WebApi Frond_End UdaApp.csproj|c:\\users\\usuario\\documents\\github\\webapi-front_end-udaapp\\views\\home\\perfil.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{1342ACB5-820F-43F5-AA2B-5446CEA0FDFD}|WebApi Frond_End UdaApp.csproj|solutionrelative:views\\home\\perfil.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1342ACB5-820F-43F5-AA2B-5446CEA0FDFD}|WebApi Frond_End UdaApp.csproj|c:\\users\\usuario\\documents\\github\\webapi-frond_end-udaapp\\views\\home\\inicio.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{1342ACB5-820F-43F5-AA2B-5446CEA0FDFD}|WebApi Frond_End UdaApp.csproj|c:\\users\\usuario\\documents\\github\\webapi-front_end-udaapp\\views\\home\\inicio.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{1342ACB5-820F-43F5-AA2B-5446CEA0FDFD}|WebApi Frond_End UdaApp.csproj|solutionrelative:views\\home\\inicio.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1342ACB5-820F-43F5-AA2B-5446CEA0FDFD}|WebApi Frond_End UdaApp.csproj|c:\\users\\usuario\\documents\\github\\webapi-frond_end-udaapp\\wwwroot\\js\\perfil.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{1342ACB5-820F-43F5-AA2B-5446CEA0FDFD}|WebApi Frond_End UdaApp.csproj|c:\\users\\usuario\\documents\\github\\webapi-front_end-udaapp\\wwwroot\\js\\perfil.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{1342ACB5-820F-43F5-AA2B-5446CEA0FDFD}|WebApi Frond_End UdaApp.csproj|solutionrelative:wwwroot\\js\\perfil.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1342ACB5-820F-43F5-AA2B-5446CEA0FDFD}|WebApi Frond_End UdaApp.csproj|c:\\users\\usuario\\documents\\github\\webapi-frond_end-udaapp\\wwwroot\\css\\perfil.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "AbsoluteMoniker": "D:0:0:{1342ACB5-820F-43F5-AA2B-5446CEA0FDFD}|WebApi Frond_End UdaApp.csproj|c:\\users\\usuario\\documents\\github\\webapi-front_end-udaapp\\wwwroot\\css\\perfil.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{1342ACB5-820F-43F5-AA2B-5446CEA0FDFD}|WebApi Frond_End UdaApp.csproj|solutionrelative:wwwroot\\css\\perfil.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1342ACB5-820F-43F5-AA2B-5446CEA0FDFD}|WebApi Frond_End UdaApp.csproj|c:\\users\\usuario\\documents\\github\\webapi-frond_end-udaapp\\wwwroot\\js\\inicio.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{1342ACB5-820F-43F5-AA2B-5446CEA0FDFD}|WebApi Frond_End UdaApp.csproj|c:\\users\\usuario\\documents\\github\\webapi-front_end-udaapp\\wwwroot\\js\\inicio.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{1342ACB5-820F-43F5-AA2B-5446CEA0FDFD}|WebApi Frond_End UdaApp.csproj|solutionrelative:wwwroot\\js\\inicio.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1342ACB5-820F-43F5-AA2B-5446CEA0FDFD}|WebApi Frond_End UdaApp.csproj|c:\\users\\usuario\\documents\\github\\webapi-frond_end-udaapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1342ACB5-820F-43F5-AA2B-5446CEA0FDFD}|WebApi Frond_End UdaApp.csproj|c:\\users\\usuario\\documents\\github\\webapi-front_end-udaapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1342ACB5-820F-43F5-AA2B-5446CEA0FDFD}|WebApi Frond_End UdaApp.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1342ACB5-820F-43F5-AA2B-5446CEA0FDFD}|WebApi Frond_End UdaApp.csproj|c:\\users\\usuario\\documents\\github\\webapi-frond_end-udaapp\\views\\home\\registro.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{1342ACB5-820F-43F5-AA2B-5446CEA0FDFD}|WebApi Frond_End UdaApp.csproj|c:\\users\\usuario\\documents\\github\\webapi-front_end-udaapp\\views\\home\\registro.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{1342ACB5-820F-43F5-AA2B-5446CEA0FDFD}|WebApi Frond_End UdaApp.csproj|solutionrelative:views\\home\\registro.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1342ACB5-820F-43F5-AA2B-5446CEA0FDFD}|WebApi Frond_End UdaApp.csproj|c:\\users\\usuario\\documents\\github\\webapi-frond_end-udaapp\\wwwroot\\js\\registro.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{1342ACB5-820F-43F5-AA2B-5446CEA0FDFD}|WebApi Frond_End UdaApp.csproj|c:\\users\\usuario\\documents\\github\\webapi-front_end-udaapp\\wwwroot\\js\\registro.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{1342ACB5-820F-43F5-AA2B-5446CEA0FDFD}|WebApi Frond_End UdaApp.csproj|solutionrelative:wwwroot\\js\\registro.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     }
   ],
@@ -42,7 +50,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,37 +58,61 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "PaginaPrincipal.cshtml",
+              "DocumentMoniker": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Front_End-UdaApp\\Views\\Home\\PaginaPrincipal.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\PaginaPrincipal.cshtml",
+              "ToolTip": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Front_End-UdaApp\\Views\\Home\\PaginaPrincipal.cshtml",
+              "RelativeToolTip": "Views\\Home\\PaginaPrincipal.cshtml",
+              "ViewState": "AQIAAGIAAAAAAAAAAAAkwIgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-15T17:48:56.767Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PaginaPrincipalp.js",
+              "DocumentMoniker": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Front_End-UdaApp\\wwwroot\\js\\PaginaPrincipalp.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\PaginaPrincipalp.js",
+              "ToolTip": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Front_End-UdaApp\\wwwroot\\js\\PaginaPrincipalp.js",
+              "RelativeToolTip": "wwwroot\\js\\PaginaPrincipalp.js",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAE0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-11-15T17:47:49.657Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "perfil.js",
-              "DocumentMoniker": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Frond_End-UdaApp\\wwwroot\\js\\perfil.js",
+              "DocumentMoniker": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Front_End-UdaApp\\wwwroot\\js\\perfil.js",
               "RelativeDocumentMoniker": "wwwroot\\js\\perfil.js",
-              "ToolTip": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Frond_End-UdaApp\\wwwroot\\js\\perfil.js",
+              "ToolTip": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Front_End-UdaApp\\wwwroot\\js\\perfil.js",
               "RelativeToolTip": "wwwroot\\js\\perfil.js",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAEgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-10-30T04:57:50.574Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-30T04:57:50.574Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Perfil.css",
-              "DocumentMoniker": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Frond_End-UdaApp\\wwwroot\\css\\Perfil.css",
+              "DocumentMoniker": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Front_End-UdaApp\\wwwroot\\css\\Perfil.css",
               "RelativeDocumentMoniker": "wwwroot\\css\\Perfil.css",
-              "ToolTip": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Frond_End-UdaApp\\wwwroot\\css\\Perfil.css",
+              "ToolTip": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Front_End-UdaApp\\wwwroot\\css\\Perfil.css",
               "RelativeToolTip": "wwwroot\\css\\Perfil.css",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-10-30T04:57:41.945Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-30T04:57:41.945Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Perfil.cshtml",
-              "DocumentMoniker": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Frond_End-UdaApp\\Views\\Home\\Perfil.cshtml",
+              "DocumentMoniker": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Front_End-UdaApp\\Views\\Home\\Perfil.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Perfil.cshtml",
-              "ToolTip": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Frond_End-UdaApp\\Views\\Home\\Perfil.cshtml",
+              "ToolTip": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Front_End-UdaApp\\Views\\Home\\Perfil.cshtml",
               "RelativeToolTip": "Views\\Home\\Perfil.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAEAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -89,37 +121,35 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Inicio.cshtml",
-              "DocumentMoniker": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Frond_End-UdaApp\\Views\\Home\\Inicio.cshtml",
+              "DocumentMoniker": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Front_End-UdaApp\\Views\\Home\\Inicio.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Inicio.cshtml",
-              "ToolTip": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Frond_End-UdaApp\\Views\\Home\\Inicio.cshtml",
+              "ToolTip": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Front_End-UdaApp\\Views\\Home\\Inicio.cshtml",
               "RelativeToolTip": "Views\\Home\\Inicio.cshtml",
               "ViewState": "AQIAAAwAAAAAAAAAAAAUwC8AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-30T03:42:57.896Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-30T03:42:57.896Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Inicio.js",
-              "DocumentMoniker": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Frond_End-UdaApp\\wwwroot\\js\\Inicio.js",
+              "DocumentMoniker": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Front_End-UdaApp\\wwwroot\\js\\Inicio.js",
               "RelativeDocumentMoniker": "wwwroot\\js\\Inicio.js",
-              "ToolTip": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Frond_End-UdaApp\\wwwroot\\js\\Inicio.js",
+              "ToolTip": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Front_End-UdaApp\\wwwroot\\js\\Inicio.js",
               "RelativeToolTip": "wwwroot\\js\\Inicio.js",
               "ViewState": "AQIAABEAAAAAAAAAAAAQwCkAAAA+AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-10-30T03:54:47.074Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-30T03:54:47.074Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Frond_End-UdaApp\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Front_End-UdaApp\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Frond_End-UdaApp\\Program.cs",
+              "ToolTip": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Front_End-UdaApp\\Program.cs",
               "RelativeToolTip": "Program.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -127,11 +157,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "Registro.cshtml",
-              "DocumentMoniker": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Frond_End-UdaApp\\Views\\Home\\Registro.cshtml",
+              "DocumentMoniker": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Front_End-UdaApp\\Views\\Home\\Registro.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Registro.cshtml",
-              "ToolTip": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Frond_End-UdaApp\\Views\\Home\\Registro.cshtml",
+              "ToolTip": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Front_End-UdaApp\\Views\\Home\\Registro.cshtml",
               "RelativeToolTip": "Views\\Home\\Registro.cshtml",
               "ViewState": "AQIAABgAAAAAAAAAAAAAAEcAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -139,11 +169,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "Registro.js",
-              "DocumentMoniker": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Frond_End-UdaApp\\wwwroot\\js\\Registro.js",
+              "DocumentMoniker": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Front_End-UdaApp\\wwwroot\\js\\Registro.js",
               "RelativeDocumentMoniker": "wwwroot\\js\\Registro.js",
-              "ToolTip": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Frond_End-UdaApp\\wwwroot\\js\\Registro.js",
+              "ToolTip": "C:\\Users\\usuario\\Documents\\GitHub\\WebApi-Front_End-UdaApp\\wwwroot\\js\\Registro.js",
               "RelativeToolTip": "wwwroot\\js\\Registro.js",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAHUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",

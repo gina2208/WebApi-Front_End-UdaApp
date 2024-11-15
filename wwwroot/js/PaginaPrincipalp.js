@@ -1,10 +1,81 @@
 ﻿
-// Función para obtener el token de la cookie
-function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
+document.addEventListener('DOMContentLoaded', () => {
+    // Obtener el token desde las cookies
+    const token = getCookie('token');
+
+    if (token) {
+        try {
+            // Decodificar el token
+            const payload = JSON.parse(atob(token.split('.')[1]));
+            console.log('Payload del token:', payload);
+
+            // Obtener el rol desde el token decodificado
+            const roleName = payload.roleName;
+
+            // Mostrar botones según el rol
+            mostrarBotonesPorRol(roleName);
+        } catch (error) {
+            console.error('Error al procesar el token:', error);
+        }
+    } else {
+        console.error('Token no encontrado.');
+    }
+});
+
+// Función para mostrar botones según el rol
+function mostrarBotonesPorRol(roleName) {
+    const menu = document.getElementById('menu');
+
+    // Mostrar botones básicos (disponibles para todos)
+    const perfilButton = crearBoton('perfil.png', 'Perfil', () => {
+        window.location.href = '/Home/Perfil';
+    });
+    const publicacionButton = crearBoton('publicacion.png', 'Hacer publicación', () => {
+        mostrarVentanaEmergentePublicacion();
+    });
+
+    menu.appendChild(perfilButton);
+    menu.appendChild(publicacionButton);
+
+    // Mostrar botones específicos por rol
+    if (roleName === 'Admin') {
+        const adminButton = crearBoton('admin.png', 'Admin', () => {
+            window.location.href = '/Home/Admin';
+        });
+        menu.appendChild(adminButton);
+    } else if (roleName === 'Moderador') {
+        const moderadorButton = crearBoton('moderar.png', 'Moderador', () => {
+            window.location.href = '/Home/Moderador2';
+        });
+        menu.appendChild(moderadorButton);
+    } else if (roleName === 'Gerente') {
+        const gerenteButton = crearBoton('gerente.png', 'Gerente', () => {
+            window.location.href = '/Home/Gerente';
+        });
+        menu.appendChild(gerenteButton);
+    }
+
+    // Si es rol general, no se agregan botones adicionales.
 }
+
+// Función para crear botones con iconos
+function crearBoton(imagenSrc, texto, onClick) {
+    const button = document.createElement('button');
+    button.innerHTML = `
+        <img src="/css/imagenes/${imagenSrc}" height="80" width="80">
+        ${texto}
+    `;
+    button.addEventListener('click', onClick);
+    return button;
+}
+
+// Función para obtener cookies por nombre
+function getCookie(name) {
+    const cookies = document.cookie.split('; ');
+    const cookie = cookies.find(row => row.startsWith(name + '='));
+    return cookie ? cookie.split('=')[1] : null;
+}
+
 
 // Mostrar y cerrar modal de publicación
 function mostrarVentanaEmergentePublicacion() {
