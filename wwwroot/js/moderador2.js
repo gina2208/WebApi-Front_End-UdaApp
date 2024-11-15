@@ -15,12 +15,13 @@ function eraseCookie(name) {
 }
 
 // Función para obtener publicaciones reportadas
-async function obtenerPublicacionesReportadas() {
-    const idUsuario = getCookie('id'); // Obtener el ID del usuario desde las cookies
-    const token = getCookie('token'); // Obtener el token desde las cookies
 
-    if (!idUsuario) {
-        alert("ID de usuario no encontrado.");
+async function obtenerPublicacionesReportadas() {
+    const idUsuario = getCookie('id');
+    const token = getCookie('token');
+
+    if (!idUsuario || !token) {
+        alert("ID de usuario o token no encontrados.");
         return;
     }
 
@@ -28,16 +29,23 @@ async function obtenerPublicacionesReportadas() {
         const response = await fetch(`https://udapphosting-001-site1.ktempurl.com/api/Moderador/listar-publicaciones-reportadas?idUsuario=${idUsuario}`, {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${token}`, // Autorización si es necesaria
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             }
         });
 
         if (response.ok) {
-            const publicaciones = await response.json();
-            mostrarPublicacionesReportadas(publicaciones); // Llamada a la función para mostrar las publicaciones
+            const publicacionesResponse = await response.json();
+
+            // Verificar si la respuesta contiene un array en `reportesDto`
+            if (publicacionesResponse.exito && Array.isArray(publicacionesResponse.reportesDto)) {
+                mostrarPublicacionesReportadas(publicacionesResponse.reportesDto);
+            } else {
+                console.error("La respuesta de la API no contiene un array:", publicacionesResponse);
+                alert("Error en la estructura de respuesta de la API.");
+            }
         } else {
-            alert("Error al obtener publicaciones reportadas.");
+            alert("Error al obtener publicaciones reportadas. Código de estado: " + response.status);
         }
     } catch (error) {
         console.error("Error en la solicitud:", error);
@@ -45,27 +53,27 @@ async function obtenerPublicacionesReportadas() {
 }
 
 // Función para mostrar publicaciones reportadas en el contenedor
-function mostrarPublicacionesReportadas(publicaciones) {
+function mostrarPublicacionesReportadas(reportesDto) {
     const contenedor = document.getElementById("reportes-container");
-    contenedor.innerHTML = ""; // Limpiar contenido previo
+    contenedor.innerHTML = "";
 
-    publicaciones.forEach((publicacion) => {
+    reportesDto.forEach((reporte) => {
         const publicacionDiv = document.createElement("div");
         publicacionDiv.className = "publicacionR";
         publicacionDiv.innerHTML = `
-            <h3>${publicacion.titulo}</h3>
-            <p>${publicacion.contenido}</p>
-            <p><strong>Fecha de Publicación:</strong> ${new Date(publicacion.fechaPublicacion).toLocaleDateString()}</p>
-            <p><strong>Motivo Reporte:</strong> ${publicacion.motivoReporte}</p>
-            <p><strong>Usuario:</strong> ${publicacion.usuarioNombre}</p>
+            <h3>${reporte.tituloPublicacion}</h3>
+            <p><strong>Fecha de Publicación:</strong> ${new Date(reporte.fechaPublicacion).toLocaleDateString()}</p>
+            <p><strong>Motivo Reporte:</strong> ${reporte.motivoReporte}</p>
+            <p><strong>Usuario Publicador:</strong> ${reporte.nombreUsuarioPublicacador}</p>
             <div class="botonesR">
-                <button onclick="confirmarEliminarPublicacion(${publicacion.idPublicacion})">Eliminar Publicación</button>
-                <button onclick="confirmarEliminarReporte(${publicacion.idReporte})">Eliminar Reporte</button>
+               <button onclick="confirmarEliminarPublicacion(${reporte.idPublicacionReportada})">Eliminar Publicación</button>
+                <button onclick="confirmarEliminarReporte(${reporte.idReporte})">Eliminar Reporte</button>
             </div>
         `;
         contenedor.appendChild(publicacionDiv);
     });
 }
+
 
 // Funciones para mostrar y cerrar los modales
 function mostrarVentanaEmergenteReportes() {
@@ -87,9 +95,17 @@ function cerrarModalDescargarReportes() {
 
 // Funciones para confirmar eliminación de publicaciones y reportes
 function confirmarEliminarPublicacion(idPublicacion) {
+    if (!idPublicacion) {
+        console.error("ID de publicación no válido:", idPublicacion);
+        alert("Error: No se pudo obtener el ID de la publicación a eliminar.");
+        return;
+    }
+
     window.idPublicacionAEliminar = idPublicacion;
+    console.log("Publicación seleccionada para eliminar, ID:", idPublicacion);
     document.getElementById("eliminarPublicacionModal").style.display = "block";
 }
+
 
 function cerrarModalEliminarPublicacion() {
     document.getElementById("eliminarPublicacionModal").style.display = "none";
@@ -103,35 +119,59 @@ function confirmarEliminarReporte(idReporte) {
 function cerrarModalEliminarReporte() {
     document.getElementById("eliminarReporteModal").style.display = "none";
 }
-
-// Función para eliminar una publicación
 async function eliminarPublicacion() {
+    const idPublicacion = window.idPublicacionAEliminar;
+
+    if (!idPublicacion) {
+        console.error("No se encontró el ID de la publicación a eliminar.");
+        alert("Error: No se encontró la publicación a eliminar.");
+        return;
+    }
+
     try {
-        const response = await fetch(`https://udapphosting-001-site1.ktempurl.com/api/Moderador/eliminar-publicacion-mod`, {
+        const idUsuario = getCookie('id'); // Obtener el ID del moderador desde las cookies
+        const token = getCookie('token'); // Obtener el token desde las cookies
+
+
+        const response = await fetch(`https://webapiudapp.somee.com/api/Moderador/eliminar-publicacion-mod?idPublicacion=${idPublicacion}&idUsuario=${idUsuario}`, {
             method: 'DELETE',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ idPublicacion: window.idPublicacionAEliminar })
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
         });
 
         if (response.ok) {
             alert("Publicación eliminada correctamente.");
-            cerrarModalEliminarPublicacion();
-            obtenerPublicacionesReportadas(); // Actualizar publicaciones reportadas
         } else {
-            alert("Error al eliminar la publicación.");
+            const errorText = await response.text();
+            console.error("Error al eliminar la publicación:", errorText);
+            alert("Error al eliminar la publicación: " + errorText);
         }
+
+        cerrarModalEliminarPublicacion();
+        obtenerPublicacionesReportadas(); // Actualizar la lista
+
     } catch (error) {
         console.error("Error en la solicitud:", error);
+        alert("Ocurrió un error al intentar eliminar la publicación.");
     }
 }
+
 
 // Función para eliminar un reporte
 async function eliminarReporte() {
     try {
-        const response = await fetch(`https://udapphosting-001-site1.ktempurl.com/api/Moderador/eliminar-reporte-mod`, {
+        const idUsuario = getCookie('id'); // Obtener el ID del moderador desde las cookies
+        const token = getCookie('token'); // Obtener el token desde las cookies
+
+
+        const response = await fetch(`https://webapiudapp.somee.com/api/Moderador/eliminar-reporte-mod?idReporte=${window.idReporteAEliminar}&idUsuario=${idUsuario}`, {
             method: 'DELETE',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ idReporte: window.idReporteAEliminar })
+            headers: {
+                'Authorization': `Bearer ${token}`, // Enviar el token en la autorización
+                'Content-Type': 'application/json'
+            }
         });
 
         if (response.ok) {
@@ -139,6 +179,8 @@ async function eliminarReporte() {
             cerrarModalEliminarReporte();
             obtenerPublicacionesReportadas(); // Actualizar publicaciones reportadas
         } else {
+            const errorText = await response.text();
+            console.error("Error al eliminar el reporte:", errorText);
             alert("Error al eliminar el reporte.");
         }
     } catch (error) {
@@ -146,20 +188,5 @@ async function eliminarReporte() {
     }
 }
 
-// Función para descargar reportes en PDF
-async function descargarReportes() {
-    try {
-        const response = await fetch(`https://udapphosting-001-site1.ktempurl.com/api/Reporte/descargar-reporte-publicaciones-reportadas`, {
-            method: 'GET'
-        });
 
-        if (response.ok) {
-            alert("Reportes descargados correctamente.");
-            cerrarModalDescargarReportes();
-        } else {
-            alert("Error al descargar los reportes.");
-        }
-    } catch (error) {
-        console.error("Error en la solicitud:", error);
-    }
-}
+

@@ -1,7 +1,41 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Gerente";
 }
 
-<h1>Gerente</h1>
+<head>
+    <link href="~/css/gerente.css" rel="stylesheet" />
+</head>
 
+<h1>Reportes del gerente</h1>
+
+<!-- Decoraciones -->
+<div class="pie"></div>
+<div class="costado"></div>
+
+<!-- Botón para salir -->
+<button id="Salir" onclick="window.location.href='@Url.Action("PaginaPrincipal", "Home")'">Salir</button>
+
+<!-- Botones para generar reportes -->
+<div class="botoneR">
+    <button id="reportePublicacionesReportadas" onclick="mostrarVentanaEmergente('publicacionesReportadas')">Reporte Publicaciones Reportadas</button>
+    <button id="reporteMasLikes" onclick="mostrarVentanaEmergente('publicacionMasLikes')">Reporte Publicación con Más Likes</button>
+    <button id="reporteUsuariosRegistrados" onclick="mostrarVentanaEmergente('usuariosRegistrados')">Reporte Usuarios Registrados</button>
+</div>
+
+<!-- Logo de la aplicación -->
+<img  src="~/css/imagenes/logo.png" alt="LogoAplicacion" height="130" width="130" class="logo">
+
+<!-- Modal para confirmación de descarga y envío -->
+<div id="modal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <h3>¡ALERTA!</h3>
+        <span class="close" onclick="cerrarVentanaEmergente()">&times;</span>
+        <p id="report-description">¿Desea proceder con esta acción?</p>
+        <div class="modal-buttons">
+            <button class="desca" onclick="descargarReporte()">Descargar</button>
+            <button class="correo" onclick="enviarReportePorCorreo()">Enviar por Correo</button>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/gerente.js"></script>

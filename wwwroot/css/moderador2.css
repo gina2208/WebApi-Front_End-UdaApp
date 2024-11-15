@@ -98,10 +98,13 @@
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1000; /* Asegura que los modales estén por encima del contenido */
+    overflow: hidden;
 }
 
 .modal-content {
     text-align: center;
+    max-height: 600px; /* Altura máxima para activar el desplazamiento */
+    overflow-y: auto; /* Barra de desplazamiento vertical cuando el contenido sobrepasa la altura */
 }
 
 .close {
@@ -111,6 +114,7 @@
     font-size: 20px;
     cursor: pointer;
 }
+
 
 .publicacionR {
     padding: 10px;
