@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     } else {
         console.error('Token no encontrado.');
+
     }
 });
 
@@ -74,6 +75,19 @@ function getCookie(name) {
     const cookies = document.cookie.split('; ');
     const cookie = cookies.find(row => row.startsWith(name + '='));
     return cookie ? cookie.split('=')[1] : null;
+}
+function borrarCookiesYSalir() {
+    // Borrar todas las cookies de sesión
+    const cookies = document.cookie.split(";");
+
+    cookies.forEach(cookie => {
+        const cookieName = cookie.split("=")[0];
+        // Establecer la fecha de expiración en el pasado para borrar la cookie
+        document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+    });
+
+    // Redirigir a la página de inicio
+    window.location.href = '/Home/Index';
 }
 
 

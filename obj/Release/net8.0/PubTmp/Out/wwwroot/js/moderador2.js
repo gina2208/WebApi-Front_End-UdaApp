@@ -10,9 +10,20 @@ function getCookie(name) {
     if (parts.length === 2) return parts.pop().split(';').shift();
 }
 
-function eraseCookie(name) {
-    document.cookie = `${name}=; Max-Age=-99999999; path=/`;
+function borrarCookiesYSalir() {
+    // Borrar todas las cookies de sesión
+    const cookies = document.cookie.split(";");
+
+    cookies.forEach(cookie => {
+        const cookieName = cookie.split("=")[0];
+        // Establecer la fecha de expiración en el pasado para borrar la cookie
+        document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+    });
+
+    // Redirigir a la página de inicio
+    window.location.href = '@Url.Action("Index", "Home")';
 }
+
 
 // Función para obtener publicaciones reportadas
 
@@ -132,7 +143,7 @@ async function eliminarPublicacion() {
         }
 
         // Utilizamos `idReporte` en lugar de `idPublicacion`
-        const url = `https://webapiudapp.somee.com/api/Moderador/eliminar-publicacion-mod?idReporte=${idReporte}&idUsuario=${idUsuario}`;
+        const url = `https://udapphosting-001-site1.ktempurl.com/api/Moderador/eliminar-publicacion-mod?idReporte=${idReporte}&idUsuario=${idUsuario}`;
 
         const response = await fetch(url, {
             method: 'DELETE',
@@ -166,7 +177,7 @@ async function eliminarReporte() {
         const token = getCookie('token'); // Obtener el token desde las cookies
 
 
-        const response = await fetch(`https://webapiudapp.somee.com/api/Moderador/eliminar-reporte-mod?idReporte=${window.idReporteAEliminar}&idUsuario=${idUsuario}`, {
+        const response = await fetch(`https://udapphosting-001-site1.ktempurl.com/api/Moderador/eliminar-reporte-mod?idReporte=${window.idReporteAEliminar}&idUsuario=${idUsuario}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${token}`, // Enviar el token en la autorización

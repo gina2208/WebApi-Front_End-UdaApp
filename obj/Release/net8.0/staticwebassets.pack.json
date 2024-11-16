@@ -57,6 +57,10 @@
       "PackagePath": "staticwebassets\\css\\imagenes\\cookie.svg"
     },
     {
+      "Id": "C:\\Users\\USUARIO\\Documents\\GitHub\\WebApi-Frond_End-UdaApp\\wwwroot\\css\\imagenes\\gerente.png",
+      "PackagePath": "staticwebassets\\css\\imagenes\\gerente.png"
+    },
+    {
       "Id": "C:\\Users\\USUARIO\\Documents\\GitHub\\WebApi-Frond_End-UdaApp\\wwwroot\\css\\imagenes\\grupo.png",
       "PackagePath": "staticwebassets\\css\\imagenes\\grupo.png"
     },

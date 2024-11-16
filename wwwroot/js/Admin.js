@@ -19,7 +19,19 @@ function abrirSuspendModal(usuarioId) {
 function cerrarSuspendModal() {
     document.getElementById("suspendModal").style.display = "none";
 }
+function borrarCookiesYSalir() {
+    // Borrar todas las cookies de sesión
+    const cookies = document.cookie.split(";");
 
+    cookies.forEach(cookie => {
+        const cookieName = cookie.split("=")[0];
+        // Establecer la fecha de expiración en el pasado para borrar la cookie
+        document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+    });
+
+    // Redirigir a la página de inicio
+    window.location.href = '/Home/Index';
+}
 // Función para asignar rol a un usuario
 async function asignarRol() {
     const usuarioId = document.getElementById("roleModal").dataset.usuarioId;
