@@ -16,7 +16,7 @@ function borrarCookiesYSalir() {
     });
 
     // Redirigir a la página de inicio
-    window.location.href = '@Url.Action("Index", "Home")';
+    window.location.href = '/Home/Index';
 }
 
 // Función para mostrar el modal
