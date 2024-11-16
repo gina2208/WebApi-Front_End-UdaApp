@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewData["Title"] = "Error500";
+}
+
+<head>
+    <link href="~/css/error401.css" rel="stylesheet" />
+</head>
+
+<!-- Formas de fondo animadas -->
+<div class="background-shape shape1"></div>
+<div class="background-shape shape2"></div>
+<div class="background-shape shape3"></div>
+
+<div class="container">
+    <img src="/css/imagenes/logo.png" alt="Logo udapp" class="logo">
+    <div class="error-code">500</div>
+    <p class="message">Internal Server Error</p>
+    <p class="description">Ocurrió un error en el servidor. Estamos trabajando para solucionarlo. Intenta nuevamente más tarde.</p>
+
+    <button onclick="window.location.href='@Url.Action("Index", "Home")'" class="btn secondary">Página Principal</button>
+</div>

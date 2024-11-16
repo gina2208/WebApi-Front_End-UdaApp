@@ -3,107 +3,134 @@
 }
 <head>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link href="~/css/paginaprincipal.css" rel="stylesheet" />
+    <link href="~/css/paginaprincipalp.css" rel="stylesheet" />
 </head>
 
-<button id="menub" onclick="mostrarMenu()">Menú</button>
-<button id="Salir" onclick="window.location.href='@Url.Action("Index", "Home")'">Salir</button>
-<img src ="~/css/imagenes/logo.png" alt="LogoAplicacion" height="150" width="150" class="logo">
+<body>
+    <button id="menub" onclick="mostrarMenu()">Menú</button>
+    <button id="Salir" onclick="window.location.href='@Url.Action("Index", "Home")'">Salir</button>
+    <img src="~/css/imagenes/logo.png" alt="LogoAplicacion" height="150" width="150" class="logo">
 
-<div class="cBarra">
-    <div class="barraP">
-        <input type="text" id="searchInput" placeholder="  Buscar..." class="barraInput2">
-        <button onclick="buscar()" class="buscar2"><i class="material-icons">search</i></button>
-    </div>
-</div>
-
-<div class="menu" id="menu">
-   
-    <button><img src="~/css/imagenes/perfil.png"  class="perfil" height="80" width="80" onclick="window.location.href='@Url.Action("Perfil", "Home")'"> </button>
-
-    <button><img src="~/css/imagenes/publicacion.png" class="publicacion" height="80" width="80" onclick="mostrarVentanaEmergentePublicacion()"> </button>
-</div>
-<div class="publicaciones-container">
-    <div class="publicacioncontainer">
-        <div class="usuarioPerfil">
-            <img src="~/css/imagenes/perfil.png" class="usu" alt="Perfil de usuario">
-            <p class="usuarioP">UsuarioEjemplo</p>
-        </div>
-        <div class="mensajeP">Este es el contenido de la publicación de ejemplo.</div>
-        <button class="repor" onclick="mostrarVentanaEmergenteReporte()">Reportar</button>
-        <div class="interaccion">
-            <button class="like"><img src="~/css/imagenes/like.png" alt="Like"> Like</button>
-            <button class="comen"><img src="~/css/imagenes/comentario.png" onclick="mostrarVentanaEmergenteComentariosVisual" alt="Comentar"> Comentar</button>
+    <div class="cBarra">
+        <div class="barraP">
+            <input type="text" id="searchInput" placeholder="  Buscar..." class="barraInput2">
+            <button onclick="buscar()" class="buscar2"><i class="material-icons">search</i></button>
         </div>
     </div>
-</div>
 
+    <!-- Contenedor del menú donde se generarán los botones dinámicamente -->
+    <div class="menu" id="menu"></div>
 
+    <!-- Contenedor para mostrar publicaciones -->
+    <div class="publicaciones-container" id="publicacionesContainer"></div>
 
-<div id="modal1" class="modal1" style="display: none;">
-    <div class="modal-contentpu">
-        <span class="close" onclick="cerrarVentanaEmergentePublicacion()">&times;</span>
-        <form id="formularioPublicacion" action="@Url.Action("HacerPublicacion", "Home")" method="post">
-            <input type="hidden" id="idUsuario" name="idUsuario" value="ID_USUARIO_EJEMPLO">
-            <input type="text" id="titulo" name="titulo" placeholder="Añade texto" required>
-            <div class="botones">
-                <button type="button" onclick="cerrarVentanaEmergentePublicacion()">Cancelar</button>
-                <button type="submit" onclick="agregarIdUsuario()">Hacer publicación</button>
-            </div>
-        </form>
-    </div>
-</div>
-
-
-<!-- Ventana Emergente de Reporte -->
-<div id="modal2" class="modal2" style="display: none;">
-    <div class="modal-contentre">
-        <span class="close" onclick="cerrarVentanaEmergenteReporte()">&times;</span>
-        <div class="reportes">
-            <p>¿Por qué deseas reportar esta publicación?</p>
-            <form id="formularioReporte" action="@Url.Action("Reportar", "Home")" method="post">
-                <input type="hidden" name="idPublicacion" id="idPublicacion" value="" />
-                <select id="opcionesSelect" name="motivo">
-                    <option value="Contenido Ofensivo">Contenido Ofensivo</option>
-                    <option value="Spam">Spam</option>
-                    <option value="Acoso">Acoso</option>
-                    <option value="Estafa">Estafa</option>
-                    <option value="Otro">Otro</option>
-                </select>
-                <button type="submit">Reportar</button>
+    <!-- Ventana emergente para hacer publicación -->
+    <div id="modal1" class="modal1" style="display: none;">
+        <div class="modal-contentpu">
+            <span class="close" onclick="cerrarVentanaEmergentePublicacion()">&times;</span>
+            <form id="formularioPublicacion">
+                <input type="text" id="titulo" name="titulo" placeholder="Añade texto" required>
+                <div class="botones">
+                    <button type="button" onclick="cerrarVentanaEmergentePublicacion()">Cancelar</button>
+                    <button type="button" onclick="enviarPublicacion()">Hacer publicación</button>
+                </div>
             </form>
         </div>
     </div>
-</div>
 
-<div id="modal3" class="modal3" style="display: none;">
-    <div class="modal-contentcomen">
-        <span class="close" onclick="cerrarVentanaEmergenteComentarios()">&times;</span>
-        <form id="formularioComentario">
-            <input type="text" id="comentario" name="comentario" placeholder="Añade un comentario">
-            <div class="botones3">
-                <button onclick="cerrarVentanaEmergenteComentarios()" class="Cancelar">Cancelar</button>
-                <button type="submit">Comentar</button>
+    <!-- Ventana emergente para reportar publicación -->
+    <div id="modal2" class="modal2" style="display: none;">
+        <div class="modal-contentre">
+            <span class="close" onclick="cerrarVentanaEmergenteReporte()">&times;</span>
+            <div class="reportes">
+                <p>¿Por qué deseas reportar esta publicación?</p>
+                <form id="formularioReporte" method="post" onsubmit="reportarPublicacion(); return false;">
+                    <input type="hidden" name="idPublicacion" id="idPublicacion" value="" />
+                    <select id="opcionesSelect" name="motivo">
+                        <option value="Contenido Ofensivo">Contenido Ofensivo</option>
+                        <option value="Spam">Spam</option>
+                        <option value="Acoso">Acoso</option>
+                        <option value="Estafa">Estafa</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                    <button type="submit">Reportar</button>
+                </form>
             </div>
-        </form>
-    </div>
-</div>
-
-<div id="modal4" class="modal4" style="display: none;">
-    <div class="modal-contentcomenvi">
-        <span class="close" onclick="cerrarVentanaEmergenteComentariosVisual()">&times;</span>
-        <div class="contenComen">
-            <div class="infoUsuario">
-                <img src="~/Content/Imagenes/Perfil.png" height="40" width="40" class="usuPc">
-                <div class="usuarioPC">
-                    <p>usuario traido deBD</p>
-                </div>
-            </div>
-            <div class="comentario">comentario de bd</div>
         </div>
-        <button class="comenNu" onclick="mostrarVentanaEmergenteComentarios()">Comentar</button>
     </div>
-</div>
 
+    <!-- Ventana emergente para añadir o editar un comentario -->
+    <div id="modal3" class="modal3" style="display: none;">
+        <div class="modal-contenthacerco">
+            <span class="close" onclick="cerrarVentanaComentario()">&times;</span>
+            <h3>Añadir o Editar Comentario</h3>
+            <form id="formularioComentario">
+                <!-- Campo oculto para almacenar el ID de la publicación -->
+                <input type="hidden" id="idPublicacionComentario" value="" />
+                <textarea id="contenidoComentario" placeholder="Escribe tu comentario aquí..." required></textarea>
+                <button type="button" onclick="enviarComentario()">Comentar</button>
+            </form>
+        </div>
+    </div>
 
-<script src="~/js/paginaprincipal.js"></script>
+    <!-- Ventana emergente para ver comentarios de una publicación -->
+    <div id="modal4" class="modal4" style="display: none;">
+        <div class="modal-contentmostrarco">
+            <span class="close" onclick="cerrarVentanaVerComentarios()">&times;</span>
+            <h3>Comentarios de la publicación</h3>
+            <div id="listaComentarios"></div>
+        </div>
+    </div>
+
+    <!-- Modal para Editar -->
+    <div id="modal5" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarVentanaEditar()">&times;</span>
+            <h2>Editar Publicación</h2>
+            <input type="hidden" id="idPublicacionEditar">
+            <label for="tituloEditar">Título:</label>
+            <input type="text" id="tituloEditar" required>
+            <button class="boton" onclick="enviarEdicion()">Guardar Cambios</button>
+            <button class="boton" onclick="cerrarVentanaEditar()">Cancelar</button>
+        </div>
+    </div>
+
+    <!-- Modal para Eliminar -->
+    <div id="modal6" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarVentanaEliminar()">&times;</span>
+            <h2>Eliminar Publicación</h2>
+            <input type="hidden" id="idPublicacionEliminar">
+            <p>¿Estás seguro de que deseas eliminar esta publicación?</p>
+            <button class="boton" onclick="confirmarEliminacion()">Sí, Eliminar</button>
+            <button class="boton" onclick="cerrarVentanaEliminar()">Cancelar</button>
+        </div>
+    </div>
+
+    <!-- Modal para Editar Comentario -->
+    <div id="modalEditarComentario" class="modal">
+        <div class="modal-content">
+            <h3>Editar Comentario</h3>
+            <input type="hidden" id="idComentarioEditar" />
+            <textarea id="contenidoComentarioEditar" rows="4" cols="50" placeholder="Edita tu comentario..."></textarea><br><br>
+            <button class="boton" type="button" onclick="enviarEdicionComentario()">Guardar Cambios</button>
+            <button class="boton" type="button" onclick="cerrarVentanaEditarComentario()">Cancelar</button>
+        </div>
+    </div>
+
+    <!-- Modal para Confirmar Eliminación de Comentario -->
+    <div id="modalEliminarComentario" class="modal">
+        <div class="modal-content">
+            <h3>Eliminar Comentario</h3>
+            <input type="hidden" id="idComentarioEliminar" />
+            <p>¿Estás seguro de que deseas eliminar este comentario?</p>
+            <button class="boton" type="button" onclick="confirmarEliminacionComentario()">Sí, eliminar</button>
+            <button class="boton" type="button" onclick="cerrarVentanaEliminarComentario()">Cancelar</button>
+        </div>
+    </div>
+
+    <!-- Fondo para oscurecer el contenido detrás del modal (opcional) -->
+    <div id="fondoModal"></div>
+
+    <script src="/js/paginaprincipalp.js"></script>
+</body>

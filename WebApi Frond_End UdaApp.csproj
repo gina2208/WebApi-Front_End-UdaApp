@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\css\imagenes\" />
+    <Content Remove="wwwroot\js\apiRegistro.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -16,12 +16,25 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="wwwroot\css\imagenes\admin.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\css\imagenes\like.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="wwwroot\css\imagenes\logo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="wwwroot\css\imagenes\logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Update="wwwroot\css\imagenes\Perfil.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Error\" />
   </ItemGroup>
 
 </Project>
