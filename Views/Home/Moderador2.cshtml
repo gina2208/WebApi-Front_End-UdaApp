@@ -11,7 +11,6 @@
     <div class="costado"></div>
     <button id="Salir" onclick="window.location.href='@Url.Action("PaginaPrincipal", "Home")'">Salir</button>
     <button id="admiR" onclick="mostrarVentanaEmergenteReportes()">Administrar Reportes</button>
-    <button id="descargarReportes" onclick="mostrarVentanaEmergenteDescargarReportes()">Descargar Reportes</button>
 
     <img src="~/css/imagenes/logo.png" alt="LogoAplicacion" height="130" width="130" class="logo">
 
@@ -44,14 +43,6 @@
         </div>
     </div>
 
-    <!-- Modal para descargar reportes -->
-    <div id="descargarReportesModal" class="modal">
-        <div class="modal-content">
-            <h3>¿Estás seguro de descargar los reportes en PDF?</h3>
-            <button onclick="descargarReportes()">Sí, descargar</button>
-            <button onclick="cerrarModalDescargarReportes()">Cancelar</button>
-        </div>
-    </div>
 
     <script src="~/js/moderador2.js"></script>
 </body>

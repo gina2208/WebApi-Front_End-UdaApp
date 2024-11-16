@@ -1,25 +1,75 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+
+<!DOCTYPE html>
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Título de la página -->
+    <title>TU CAMPUS - UdApp</title>
+
+    <!-- Estilos -->
     <link href="~/css/index.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MB7HJ8K');
+    </script>
+    <!-- Fin Google Tag Manager -->
 </head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MB7HJ8K"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- Fin Google Tag Manager (noscript) -->
+    <!-- Cabecera -->
+    <header>
+        <img src="~/css/imagenes/logo.png" alt="LogoAplicacion" height="150" width="150" class="logo">
+        <nav>
+            <button type="button" class="inicio">Inicio</button>
+            <button class="registrarse" onclick="window.location.href='@Url.Action("Registro", "Home")'">Registrarse</button>
+            <button class="iniciarSesion" onclick="window.location.href='@Url.Action("Inicio", "Home")'">Iniciar Sesión</button>
+        </nav>
+    </header>
 
-<div class="datos_inicio">
-    <H1>TU CAMPUS,EN CUALQUIER LUGAR.</H1>
-    <P>
-        UdApp es una innovadora plataforma educativa para universitarios que te permite aprender de forma online y a
-        tu ritmo.<br>
-        Podrás acceder a una amplia variedad de recursos educativos, como ver tus horarios, hacer publicaciones,
-        Chatear y grupos de estudio. Además, podrás interactuar con otros estudiantes, profesores y partes de la
-        universidad.
-    </P>
-</div>
+    <!-- Contenido principal -->
+    <main>
+        <section class="datos_inicio">
+            <h1>TU CAMPUS, EN CUALQUIER LUGAR</h1>
+            <p>
+                UdApp es una innovadora plataforma educativa para universitarios que te permite aprender de forma online y a tu ritmo.
+                <br>
+                Podrás acceder a una amplia variedad de recursos educativos, como ver tus horarios, hacer publicaciones,
+                chatear y participar en grupos de estudio. Además, podrás interactuar con otros estudiantes, profesores y miembros de la universidad.
+            </p>
+        </section>
+        <img src="~/css/imagenes/universitario.png" alt="Imagen Universitario" class="uni">
+    </main>
 
-<button type="submit" name="inicio" class="inicio"> Inicio </button>
+    <!-- Aviso de cookies -->
+    <div class="aviso-cookies" id="aviso-cookies">
+        <img class="galleta" src="~/css/imagenes/cookie.svg" alt="Galleta">
+        <h3 class="titulo">Cookies</h3>
+        <p class="parrafo">Utilizamos cookies propias y de terceros para mejorar nuestros servicios.</p>
+        <button class="boton" id="btn-aceptar-cookies">De acuerdo</button>
+    </div>
+    <div class="fondo-aviso-cookies" id="fondo-aviso-cookies"></div>
 
-<button name="registrarse" class="registrarse" onclick="window.location.href='@Url.Action("Registro", "Home")'">Registrarse</button>
-<button name="iniciarSesion" class="iniciarSesion" onclick="window.location.href='@Url.Action("Inicio", "Home")'"> Iniciar Sesión </button>
-<img src="~/css/imagenes/logo.png" alt="LogoAplicacion" height="150" width="150" class="logo">
-<img src="~/css/imagenes/universitario.png" alt="" height="600" width="850" class="uni">
-
+    <!-- Scripts -->
+    <script src="js/aviso-cookies.js"></script>
+</body>
+</html>
