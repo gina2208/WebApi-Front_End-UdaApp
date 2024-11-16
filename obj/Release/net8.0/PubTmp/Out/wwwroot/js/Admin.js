@@ -19,7 +19,7 @@ function abrirSuspendModal(usuarioId) {
 function cerrarSuspendModal() {
     document.getElementById("suspendModal").style.display = "none";
 }
-
+<button id="Salir" onclick="borrarCookiesYSalir()">Salir</button>
 // Función para asignar rol a un usuario
 async function asignarRol() {
     const usuarioId = document.getElementById("roleModal").dataset.usuarioId;

@@ -5,6 +5,19 @@ function getCookie(name) {
     if (parts.length === 2) return parts.pop().split(';').shift();
     return null; // Retorna null si la cookie no existe
 }
+function borrarCookiesYSalir() {
+    // Borrar todas las cookies de sesión
+    const cookies = document.cookie.split(";");
+
+    cookies.forEach(cookie => {
+        const cookieName = cookie.split("=")[0];
+        // Establecer la fecha de expiración en el pasado para borrar la cookie
+        document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+    });
+
+    // Redirigir a la página de inicio
+    window.location.href = '/Home/Index';
+}
 
 // Función para mostrar el modal
 function mostrarVentanaEmergente(tipoReporte) {
@@ -69,13 +82,13 @@ async function descargarReporte(tipoReporte) {
     let url;
     switch (tipoReporte) {
         case 'reportadas':
-            url = `https://webapiudapp.somee.com/api/Reporte/descargar-reporte-publicaciones-reportadas?idUsuario=${idUsuario}`;
+            url = `https://udapphosting-001-site1.ktempurl.com/api/Reporte/descargar-reporte-publicaciones-reportadas?idUsuario=${idUsuario}`;
             break;
         case 'populares':
-            url = `https://webapiudapp.somee.com/api/Reporte/descargar-reporte-publicaciones-populares?idUsuario=${idUsuario}`;
+            url = `https://udapphosting-001-site1.ktempurl.com/api/Reporte/descargar-reporte-publicaciones-populares?idUsuario=${idUsuario}`;
             break;
         case 'usuarios':
-            url = `https://webapiudapp.somee.com/api/Reporte/descargar-reporte-usuarios?idUsuario=${idUsuario}`;
+            url = `https://udapphosting-001-site1.ktempurl.com/api/Reporte/descargar-reporte-usuarios?idUsuario=${idUsuario}`;
             break;
         default:
             console.error('Tipo de reporte no válido.');
@@ -124,13 +137,13 @@ async function enviarReportePorCorreo(tipoReporte) {
     let url;
     switch (tipoReporte) {
         case 'reportadas':
-            url = `https://webapiudapp.somee.com/api/Reporte/enviar-reporte-reportadas?idUsuario=${idUsuario}`;
+            url = `https://udapphosting-001-site1.ktempurl.com/api/Reporte/enviar-reporte-reportadas?idUsuario=${idUsuario}`;
             break;
         case 'populares':
-            url = `https://webapiudapp.somee.com/api/Reporte/enviar-reporte-likeadas?idUsuario=${idUsuario}`;
+            url = `https://udapphosting-001-site1.ktempurl.com/api/Reporte/enviar-reporte-likeadas?idUsuario=${idUsuario}`;
             break;
         case 'usuarios':
-            url = `https://webapiudapp.somee.com/api/Reporte/enviar-reporte-usuarios?idUsuario=${idUsuario}`;
+            url = `https://udapphosting-001-site1.ktempurl.com/api/Reporte/enviar-reporte-usuarios?idUsuario=${idUsuario}`;
             break;
         default:
             console.error('Tipo de reporte no válido.');

@@ -5,7 +5,7 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configurar el manejo de excepciones antes de cualquier middleware de manejo de errores por estado HTTP
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -13,12 +13,45 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+// Asegurarse de que las páginas de error de estado HTTP sean manejadas
+app.UseStatusCodePagesWithReExecute("/Home/Error{0}");
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthorization();
+// Middleware para manejar errores en solicitudes API
+app.Use(async (context, next) =>
+{
+    await next();
+
+    if (context.Request.Path.StartsWithSegments("/api") && context.Response.StatusCode >= 400)
+    {
+        var statusCode = context.Response.StatusCode;
+
+        if (statusCode == 400 || statusCode == 401 || statusCode == 403 || statusCode == 404 || statusCode == 500)
+        {
+            context.Response.Redirect($"/Home/Error{statusCode}");
+        }
+    }
+});
+
+
+string GetApiErrorMessage(int statusCode)
+{
+    return statusCode switch
+    {
+        400 => "Bad Request",
+        401 => "Unauthorized",
+        403 => "Forbidden",
+        404 => "Not Found",
+        500 => "Internal Server Error",
+        _ => "Unexpected Error"
+    };
+}
+
+// Middleware para redirigir según el favicon
 app.Use(async (context, next) =>
 {
     // Excluir favicon.ico del pipeline de autorización
@@ -31,31 +64,10 @@ app.Use(async (context, next) =>
     await next();
 });
 
-// Middleware para redirigir seg�n c�digos de estado HTTP
-app.UseStatusCodePages(context =>
-{
-    var response = context.HttpContext.Response;
-    switch (response.StatusCode)
-    {
-        case 401:
-            response.Redirect("/Home/Error401");  // P�gina de inicio de sesi�n
-            break;
-        case 403:
-            response.Redirect("/Home/Error403");  // P�gina de acceso denegado
-            break;
-        case 404:
-            response.Redirect("/Home/Error404");  // P�gina de no encontrado
-            break;
-        case 500:
-            response.Redirect("/Home/Error500");  // P�gina de error interno
-            break;
-        case 400:
-            response.Redirect("/Home/Error400");  // P�gina de solicitud incorrecta
-            break;
-    }
-    return Task.CompletedTask;
-});
+// Middleware de autorización debe ir después de UseRouting y antes de el mapeo de rutas
+app.UseAuthorization();
 
+// Mapear las rutas predeterminadas
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Z8ZacBWeOj22YS15Hhy6ntBdq39YqI7SOGv14jqyA9I=",
+  "Hash": "bzrZqb5HAHukFnv54GZnxgCddCvt5JaPp2ewH2Fc0z8=",
   "Source": "WebApi Frond_End UdaApp",
   "BasePath": "_content/WebApi Frond_End UdaApp",
   "Mode": "Default",
@@ -205,6 +205,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\imagenes\\cookie.svg"
+    },
+    {
+      "Identity": "C:\\Users\\USUARIO\\Documents\\GitHub\\WebApi-Frond_End-UdaApp\\wwwroot\\css\\imagenes\\gerente.png",
+      "SourceId": "WebApi Frond_End UdaApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\USUARIO\\Documents\\GitHub\\WebApi-Frond_End-UdaApp\\wwwroot\\",
+      "BasePath": "_content/WebApi Frond_End UdaApp",
+      "RelativePath": "css/imagenes/gerente.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\imagenes\\gerente.png"
     },
     {
       "Identity": "C:\\Users\\USUARIO\\Documents\\GitHub\\WebApi-Frond_End-UdaApp\\wwwroot\\css\\imagenes\\grupo.png",
