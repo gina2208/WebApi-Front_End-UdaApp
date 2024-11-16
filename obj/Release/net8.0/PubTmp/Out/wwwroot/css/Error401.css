@@ -1,0 +1,132 @@
+﻿body {
+    background: linear-gradient(135deg, #CFFFED 30%, #A4FFDA 100%);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    color: #333;
+}
+
+/* Fondo con formas geométricas */
+.background-shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.25;
+    z-index: 0;
+    animation: bounceMove 6s ease-in-out infinite;
+}
+
+.shape1 {
+    width: 250px;
+    height: 250px;
+    background-color: #008856;
+    top: -20%; /* Mover hacia la parte superior */
+    left: -80%; /* Mover hacia la izquierda */
+}
+
+.shape2 {
+    width: 300px;
+    height: 300px;
+    background-color: #00A673;
+    bottom: -20%; /* Mover hacia la parte inferior */
+    right: -80%; /* Mover hacia la derecha */
+}
+
+.shape3 {
+    width: 200px;
+    height: 200px;
+    background-color: #00D999;
+    top: -15%; /* Mover hacia la parte superior */
+    right: -15%; /* Mover hacia la derecha */
+}
+/* Animación con rebote y movimiento más dinámico */
+@keyframes bounceMove {
+    0% {
+        transform: translateX(0) translateY(0) rotate(0);
+    }
+
+    25% {
+        transform: translateX(40px) translateY(-30px) rotate(30deg);
+    }
+
+    50% {
+        transform: translateX(-40px) translateY(30px) rotate(-30deg);
+    }
+
+    75% {
+        transform: translateX(20px) translateY(-20px) rotate(20deg);
+    }
+
+    100% {
+        transform: translateX(0) translateY(0) rotate(0);
+    }
+}
+.container {
+    text-align: center;
+    padding: 30px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+    max-width: 400px;
+    width: 90%;
+}
+
+.logo {
+    width: 80px;
+    margin-bottom: 15px;
+}
+
+.error-code {
+    font-size: 5rem;
+    font-weight: bold;
+    margin: 0;
+    color: #008856;
+}
+
+.message {
+    font-size: 2rem;
+    margin: 10px 0;
+    color: #333;
+}
+
+.description {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: white;
+    background-color: #008856;
+    text-decoration: none;
+    border-radius: 20px;
+    margin: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+    .btn:hover {
+        background-color: #006644;
+        transform: scale(1.05);
+    }
+
+    .btn.secondary {
+        background-color: white;
+        color: #008856;
+        border: 2px solid #008856;
+    }
+
+        .btn.secondary:hover {
+            background-color: #e6fff5;
+            color: #006644;
+        }

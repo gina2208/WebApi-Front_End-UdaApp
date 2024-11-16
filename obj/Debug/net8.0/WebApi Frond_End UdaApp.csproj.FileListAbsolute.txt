@@ -285,7 +285,6 @@ C:\Users\usuario\Documents\GitHub\WebApi-Frond_End-UdaApp\bin\Debug\net8.0\Syste
 C:\Users\usuario\Documents\GitHub\WebApi-Frond_End-UdaApp\bin\Debug\net8.0\System.Composition.TypedParts.dll
 C:\Users\usuario\Documents\GitHub\WebApi-Frond_End-UdaApp\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
 C:\Users\usuario\Documents\GitHub\WebApi-Frond_End-UdaApp\bin\Debug\net8.0\System.Drawing.Common.dll
-C:\Users\usuario\Documents\GitHub\WebApi-Frond_End-UdaApp\bin\Debug\net8.0\System.Formats.Asn1.dll
 C:\Users\usuario\Documents\GitHub\WebApi-Frond_End-UdaApp\bin\Debug\net8.0\System.Reflection.MetadataLoadContext.dll
 C:\Users\usuario\Documents\GitHub\WebApi-Frond_End-UdaApp\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\usuario\Documents\GitHub\WebApi-Frond_End-UdaApp\bin\Debug\net8.0\System.Security.Permissions.dll
@@ -925,3 +924,7 @@ C:\Users\usuario\Documents\GitHub\WebApi-Front_End-UdaApp\obj\Debug\net8.0\refin
 C:\Users\usuario\Documents\GitHub\WebApi-Front_End-UdaApp\obj\Debug\net8.0\WebApi Frond_End UdaApp.pdb
 C:\Users\usuario\Documents\GitHub\WebApi-Front_End-UdaApp\obj\Debug\net8.0\WebApi Frond_End UdaApp.genruntimeconfig.cache
 C:\Users\usuario\Documents\GitHub\WebApi-Front_End-UdaApp\obj\Debug\net8.0\ref\WebApi Frond_End UdaApp.dll
+C:\Users\USUARIO\Documents\GitHub\WebApi-Frond_End-UdaApp\bin\Debug\net8.0\wwwroot\css\imagenes\admin.png
+C:\Users\USUARIO\Documents\GitHub\WebApi-Frond_End-UdaApp\bin\Debug\net8.0\wwwroot\css\imagenes\like.png
+C:\Users\USUARIO\Documents\GitHub\WebApi-Frond_End-UdaApp\bin\Debug\net8.0\wwwroot\css\imagenes\Perfil.png
+C:\Users\USUARIO\Documents\GitHub\WebApi-Frond_End-UdaApp\bin\Debug\net8.0\package-lock.json

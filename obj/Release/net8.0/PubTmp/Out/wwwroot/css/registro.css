@@ -1,0 +1,144 @@
+﻿.body {
+    background-color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.circulo {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 800px;
+    height: 500px;
+    background-color: #00E3B8;
+    border-radius: 0 100% 0 0;
+    z-index: 0;
+    margin: 0;
+}
+
+.estudi {
+    position: absolute;
+    left: 180px;
+    margin: 0px;
+    bottom: 0px;
+}
+
+.logo {
+    position: absolute;
+    top: 30px;
+    left: 100px;
+    margin: 20px;
+    border-radius: 20px;
+}
+
+.contenedor {
+    padding: 25px;
+    border: none;
+    border-radius: 5px;
+    width: 30%;
+    position: absolute;
+    top: 20px; /* Ajusta esta propiedad para moverlo más abajo si es necesario */
+    right: 30px; /* Coloca el formulario en la esquina derecha */
+    font-size: 1em;
+    background-color: white; /* Agrega un fondo blanco para destacar el formulario */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añade sombra para que se vea más profesional */
+    z-index: 1;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+    .input-group label {
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .input-group input,
+    .input-group textarea {
+        border-radius: 10px;
+        background-color: #CFFFED;
+        border: none;
+        padding: 8px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+.text-danger {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.registrarse {
+    background-color: #03AB87;
+    border: none;
+    color: white;
+    margin: 10px 0;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    width: 100%;
+}
+
+    .registrarse:hover {
+        background-color: #03AB87;
+        opacity: 0.8;
+    }
+
+.cancelar {
+    background-color: #03AB87;
+    border: none;
+    color: white;
+    margin-top: 10px;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    width: 100%;
+}
+
+    .cancelar:hover {
+        background-color: #03AB87;
+        opacity: 0.8;
+    }
+.loading {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    background-color: rgba(255, 255, 255, 1);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    z-index: 1000;
+}
+
+.spinner {
+    margin-top: 10px;
+    width: 40px;
+    height: 40px;
+    border: 5px solid #ccc;
+    border-top: 5px solid #333;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

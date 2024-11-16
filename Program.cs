@@ -19,27 +19,38 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+app.Use(async (context, next) =>
+{
+    // Excluir favicon.ico del pipeline de autorizaciÃ³n
+    if (context.Request.Path.StartsWithSegments("/favicon.ico"))
+    {
+        context.Response.ContentType = "image/x-icon";
+        await context.Response.SendFileAsync("wwwroot/favicon.ico");
+        return;
+    }
+    await next();
+});
 
-// Middleware para redirigir según códigos de estado HTTP
+// Middleware para redirigir segï¿½n cï¿½digos de estado HTTP
 app.UseStatusCodePages(context =>
 {
     var response = context.HttpContext.Response;
     switch (response.StatusCode)
     {
         case 401:
-            response.Redirect("/Home/Error401");  // Página de inicio de sesión
+            response.Redirect("/Home/Error401");  // Pï¿½gina de inicio de sesiï¿½n
             break;
         case 403:
-            response.Redirect("/Home/Error403");  // Página de acceso denegado
+            response.Redirect("/Home/Error403");  // Pï¿½gina de acceso denegado
             break;
         case 404:
-            response.Redirect("/Home/Error404");  // Página de no encontrado
+            response.Redirect("/Home/Error404");  // Pï¿½gina de no encontrado
             break;
         case 500:
-            response.Redirect("/Home/Error500");  // Página de error interno
+            response.Redirect("/Home/Error500");  // Pï¿½gina de error interno
             break;
         case 400:
-            response.Redirect("/Home/Error400");  // Página de solicitud incorrecta
+            response.Redirect("/Home/Error400");  // Pï¿½gina de solicitud incorrecta
             break;
     }
     return Task.CompletedTask;

@@ -1,0 +1,557 @@
+﻿/* Estilos generales */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #F5F5F5;
+    overflow-x: hidden;
+}
+
+/* Estilos del pie de página */
+.pie {
+    width: 100%;
+    height: 60px;
+    background-color: #00E3B8;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilos del menú */
+.menu {
+    width: 60px;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 100px;
+    display: none;
+}
+
+    .menu button {
+        width: 100%;
+        height: 50px;
+        background-color: transparent;
+        border: none;
+        margin-bottom: 50px;
+        cursor: pointer;
+    }
+
+/* Estilos del logo */
+.logo {
+    position: fixed;
+    bottom: 80px;
+    right: 60px;
+    margin: 20px;
+}
+
+/* Estilos de los botones flotantes */
+#menub, #Salir {
+    border-radius: 25px;
+    background-color: #03AB87;
+    border: none;
+    padding: 15px;
+    margin-top: 10px;
+    width: 160px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    position: fixed;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#menub {
+    left: 60px;
+    top: 80px;
+}
+
+#Salir {
+    right: 60px;
+    top: 80px;
+}
+
+/* Estilos de la barra de búsqueda */
+.cBarra {
+    width: 600px;
+    margin-top: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.barraP {
+    display: flex;
+    align-items: center;
+    background-color: #03AB87;
+    border-radius: 25px;
+    width: 100%;
+    max-width: 600px;
+    overflow: hidden;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+input.barraInput2 {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    outline: none;
+}
+
+.barraInput2::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: bold;
+}
+
+.buscar2 {
+    background-color: #03AB87;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+}
+
+/* Contenedor de publicaciones */
+.publicaciones-container {
+    margin-top: 80px;
+    margin-bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 0 20px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+/* Publicación individual */
+.publicacioncontainer {
+    width: 100%;
+    max-width: 700px;
+    border-radius: 20px;
+    background-color: white;
+    border: 2px solid #40BFBC;
+    padding: 25px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.usuarioPerfil {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.usuarioP {
+    color: #03AB87;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.usu {
+    border-radius: 20px;
+    height: 40px;
+    width: 40px;
+}
+
+.mensajeP {
+    color: black;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Botones de interacción */
+.interaccion {
+    display: flex;
+    gap: 10px; /* Espacio entre los botones */
+    align-items: center; /* Centra verticalmente los botones */
+}
+
+.interaccion button {
+    background: none; /* Sin fondo */
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón */
+    padding: 5px; /* Espaciado interno */
+    display: flex; /* Alinea la imagen en el centro */
+    align-items: center; /* Centra verticalmente la imagen */
+}
+
+    .interaccion button img {
+        width: 20px; /* Tamaño de la imagen */
+        height: 20px; /* Tamaño de la imagen */
+        margin-right: 5px; /* Espacio entre la imagen y el texto (si hay) */
+    }
+
+
+/* Botón de reporte */
+.repor {
+    border-radius: 20px;
+    background-color: #03AB87;
+    color: white;
+    font-weight: bold;
+    padding: 8px 12px;
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    cursor: pointer;
+}
+
+/* Estilos del modal para reporte */
+.modal2 {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-contentre {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    width: 300px;
+    margin: 15% auto;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+    .modal-contentre p {
+        margin: 10px 0;
+        font-size: 14px;
+    }
+
+    .modal-contentre select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #03AB87;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        background-color: #f0f0f0;
+        font-size: 14px;
+    }
+
+    .modal-contentre button {
+        background-color: #03AB87;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 10px;
+        font-weight: bold;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.3s ease;
+    }
+
+        .modal-contentre button:hover {
+            background-color: #028771;
+        }
+
+    .modal-contentre .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 18px;
+        color: #287777;
+        cursor: pointer;
+    }
+
+/* Estilos del modal para hacer publicación */
+.modal-contentpu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #287777;
+    padding: 20px;
+    border-radius: 20px;
+    width: 600px;
+    max-width: 90%;
+    color: white;
+
+}
+
+
+    .modal-contentpu .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 18px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .modal-contentpu input {
+        width: calc(100% - 20px);
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #40BFBC;
+        margin-bottom: 10px;
+    }
+
+    .modal-contentpu button {
+        background-color: #03AB87;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 10px;
+        font-weight: bold;
+        cursor: pointer;
+        width: auto;
+        transition: background-color 0.3s ease;
+    }
+
+/*hacer comentario*/
+.modal3 {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6); /* Un poco más oscuro para resaltar el modal */
+}
+
+.modal-contenthacerco {
+    background-color: #ffffff;
+    padding: 30px; /* Espacio adicional para un mejor aspecto */
+    border-radius: 15px;
+    width: 90%; /* Cambiado a un porcentaje para responsividad */
+    max-width: 400px; /* Ancho máximo para evitar desbordamiento */
+    margin: 15% auto; /* Reduce el margen superior para más espacio en la pantalla */
+    box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.5); /* Sombra más pronunciada */
+    display: flex;
+    flex-direction: column;
+    position: relative; /* Para posicionar el botón de cerrar */
+}
+
+    /* Cerrar botón */
+    .modal-contenthacerco .close {
+        position: absolute;
+        top: 15px; /* Más espacio desde la parte superior */
+        right: 15px; /* Más espacio desde la derecha */
+        font-size: 20px; /* Un poco más grande para mejor visibilidad */
+        color: #03AB87; /* Cambiado a un color que coincida con el tema */
+        cursor: pointer;
+    }
+
+    /* Estilo del input y textarea */
+    .modal-contenthacerco input,
+    .modal-contenthacerco textarea {
+        width: calc(100% - 20px); /* Ocupa todo el ancho menos 20px para el padding */
+        padding: 10px; /* Espacio interno adecuado */
+        border-radius: 10px; /* Bordes más suaves */
+        border: 2px solid #40BFBC; /* Borde más grueso y con color */
+        margin-bottom: 15px; /* Espacio entre el input y el siguiente elemento */
+        font-size: 16px; /* Tamaño de fuente mejorado */
+        transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transiciones para efectos visuales */
+    }
+
+    /* Estilo del textarea */
+    .modal-contenthacerco textarea {
+        resize: vertical; /* Permitir el redimensionamiento vertical */
+        min-height: 60px; /* Altura mínima para el textarea */
+    }
+
+        /* Efecto de enfoque para input y textarea */
+        .modal-contenthacerco input:focus,
+        .modal-contenthacerco textarea:focus {
+            outline: none; /* Elimina el contorno por defecto */
+            border-color: #03AB87; /* Cambia el color del borde al enfocar */
+            box-shadow: 0 0 5px rgba(3, 171, 135, 0.5); /* Sombra para un efecto de resalte */
+        }
+
+    /* Botón de enviar */
+    .modal-contenthacerco button {
+        background-color: #03AB87;
+        color: white;
+        padding: 12px; /* Un poco más de padding */
+        border: none;
+        border-radius: 10px;
+        font-weight: bold;
+        cursor: pointer;
+        width: 100%; /* Ocupa todo el ancho */
+        transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones para el botón */
+    }
+
+        .modal-contenthacerco button:hover {
+            background-color: #028771; /* Color más oscuro al pasar el ratón */
+            transform: translateY(-2px); /* Efecto de elevación al pasar el ratón */
+        }
+
+        .modal-contenthacerco button:active {
+            transform: translateY(0); /* Regresa al estado original al hacer clic */
+        }
+
+
+/*   modal para mostra comentarios  */
+.modal4 {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-contentmostrarco {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    width: 300px;
+    margin: 15% auto;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+    /* Ajustes responsivos para modals */
+    @media (max-width: 768px) {
+        .modal-contentre,
+        .modal-contentpu {
+            width: 90%;
+            margin: 10% auto;
+        }
+    }
+    /* Ajustes para el contenedor de publicaciones */
+    .publicacioncontainer:hover {
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+}
+
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Fijo en la pantalla */
+    z-index: 1; /* Se asegura que esté encima de otros elementos */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Alto completo */
+    overflow: auto; /* Permite desplazamiento si es necesario */
+    background-color: rgb(0,0,0); /* Color de fondo */
+    background-color: rgba(0,0,0,0.4); /* Fondo semi-transparente */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* Margen en la parte superior y centrado */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Ancho del modal */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+/* Estilos para los modales */
+.modal3, .modal4 {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 500px;
+    padding: 20px;
+}
+
+.modal-contenthacerco, .modal-contentmostrarco {
+    padding: 20px;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.comentario {
+    padding: 10px;
+    margin: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+    .comentario button {
+        margin: 5px;
+        padding: 5px 10px;
+        background-color: #03AB87;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        .comentario button:hover {
+            background-color: #028D64;
+        }
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding: 20px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
