@@ -7,7 +7,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAusbZzGQEfkmIpl3AX03sfwAAAAACAAAAAAAQZgAAAAEAACAAAACWTAqGqEkFy1YTBtGx8L5BQ6AL7SD99Xr9+wFttYwW1gAAAAAOgAAAAAIAACAAAADOAvwDYBASCLOd6LTavbIhaQeu53mrsGuh8XZBqHtRCCAAAADfkjDKEmwAXFCFlar0VGCm7nGFpB4kgHtuh16N7+KC1kAAAABi5e4CdGX7U9CorKIiTXmv8T4BjDo34bV9DkveFDzF8hPCHl9DYPWItZY+FGeIuEiV9wGYWBqGtt84hL2cwyNR</EncryptedPassword>
     <_PublishTargetUrl>ftp://155.254.244.28/www.WebApiUdApp.somee.com</_PublishTargetUrl>
-    <History>True|2024-11-16T06:26:37.5410496Z||;False|2024-11-16T01:00:57.5507541-05:00||;True|2024-11-16T00:40:22.7699687-05:00||;True|2024-11-15T23:44:32.6053562-05:00||;</History>
+    <History>True|2024-11-16T16:42:34.1400646Z||;True|2024-11-16T11:12:42.5369492-05:00||;False|2024-11-16T10:54:33.6899795-05:00||;True|2024-11-16T10:38:56.7820871-05:00||;True|2024-11-16T01:26:37.5410496-05:00||;False|2024-11-16T01:00:57.5507541-05:00||;True|2024-11-16T00:40:22.7699687-05:00||;True|2024-11-15T23:44:32.6053562-05:00||;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -15,7 +15,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>01/29/2022 10:04:06</publishTime>
     </File>
     <File Include="appsettings.Development.json">
-      <publishTime>11/16/2024 00:00:08</publishTime>
+      <publishTime>11/16/2024 09:55:35</publishTime>
     </File>
     <File Include="appsettings.json">
       <publishTime>11/15/2024 21:31:12</publishTime>
@@ -30,10 +30,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>01/29/2022 10:04:08</publishTime>
     </File>
     <File Include="bin/Debug/net8.0/favicon.ico">
-      <publishTime>11/16/2024 00:00:08</publishTime>
+      <publishTime>11/16/2024 09:55:35</publishTime>
     </File>
     <File Include="bin/Release/net8.0/favicon.ico">
-      <publishTime>11/16/2024 00:00:08</publishTime>
+      <publishTime>11/16/2024 09:55:35</publishTime>
     </File>
     <File Include="bn-BD/Humanizer.resources.dll">
       <publishTime>01/29/2022 10:04:08</publishTime>
@@ -123,7 +123,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>01/29/2022 10:04:04</publishTime>
     </File>
     <File Include="favicon.ico">
-      <publishTime>11/16/2024 00:00:09</publishTime>
+      <publishTime>11/16/2024 09:55:36</publishTime>
     </File>
     <File Include="fi-FI/Humanizer.resources.dll">
       <publishTime>01/29/2022 10:04:06</publishTime>
@@ -564,22 +564,22 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>01/29/2022 10:04:12</publishTime>
     </File>
     <File Include="web.config">
-      <publishTime>11/16/2024 01:05:30</publishTime>
+      <publishTime>11/16/2024 11:18:56</publishTime>
     </File>
     <File Include="WebApi Frond_End UdaApp.deps.json">
-      <publishTime>11/16/2024 01:05:25</publishTime>
+      <publishTime>11/16/2024 11:18:55</publishTime>
     </File>
     <File Include="WebApi Frond_End UdaApp.dll">
-      <publishTime>11/16/2024 01:05:24</publishTime>
+      <publishTime>11/16/2024 11:17:57</publishTime>
     </File>
     <File Include="WebApi Frond_End UdaApp.exe">
-      <publishTime>11/16/2024 01:05:24</publishTime>
+      <publishTime>11/16/2024 11:17:57</publishTime>
     </File>
     <File Include="WebApi Frond_End UdaApp.pdb">
-      <publishTime>11/16/2024 01:05:24</publishTime>
+      <publishTime>11/16/2024 11:17:57</publishTime>
     </File>
     <File Include="WebApi Frond_End UdaApp.runtimeconfig.json">
-      <publishTime>11/16/2024 00:14:14</publishTime>
+      <publishTime>11/16/2024 10:06:51</publishTime>
     </File>
     <File Include="wwwroot/css/Admin.css">
       <publishTime>11/16/2024 00:00:09</publishTime>
@@ -604,6 +604,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     </File>
     <File Include="wwwroot/css/imagenes/cookie.svg">
       <publishTime>11/16/2024 00:00:09</publishTime>
+    </File>
+    <File Include="wwwroot/css/imagenes/gerente.png">
+      <publishTime>11/16/2024 09:55:37</publishTime>
     </File>
     <File Include="wwwroot/css/imagenes/grupo.png">
       <publishTime>11/16/2024 00:00:09</publishTime>
@@ -666,7 +669,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/16/2024 00:00:09</publishTime>
     </File>
     <File Include="wwwroot/css/Perfil.css">
-      <publishTime>11/15/2024 23:59:54</publishTime>
+      <publishTime>11/16/2024 09:55:37</publishTime>
     </File>
     <File Include="wwwroot/css/registro.css">
       <publishTime>11/15/2024 21:31:12</publishTime>
@@ -675,37 +678,37 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/15/2024 21:31:12</publishTime>
     </File>
     <File Include="wwwroot/favicon.ico">
-      <publishTime>11/16/2024 00:00:09</publishTime>
+      <publishTime>11/16/2024 09:55:37</publishTime>
     </File>
     <File Include="wwwroot/js/Admin.js">
-      <publishTime>11/16/2024 00:45:53</publishTime>
+      <publishTime>11/16/2024 11:14:33</publishTime>
     </File>
     <File Include="wwwroot/js/aviso-cookies.js">
-      <publishTime>11/16/2024 00:00:09</publishTime>
+      <publishTime>11/16/2024 09:55:37</publishTime>
     </File>
     <File Include="wwwroot/js/gerente.js">
-      <publishTime>11/16/2024 00:45:53</publishTime>
+      <publishTime>11/16/2024 10:13:24</publishTime>
     </File>
     <File Include="wwwroot/js/Inicio.js">
-      <publishTime>11/16/2024 00:00:36</publishTime>
+      <publishTime>11/16/2024 09:35:12</publishTime>
     </File>
     <File Include="wwwroot/js/moderador2.js">
-      <publishTime>11/16/2024 00:43:08</publishTime>
+      <publishTime>11/16/2024 10:24:20</publishTime>
     </File>
     <File Include="wwwroot/js/PaginaPrincipal.js">
-      <publishTime>11/16/2024 00:00:09</publishTime>
+      <publishTime>11/16/2024 09:39:12</publishTime>
     </File>
     <File Include="wwwroot/js/PaginaPrincipalp.js">
-      <publishTime>11/16/2024 00:33:47</publishTime>
+      <publishTime>11/16/2024 10:20:50</publishTime>
     </File>
     <File Include="wwwroot/js/perfil.js">
-      <publishTime>11/16/2024 00:00:36</publishTime>
+      <publishTime>11/16/2024 09:39:12</publishTime>
     </File>
     <File Include="wwwroot/js/Registro.js">
-      <publishTime>11/16/2024 00:00:09</publishTime>
+      <publishTime>11/16/2024 09:39:12</publishTime>
     </File>
     <File Include="wwwroot/js/site.js">
-      <publishTime>11/15/2024 21:31:12</publishTime>
+      <publishTime>11/16/2024 09:39:10</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css">
       <publishTime>11/15/2024 21:31:12</publishTime>
@@ -882,7 +885,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/15/2024 21:31:12</publishTime>
     </File>
     <File Include="wwwroot/WebApi Frond_End UdaApp.styles.css">
-      <publishTime>11/16/2024 00:00:09</publishTime>
+      <publishTime>11/16/2024 09:55:37</publishTime>
     </File>
     <File Include="zh-CN/Humanizer.resources.dll">
       <publishTime>01/29/2022 10:04:12</publishTime>
