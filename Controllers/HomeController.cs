@@ -37,7 +37,41 @@ namespace WebApi_Frond_End_UdaApp.Controllers
 
             return View();
         }
+        public IActionResult Gerente()
+        {
+            return View();
+        }
 
+        
+        public IActionResult Moderador2()
+        {
+            return View();
+        }
+        public IActionResult Admin()
+        {
+            return View();
+        }
+
+        public IActionResult Error401()
+        {
+            return View();
+        }
+        public IActionResult Error403()
+        {
+            return View();
+        }
+        public IActionResult Error404()
+        {
+            return View();
+        }
+        public IActionResult Error400()
+        {
+            return View();
+        }
+        public IActionResult Error500()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();
@@ -48,5 +82,7 @@ namespace WebApi_Frond_End_UdaApp.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+       
     }
 }

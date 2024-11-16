@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewData["Title"] = "Error400";
+}
+
+<head>
+    <link href="~/css/error401.css" rel="stylesheet" />
+</head>
+
+<!-- Formas de fondo animadas -->
+<div class="background-shape shape1"></div>
+<div class="background-shape shape2"></div>
+<div class="background-shape shape3"></div>
+
+<div class="container">
+    <img src="/css/imagenes/logo.png" alt="Logo udapp" class="logo">
+    <div class="error-code">400</div>
+    <p class="message">Bad Request</p>
+    <p class="description">Hubo un problema con tu solicitud. Revisa los datos y vuelve a intentarlo.</p>
+    <button onclick="window.location.href='@Url.Action("Index", "Home")'" class="btn">Página Principal</button>
+
+</div>
